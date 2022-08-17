@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title> Join.ejs</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
+        
+        <script>
+            //alert를 띄우기 위한 동적 폼 전송 이용.
+            function register(){
+                let form = document.getElementById("form_register");
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:8080/user/register',
+                    data:{
+                        id: form.Id.value,
+                        password: form.Password.value,
+                        name: form.name.value,                        
+                        age: form.age.value,
+                        profile: form.picture.value
+                    }
+                    //input창에 입력된 4개의 정보를 데이터로 보내준다. 
+                })
+                .then((rep) => {
+                    return rep.data;
+                }).then((data) => {
+                    //controller의 res.send("성공적으로 회원가입되었습니다~") 그래서 data = "성공적~"
+                    alert(data.name + "님 환영합니다.");
+                    
+
+                    window.location.href = "/user/login";
+                })
+            }
+
+            function chooseProfile(img){
+                let form = document.getElementById("form_register");
+                console.log(img);
+                form.picture.value = img;
+            }  
+
+        </script>
+        
+    </head>
+
+    <body>
+        <form id="form_register">
+            <h1>회원가입</h1>
+            <fieldset style="width: 300">
+                <legend>**이름/아이디 필수기재**</legend>
+            
+            <label>
+                아이디  
+                <input type="text" name="Id" placeholder="아이디" required>
+            </label><br>
+
+            <label>
+                비밀번호  
+                <input type="password" name="Password" placeholder="비밀번호" required>
+            </label><br>
+
+            <label>
+                이름  
+                <input type="text" name="name" placeholder="이름" required>
+            </label> 
+            <br>
+            <label>
+                나이  
+                <input type="text" name="age" placeholder="나이" required>
+            </label>               
+            <br>
+            </fieldset>
+            <br>
+            <img src="img1.png" style="width: 100" onclick="chooseProfile('img1')">
+            <img src="img2.png" style="width: 100" onclick="chooseProfile('img2')">
+            <img src="img3.png" style="width: 100" onclick="chooseProfile('img3')">
+            <img src="img4.png" style="width: 100" onclick="chooseProfile('img4')">
+            <img src="img5.png" style="width: 100" onclick="chooseProfile('img5')">
+
+            <input type="hidden" name="picture"> <br>
+            <button type="button" onclick="register();" >회원가입</button>
+        </form>
+    </body>
+</html>
