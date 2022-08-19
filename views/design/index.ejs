@@ -1,1 +1,9 @@
-adfasd
+<!-- 로그인 상태일 때 -->
+<% if (isLogin) {%>
+    <%=user%>
+    <button><a href="/user/profile">프로필</a></button>
+    <button><a href="/logout">로그아웃</a></button>
+<!-- 로그인 상태 아닐 때 -->
+<% } else { %>
+    <button><a href="/user/login">로그인</a></button>
+<% } %>

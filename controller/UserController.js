@@ -47,6 +47,8 @@ exports.login = (req,res) => {
         if (result == null) {
             res.send(false);
         } else {
+            req.session.user = req.body.id;
+            //성공하면 session에 아이디 달겠다. 
             res.send(true);
         }
     })
@@ -63,13 +65,23 @@ exports.login = (req,res) => {
 }
 
 exports.profile = (req, res) => {
-    //일반 폼 전송으로 <input name="id">만 존재한다.
-    //{id: }
-    console.log(req.body);
-    models.User.findOne({where: {id: req.body.id}})
+    const user = req.session.user;
+
+    models.User.findOne({where: {id: user}})
     .then((result) => {
         res.render("profile", {data: result})
-    }) //res.send안써도되는게 동적폼전송 안했으니까, res.render프로필 띄워준다.
+    })
+}
+
+// exports.profile = (req, res) => {
+    //일반 폼 전송으로 <input name="id">만 존재한다.
+    //{id: }
+    // console.log(req.body);
+    // models.User.findOne({where: {id: req.body.id}})
+    // .then((result) => {
+        // res.render("profile", {data: result});
+        //res.send안써도되는게 동적폼전송 안했으니까, res.render프로필 띄워준다.
+    // })
     // User.get_user(req.body, function(result){
     //     //result = rows = [RowDataTable {id: ...}, {}]
     //     //result[0] ={id:, name:, pw:, age}
@@ -77,7 +89,7 @@ exports.profile = (req, res) => {
     //     res.render("profile", {data: result[0]});
     //     //render는 profile을 불러와서 보여준다. data. <-으로 간다. 
     // });
-}
+// }
 
 exports.edit = (req, res) => {
     // {id: , name: , pw: , email: }
@@ -85,7 +97,7 @@ exports.edit = (req, res) => {
     let obj = {
         password: req.body.password,
         name: req.body.name,
-        age: req.body.age
+        email: req.body.email
     }
     models.User.update(obj, {where: {id: req.body.id}})
     .then((result) => {
@@ -100,6 +112,7 @@ exports.edit = (req, res) => {
 exports.delete = (req, res) => {
     models.User.destroy({where: {id: req.body.id}})
     .then((result) => {
+        req.session.destroy(function(err){});
         res.send("탈퇴하였습니다.");
     })
     // User.delete(req.body, function(result) {
@@ -167,7 +180,7 @@ exports.find_pw = (req, res) => {
     })
 }
 
-// 비밀번호 찾기
+// 비밀번호 찾기- 정보가 무조건있음 위에서 찾았으니까 , 여기선 비밀번호를 가져온다. 찾은 비밀번호를 find_pw_result.ejs로 보내준다.
 exports.find_pw_result = (req, res) => {
     models.User.findOne({
         where: {id: req.body.id, email: req.body.email}

@@ -23,6 +23,7 @@
                         alert("입력하신 정보로 가입된 아이디가 없습니다.");
                         form.reset();
                     } else {
+                        //있다면 hidden form을 전송한다. 
                         let submit_form = document.getElementById("submit_form");
                         submit_form.id.value = form.id.value;
                         submit_form.email.value = form.email.value;

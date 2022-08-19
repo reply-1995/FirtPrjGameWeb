@@ -27,7 +27,9 @@ const User = (Sequelize, DataTypes ) =>{
                 allowNull: false
             },
             profile:{
-                type: DataTypes.STRING(10)
+                type: DataTypes.STRING(10),
+                allowNull: false,
+                defaultValue: "img0"
             },
             email:{
                 type: DataTypes.STRING(20),
