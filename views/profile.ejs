@@ -13,7 +13,7 @@
                         id: form.id.value,
                         password: form.password.value,
                         name: form.name.value,                        
-                        age: form.age.value
+                        email: form.email.value
                     }
                 }).then((response) => {
                     return response.data;
@@ -49,8 +49,8 @@
             <!-- readonly: input의 입력필드가 읽기 전용임을 명시한다.  -->
             NAME : <input type="text" name="name" value="<%=data.name%>" required> <br>
             PASSWORD : <input type="password" name="password" value="<%=data.password%>" required> <br> 
-            AGE : <input type="text" name="age" value="<%=data.age%>" required> <br><br>
-            <img src="/<%=data.profile%>.png" style="width: 100"> <br>
+            EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br><br>
+            <img src="/img/<%=data.profile%>.png" style="width: 100"> <br>
             <button type="button" onclick="editProfile();">수정</button>
             <button type="button" onclick="deleteProfile();">탈퇴</button>
         </form>

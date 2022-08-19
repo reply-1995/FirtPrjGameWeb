@@ -20,7 +20,7 @@ exports.register = (req,res) => {
         id: req.body.id,
         password: req.body.password,
         name: req.body.name,
-        age: req.body.age,
+        email: req.body.email,
         profile: req.body.profile
     }
     models.User.create(object)
