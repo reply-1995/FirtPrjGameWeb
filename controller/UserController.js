@@ -147,3 +147,31 @@ exports.find_id_result = (req, res) => {
         res.render("find_id_result", {id: result.id});
     })
 }
+
+
+// 비밀번호 찾기 page
+exports.find_pw_page = (req, res) => {
+    res.render("find_pw");
+}
+
+// 비밀번호 정보가 있는지 확인
+exports.find_pw = (req, res) => {
+    models.User.findOne({
+        where: {id: req.body.id, email: req.body.email}
+    }).then((result) => {
+        if (result == null) {
+            res.send(false);
+        } else {
+            res.send(true);
+        }
+    })
+}
+
+// 비밀번호 찾기
+exports.find_pw_result = (req, res) => {
+    models.User.findOne({
+        where: {id: req.body.id, email: req.body.email}
+    }).then((result) => {
+        res.render("find_pw_result", {password: result.password});
+    })
+}
