@@ -2,9 +2,9 @@
 const models = require("../model"); // -> 시퀄라이즈에 사용
 // const User = require("../model/User");
 
-exports.index = (req,res) => {
+exports.register_page = (req,res) => {
     // index.ejs 파일 불러오기
-    res.render("index");
+    res.render("register");
 }
 
 exports.login_page = (req, res) => {
@@ -118,5 +118,32 @@ exports.overlap = (req,res) => {
         } else {
             res.send(false);
         }
+    })
+}
+
+// 아이디 찾기 page
+exports.find_id_page = (req, res) => {
+    res.render("find_id");
+}
+
+// 아이디 정보가 있는지 확인
+exports.find_id = (req, res) => {
+    models.User.findOne({
+        where: {name: req.body.name, email: req.body.email}
+    }).then((result) => {
+        if (result == null) {
+            res.send(false);
+        } else {
+            res.send(true);
+        }
+    })
+}
+
+// 아이디 찾기
+exports.find_id_result = (req, res) => {
+    models.User.findOne({
+        where: {name: req.body.name, email: req.body.email}
+    }).then((result) => {
+        res.render("find_id_result", {id: result.id});
     })
 }

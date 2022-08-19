@@ -57,11 +57,15 @@
          <form id="login_form">
             <fieldset style="width: 300">
             <legend>로그인</legend>
-            <input type="text" name="Id" placeholder="아이디" onkeyup="checkID( this );"> <br>
-            <p id="login_text"></p>
+            <input type="text" name="Id" placeholder="아이디"> <br>
             <input type="text" name="Password" placeholder="비밀번호"> <br><br>
             <!-- 로그인에 실패했을때 실패 문구를 추가해줄 곳 -->
             <div style="height: 30; color: orangered;"></div>
+            <ul style="display: flex; list-style-type: none">
+                <li><a href="/user/find_id">아이디 찾기</a></li>
+                <li style="margin: 0 10 0 10">|</li>
+                <li>아이디 찾기</li>
+            </ul>
             <button type="button" onclick="login();">로그인</button>
             </fieldset>
          </form>
