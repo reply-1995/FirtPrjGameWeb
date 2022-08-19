@@ -40,12 +40,11 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nabar_sign">
-                <img src="">
-            </ul>
-
-            <a href="" class="navber_toogleBtn"><img src="https://img.icons8.com/ios-glyphs/30/000000/menu--v1.png"/></a>
         </nav>
+
+        <div class="navbar_menu_bg" style="display: none; opacity: 1;">
+            <div class="div_inner" style="background:url('https://ssl.nexon.com/s2/game/maplestory/renewal/common/top_menu_line.png') left top no-repeat;"></div>
+        </div>
         <!-- 빈칸만들려고 임의로 지정한 100px div -->
         <div style="height: 100px;"></div>
 
@@ -75,6 +74,9 @@
                 </button>
             </div>
         </div>
+
+
+
         </main>
 
 
@@ -100,6 +102,7 @@
         </div>
     </div>
     <script>
+        // 마우스가 메뉴에 얹어질때
         window.onload = function(){
             $(".navbar_menu > li > ul").addClass("hide");
         }
