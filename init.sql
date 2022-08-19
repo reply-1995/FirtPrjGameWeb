@@ -20,8 +20,10 @@ create table communityFree(
 	idx int not null primary key auto_increment,
     id varchar(20) not null,
     title  varchar(100) not null,
-    content varchar(4000) not null,
+    content me not null,
     clicked int null default 0,
     isdeleted varchar(1) null default 'N',
     create_date date not null
 );
+
+alter table communityfree modify content mediumtext;
