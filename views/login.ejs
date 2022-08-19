@@ -51,7 +51,16 @@
             }
 
             function checkID( obj ){
-                if ( obj.value == "id2" ) {
+                axios({
+                    method: "post",
+                    url: "http://localhost:8080/user/overlap",
+                    data: {
+                        id: obj.value,
+                    }
+                }).then((rep) => {
+                    return rep.data;
+                }).then((data) => {
+                    if ( data ) {
                         $("#login_text").css("color", "green");
                         $("#login_text").text("사용할 수 있는 아이디입니다.");
                         $( "button" ).removeAttr("disabled")
@@ -60,25 +69,7 @@
                         $("#login_text").text("사용할 수 없는 아이디입니다.");
                         $( "button" ).attr("disabled", "true");
                     }
-                // axios({
-                //     method: "post",
-                //     url: "http://localhost:8080/user/overlap",
-                //     data: {
-                //         id: obj.value,
-                //     }
-                // }).then((rep) => {
-                //     return rep.data;
-                // }).then((data) => {
-                //     if ( data ) {
-                //         $("#login_text").css("color", "green");
-                //         $("#login_text").text("사용할 수 있는 아이디입니다.");
-                //         $( "button" ).removeAttr("disabled")
-                //     } else {
-                //         $("#login_text").css("color", "red");
-                //         $("#login_text").text("사용할 수 없는 아이디입니다.");
-                //         $( "button" ).attr("disabled", "true");
-                //     }
-                // });
+                });
             }
         </script>
     </head>
