@@ -13,8 +13,8 @@ const router = require("./routes");
 app.use('/user', router);
 const mainRouter = require("./routes/mainRouter.js");
 app.use('/', mainRouter);
-const gamgameRoutere = require("./routes/gameRouter.js");
-app.use('/game',gameRouter)
+// const gamgameRoutere = require("./routes/gameRouter.js");
+// app.use('/game',gameRouter)
 
 app.listen(port, ()=>{
     console.log( "Server Port : ", port );

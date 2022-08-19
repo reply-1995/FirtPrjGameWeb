@@ -5,11 +5,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
         <link rel="stylesheet" href="/css/login.css">
 
-        <style>
-            .d-none {
-                display: none;
-            }
-        </style>
         
         <script>
             //창이 로드되었을때 실행되어야하는 함수는 body에 있는게 좋고, 버튼등을 누르고
@@ -50,27 +45,6 @@
                 })
             }
 
-            function checkID( obj ){
-                axios({
-                    method: "post",
-                    url: "http://localhost:8080/user/overlap",
-                    data: {
-                        id: obj.value,
-                    }
-                }).then((rep) => {
-                    return rep.data;
-                }).then((data) => {
-                    if ( data ) {
-                        $("#login_text").css("color", "green");
-                        $("#login_text").text("사용할 수 있는 아이디입니다.");
-                        $( "button" ).removeAttr("disabled")
-                    } else {
-                        $("#login_text").css("color", "red");
-                        $("#login_text").text("사용할 수 없는 아이디입니다.");
-                        $( "button" ).attr("disabled", "true");
-                    }
-                });
-            }
         </script>
     </head>
     <body>
@@ -83,12 +57,16 @@
          <form id="login_form">
             <fieldset style="width: 300">
             <legend>로그인</legend>
-            <input type="text" name="Id" placeholder="아이디" onkeyup="checkID( this );"> <br>
-            <p id="login_text"></p>
+            <input type="text" name="Id" placeholder="아이디"> <br>
             <input type="text" name="Password" placeholder="비밀번호"> <br><br>
             <!-- 로그인에 실패했을때 실패 문구를 추가해줄 곳 -->
             <div style="height: 30; color: orangered;"></div>
-            <button type="button" onclick="login();" disabled>로그인</button>
+            <ul style="display: flex; list-style-type: none">
+                <li><a href="/user/find_id">아이디 찾기</a></li>
+                <li style="margin: 0 10 0 10">|</li>
+                <li><a href="/user/find_pw">비밀번호 찾기</a></li>
+            </ul>
+            <button type="button" onclick="login();">로그인</button>
             </fieldset>
          </form>
     </body>
