@@ -23,5 +23,9 @@ router.post("/find_id", user.find_id);
 
 router.post("/find_id_result", user.find_id_result);
 
+router.get("/find_pw", user.find_pw_page);
+router.post("/find_pw", user.find_pw);
+
+router.post("/find_pw_result", user.find_pw_result);
 
 module.exports = router;

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>아이디 찾기</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            function find() {
+                let form = document.getElementById("find_form");
+
+                axios({
+                    method: "post",
+                    url: "http://localhost:8080/user/find_pw",
+                    data: {
+                        id: form.id.value,                        
+                        email: form.email.value
+                    }
+                }).then((response) => {
+                    return response.data;
+                }).then((data) => {
+                    // data == false
+                    if (!data) {
+                        alert("입력하신 정보로 가입된 아이디가 없습니다.");
+                        form.reset();
+                    } else {
+                        let submit_form = document.getElementById("submit_form");
+                        submit_form.id.value = form.id.value;
+                        submit_form.email.value = form.email.value;
+                        submit_form.submit();
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <form id="submit_form" action="/user/find_pw_result", method="post">
+            <input type="hidden" name="id">
+            <input type="hidden" name="email">
+        </form>
+        <form id="find_form">
+            <input type="text" name="id" placeholder="아이디"> <br>
+            <input type="email" name="email" placeholder="이메일"> <br>
+            <button type="button" onclick="find();">비밀번호 찾기</button>
+        </form>
+    </body>
+</html>
