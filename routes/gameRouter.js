@@ -1,8 +1,8 @@
-// const express = require("express");
-// const front = require("../controller/FrontController");
-// const router = express.Router();
+const express = require("express");
+const game = require("../controller/GameController");
+const router = express.Router();
 
 
-// router.get("/", front.index);
+router.get("/", game.openGame);
 
-// module.exports = router;
+module.exports = router;

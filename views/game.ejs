@@ -4,13 +4,13 @@
     		<meta charset='utf-8'/>
     		<title>Shooting Game</title>
     		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-    		<script src='game.js'></script>
-		<link rel='stylesheet' href='gamestyle.css'>
+    		<script src='/game/game.js'></script>
+		<link rel='stylesheet' href='/game/gamestyle.css'>
 	</head>
   	<body>
 		<div class='content'>
 			<div class='title'>
-				<img src='gameImgs/title.png' alt='title'>
+				<img src='/game/gameImgs/title.png' alt='title'>
 			</div>
   			<canvas id='gameArea' width='750' height='500'></canvas>
   			<table id='values'>
@@ -23,10 +23,10 @@
   			</table>
   			<table id='labels'>
 	  			<tr>
-		  			<td id='score_label'>SCORE</td> 
-					<td><img src='gameImgs/missiles.png', alt='missiles'></td> 
-					<td><img src='gameImgs/shield.png', alt='shield'</td> 
-					<td><img src='gameImgs/bomb.png', alt='bomb'</td> 
+		  			<td id='score_label'><%=data.id%>님 SCORE</td> 
+					<td><img src='/game/gameImgs/missiles.png', alt='missiles'></td> 
+					<td><img src='/game/gameImgs/shield.png', alt='shield'</td> 
+					<td><img src='/game/gameImgs/bomb.png', alt='bomb'</td> 
 	  			</tr>
 
   			</table>
@@ -54,11 +54,11 @@
 			<h3 class='meet'>MEET THE CAST</h3>
   			<table>
 	  			<tr>
-					<td class='cast top'><img src='gameImgs/red.png', alt='simple'></td> 
-					<td class='cast top'><img src='gameImgs/blue.png', alt='siney'</td> 
-					<td class='cast top'><img src='gameImgs/yellow.png', alt='crawly'</td> 
-					<td class='cast top'><img src='gameImgs/white.png', alt='fasty'</td> 
-					<td class='cast top last'><img src='gameImgs/green.png', alt='circley'</td> 
+					<td class='cast top'><img src='/game/gameImgs/red.png', alt='simple'></td> 
+					<td class='cast top'><img src='/game/gameImgs/blue.png', alt='siney'</td> 
+					<td class='cast top'><img src='/game/gameImgs/yellow.png', alt='crawly'</td> 
+					<td class='cast top'><img src='/game/gameImgs/white.png', alt='fasty'</td> 
+					<td class='cast top last'><img src='/game/gameImgs/green.png', alt='circley'</td> 
 	  			</tr>
 	  			<tr>
 					<td class='cast'>SIMPLE</td> 
