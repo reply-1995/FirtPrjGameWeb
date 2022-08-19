@@ -1,5 +1,6 @@
 const express = require("express");
 const user = require("../controller/UserController");
+const community = require("../controller/CommunityController");
 const router = express.Router();
 
 router.get("/", user.register_page);
@@ -29,5 +30,7 @@ router.get("/find_pw", user.find_pw_page);
 router.post("/find_pw", user.find_pw);
 
 router.post("/find_pw_result", user.find_pw_result);
+
+router.get("/community/free", community.Free_page);
 
 module.exports = router;

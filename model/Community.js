@@ -17,7 +17,7 @@ const Community = (Sequelize, DataTypes ) =>{
                 allowNull: false
             },
             content:{
-                type: DataTypes.STRING(4000),
+                type: DataTypes.TEXT('medium'),
                 allowNull: false,
             },
             clicked:{
