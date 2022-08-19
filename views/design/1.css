@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+}
+#background{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, #481468 0%, rgba(252, 206, 138, 0.77) 100%);
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+.navbar {
+    height: 100px;
+    display: flex;
+    justify-content: space-between; /* 같은 중심축 justify 사이에 간격을 줌*/
+    align-items: center; /*  반대축 align 수직중간으로 배치 */
+    /* opacity: rgba(0,0,0,0.5); */
+    padding: 8px 12px;
+}
+
+.navbar_logo {
+    font-size: 24px;
+    color: white;
+}
+
+.navbar_menu {
+    /* position: relative; */
+    display: flex;
+    list-style: none;
+    font-size: 24px;
+    padding-left: 0;
+}
+
+.navbar_menu li {
+    padding: 8px 12px;
+    /* width: 150px; */
+    text-align: center;
+}
+.navbar_menu li:hover {
+    font-weight: bold;
+}
+.nabar_sign{
+    padding: 8px 12px;
+}
+/* 메뉴탭의 하위 메뉴 */
+.navbar_menu > li > ul {
+    position: relative;
+    left: -50px; 
+    font-size: 18px;
+    list-style: none;
+
+    /* right: 50px; */
+    /* padding: 8px 12px; */
+}
+
+.hide {
+    display: none;
+}
+
+.navbar_icons {
+    list-style: none;
+    color: white;
+    display: flex;
+}
+
+/* @media screen and (max-width: 790px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    .navbar_menu {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-left: 0;
+    }
+    .navbar_menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+} */
+
+/* main img */
+
+.main_contents {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+/* main img */
+#banner {
+    /* padding: 10px 100px; */
+    display: flex;
+    justify-content: center;
+
+}
+
+/* footer */
+.footer{
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #747373;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+}
+.footer li{
+    display: inline;
+    list-style: none;
+    padding: 0 7px 0 10px;
+    white-space: nowrap; /* 가로로 긴 줄에서도 줄 바꿈 하지 않고 표시 */
+}
+.footer a{
+    text-decoration: none;
+    color: #464646;
+}
+/* 
+유튜브강의 반응형 헤더
+https://www.youtube.com/watch?v=X91jsJyZofw
+
+ */
