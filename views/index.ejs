@@ -4,7 +4,46 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
         
+        <link rel="stylesheet" href="/css/register.css">
+
+        <style>
+            .d-none {
+                display: none;
+            }
+        </style>
+
         <script>
+            function checkID( obj ){
+                //프론트로 확인하는
+                // if ( obj.value == "id2" ) {
+                //         $("#register_text").css("color", "green");
+                //         $("#register_text").text("사용할 수 있는 아이디입니다.");
+                //         $( "button" ).removeAttr("disabled")
+                // } else {
+                //         $("#register_text").css("color", "red");
+                //         $("#register_text").text("사용할 수 없는 아이디입니다.");
+                //         $( "button" ).attr("disabled", "true");
+                // }
+                axios({
+                    method: "post",
+                    url: "http://localhost:8080/user/overlap",
+                    data: {
+                        id: obj.value,
+                    }
+                }).then((rep) => {
+                    return rep.data;
+                }).then((data) => {
+                    if ( data ) {
+                        $("#register_text").css("color", "green");
+                        $("#register_text").text("사용할 수 있는 아이디입니다.");
+                        $( "button" ).removeAttr("disabled")
+                    } else {
+                        $("#register_text").css("color", "red");
+                        $("#register_text").text("사용할 수 없는 아이디입니다.");
+                        $( "button" ).attr("disabled", "true");
+                    }
+                });
+            }
             //alert를 띄우기 위한 동적 폼 전송 이용.
             function register(){
                 let form = document.getElementById("form_register");
@@ -31,52 +70,61 @@
                 })
             }
 
-            function chooseProfile(img){
-                let form = document.getElementById("form_register");
-                console.log(img);
-                form.picture.value = img;
-            }  
-
+            // function chooseProfile(img){
+            //     let form = document.getElementById("form_register");
+            //     console.log(img);
+            //     form.picture.value = img;
+            // } 
         </script>
         
     </head>
 
     <body>
-        <form id="form_register">
+        <div id="container">
             <h1>회원가입</h1>
-            <fieldset style="width: 300">
-                <legend>**이름/아이디 필수기재**</legend>
-            
-            <label>
-                아이디  
-                <input type="text" name="Id" placeholder="아이디" required>
-            </label><br>
-
-            <label>
-                비밀번호  
-                <input type="password" name="Password" placeholder="비밀번호" required>
-            </label><br>
-
-            <label>
-                이름  
+            <form id="form_register">
+                <input type="text" name="Id" placeholder="아이디" required onkeyup="checkID( this );">
+                <p id="register_text"></p>
+                <input type="password" name="Password" placeholder="비밀번호" required> <br>
                 <input type="text" name="name" placeholder="이름" required>
-            </label> 
-            <br>
-            <label>
-                나이  
-                <input type="text" name="age" placeholder="나이" required>
-            </label>               
-            <br>
-            </fieldset>
-            <br>
-            <img src="img1.png" style="width: 100" onclick="chooseProfile('img1')">
-            <img src="img2.png" style="width: 100" onclick="chooseProfile('img2')">
-            <img src="img3.png" style="width: 100" onclick="chooseProfile('img3')">
-            <img src="img4.png" style="width: 100" onclick="chooseProfile('img4')">
-            <img src="img5.png" style="width: 100" onclick="chooseProfile('img5')">
+                <input type="text" name="email" placeholder="이메일" required>         
+                <br>
+                <!-- <img src="/img/img1.png" style="width: 100" onclick="chooseProfile('img1')">
+                <img src="/img/img2.png" style="width: 100" onclick="chooseProfile('img2')">
+                <img src="/img/img3.png" style="width: 100" onclick="chooseProfile('img3')">
+                <img src="/img/img4.png" style="width: 100" onclick="chooseProfile('img4')">
+                <img src="/img/img5.png" style="width: 100" onclick="chooseProfile('img5')"> -->
+                <div>
+                    <img src="/img/img1.png" style="width: 100" name="img1">
+                    <img src="/img/img2.png" style="width: 100" name="img2">
+                    <img src="/img/img3.png" style="width: 100" name="img3">
+                    <img src="/img/img4.png" style="width: 100" name="img4">
+                    <img src="/img/img5.png" style="width: 100" name="img5">
+                </div>
+    
+                <input type="hidden" name="picture"> <br>
+                <button type="button" onclick="register();" disabled>회원가입</button>
+            </form>
+        </div>
 
-            <input type="hidden" name="picture"> <br>
-            <button type="button" onclick="register();" >회원가입</button>
-        </form>
+        <footer>
+        </footer>
+
+        <script>
+
+            $("img").on("click", function( obj ) {
+                let form = document.getElementById("form_register");
+                let target = obj.currentTarget;
+                let brothers = $(target).siblings();
+
+                form.picture.value = target['name'];
+
+                console.log(target);
+                console.log(brothers);
+
+                $(target).css("border", "2px solid black");
+                $(brothers).css("border", "none");
+            });
+        </script>
     </body>
 </html>
