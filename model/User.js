@@ -26,13 +26,14 @@ const User = (Sequelize, DataTypes ) =>{
                 type: DataTypes.STRING(20),
                 allowNull: false
             },
-            age:{
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
             profile:{
-                type: DataTypes.STRING(20)
+                type: DataTypes.STRING(10)
+            },
+            email:{
+                type: DataTypes.STRING(20),
+                allowNull: false
             }
+         
         },
         {
             timestamps: false,
