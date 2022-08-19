@@ -23,6 +23,7 @@ db.Sequelize = Sequelize;
 
 // model폴더안에 있는 User파일에서 내보내 준 함수를 (sequelize, Sequelize)인자를 넣어줘서 바로 실행한다.
 db.User = require("./User")(sequelize, Sequelize);
+db.Community = require("./Community")(sequelize, Sequelize);
 // db = {sequelize: sequelize, Sequlize: Sequelize, User: model};
 
 

@@ -15,6 +15,7 @@ router.patch("/edit", user.edit);
 router.delete("/delete", user.delete);
 router.post("/overlap", user.overlap);
 
+
 //get: 여기서 find_id_page res.render로 페이지만 띄운다.
 router.get("/find_id", user.find_id_page);
 router.post("/find_id", user.find_id);
