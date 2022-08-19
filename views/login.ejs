@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>로그인</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
+        <script>
+            //창이 로드되었을때 실행되어야하는 함수는 body에 있는게 좋고, 버튼등을 누르고
+            //실행되는 함수는 헤드에 넣어도된다.
+
+            //db에서 정보를 검색해 로그인 가능하게 하기
+            function login(){
+                var form = document.getElementById("login_form");
+                //-> 로그인 폼이라는 id를 가진 요소를 가져온다-밑에있음-
+
+                axios({
+                    method: "post",
+                    url: "http://localhost:8080/user/login",
+                    data: {
+                        id: form.Id.value,
+                        password: form.Password.value,
+                    }
+                }).then((rep) => {
+                    return rep.data;
+                }).then((data) => {
+                    //data=로그인에 성공했을 경우 true, 실패했을경우 false
+                    //실패했을때
+                    // !data = true -> data = false
+                    if(!data) {
+                        let html = "<p>아이디 또는 비밀번호가 틀렸습니다.</p>";
+                        $("div").html(html);
+                        // <div>"<p>아이디</p>"</div>
+                    //성공했을때    
+                    } else{
+                        alert("로그인 성공");
+                        let form_submit = document.getElementById("form_submit");
+                        //숨겨진 input값에 input 창에 입력된 값 넣어주기
+                        form_submit.id.value = form.Id.value;
+                        //홈 전송하기 -> /user/profile로
+                        form_submit.submit();
+                        //.submit으로 넘겨주는거임. 
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 폼 전송을 위한 폼(일반 폼 전송) :성공했을떄, 넘겨준다. -->
+        <form id="form_submit" action="/user/profile" method="POST">
+            <input type="hidden" name="id">        
+        </form>
+         <!-- 보이는 로그인 폼 (동적 폼 전송) :처음엔 이걸로 폼전송. 여기에 담긴정보를 넘겨서
+        백에서 아이디 비번 정보를 확인후에 트루/폴스 전송해준다. 트루일때 위의 form_submit을 넘겨준다. -->
+         <form id="login_form">
+            <fieldset style="width: 300">
+            <legend>로그인</legend>
+            <input type="text" name="Id" placeholder="아이디"> <br>
+            <input type="text" name="Password" placeholder="비밀번호"> <br><br>
+            <!-- 로그인에 실패했을때 실패 문구를 추가해줄 곳 -->
+            <div style="height: 30; color: orangered;"></div>
+            <button type="button" onclick="login();">로그인</button>
+            </fieldset>
+         </form>
+    </body>
+</html>

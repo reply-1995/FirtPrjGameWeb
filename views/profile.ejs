@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
+        <script>
+            function editProfile() {
+  	            let form = document.getElementById("form_profile");
+
+                axios({
+                    method: "patch",
+                    url: "http://localhost:8080/user/edit",
+                    data: {
+                        id: form.id.value,
+                        password: form.password.value,
+                        name: form.name.value,                        
+                        age: form.age.value
+                    }
+                }).then((response) => {
+                    return response.data;
+                }).then((data) => {
+                    // data: "회원정보가 수정되었습니다"
+                    alert(data);
+                })
+            }
+
+            function deleteProfile() {
+                
+                axios({
+                    method: "delete",
+                    url: "http://localhost:8080/user/delete",
+                    data: {
+                        id: '<%=data.id%>'
+                    }
+                }).then((response) => {
+                    return response.data;
+                }).then((data) => {
+                  // data: "회원 탈퇴되었습니다."
+                    alert(data);
+                  // 로그인 화면으로 돌아간다.
+                    window.location.href = "/user/login";
+                })
+          }
+        </script>
+
+    </head>
+    <body>
+        <form id ="form_profile">
+            ID : <input type="text" name="id" value="<%=data.id%>" readonly><br>
+            <!-- readonly: input의 입력필드가 읽기 전용임을 명시한다.  -->
+            NAME : <input type="text" name="name" value="<%=data.name%>" required> <br>
+            PASSWORD : <input type="password" name="password" value="<%=data.password%>" required> <br> 
+            AGE : <input type="text" name="age" value="<%=data.age%>" required> <br><br>
+            <img src="/<%=data.profile%>.png" style="width: 100"> <br>
+            <button type="button" onclick="editProfile();">수정</button>
+            <button type="button" onclick="deleteProfile();">탈퇴</button>
+        </form>
+    </body>
+</html>
+
