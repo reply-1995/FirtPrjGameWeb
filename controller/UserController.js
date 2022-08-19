@@ -107,3 +107,16 @@ exports.delete = (req, res) => {
     //     res.send("회원 탈퇴되었습니다.");
     // });
 }
+
+//중복확인
+exports.overlap = (req,res) => {
+    //{id: , pw: }
+    models.User.findOne({where: {id: req.body.id}})
+    .then((result) => {
+        if (result == null) {
+            res.send(true);
+        } else {
+            res.send(false);
+        }
+    })
+}

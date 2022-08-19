@@ -13,5 +13,6 @@ router.post("/profile", user.profile);
 router.patch("/edit", user.edit);
 
 router.delete("/delete", user.delete);
+router.post("/overlap", user.overlap);
 
 module.exports = router;
