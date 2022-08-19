@@ -50,7 +50,11 @@
             NAME : <input type="text" name="name" value="<%=data.name%>" required> <br>
             PASSWORD : <input type="password" name="password" value="<%=data.password%>" required> <br> 
             EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br><br>
-            <img src="/img/<%=data.profile%>.png" style="width: 100"> <br>
+            <% if (data.profile == "") { %>
+                <img src="/img/img0.png" style="width: 100"> <br>
+            <% } else { %>
+                <img src="/img/<%=data.profile%>.png" style="width: 100"> <br>
+            <% } %>
             <button type="button" onclick="editProfile();">수정</button>
             <button type="button" onclick="deleteProfile();">탈퇴</button>
         </form>

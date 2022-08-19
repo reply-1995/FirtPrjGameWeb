@@ -35,11 +35,12 @@
                     //성공했을때    
                     } else{
                         alert("로그인 성공");
-                        let form_submit = document.getElementById("form_submit");
+                        location.href = "/";
+                        // let form_submit = document.getElementById("form_submit");
                         //숨겨진 input값에 input 창에 입력된 값 넣어주기
-                        form_submit.id.value = form.Id.value;
+                        // form_submit.id.value = form.Id.value;
                         //홈 전송하기 -> /user/profile로
-                        form_submit.submit();
+                        // form_submit.submit();
                         //.submit으로 넘겨주는거임. 
                     }
                 })
@@ -49,9 +50,9 @@
     </head>
     <body>
         <!-- 폼 전송을 위한 폼(일반 폼 전송) :성공했을떄, 넘겨준다. -->
-        <form id="form_submit" action="/user/profile" method="POST">
+        <!-- <form id="form_submit" action="/user/profile" method="POST">
             <input type="hidden" name="id">        
-        </form>
+        </form> -->
          <!-- 보이는 로그인 폼 (동적 폼 전송) :처음엔 이걸로 폼전송. 여기에 담긴정보를 넘겨서
         백에서 아이디 비번 정보를 확인후에 트루/폴스 전송해준다. 트루일때 위의 form_submit을 넘겨준다. -->
          <form id="login_form">
