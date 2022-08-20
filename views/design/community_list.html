@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="2.css">
+    <link rel="stylesheet" href="css.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -15,11 +16,11 @@
     <!-- header  -->
     <div class="nav_background">
         <div class="navbar">
-            <div class="nav_design">
+            <div class="nav_wrap">
                 <div class="nav_logo">
                     <a href=""><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
                 </div>
-                <div class="navbar_menu">
+                <div class="nav_menu">
                     <ul><a href="">뉴스</a>
                         <li><a href="">공지사항</a></li>
                         <li><a href="">이벤트</a></li>
@@ -35,7 +36,7 @@
                         <li><a href="">1:1문의</a></li>
                     </ui>
                 </div>
-                <div class="buttonHouse">
+                <div class="nav_btn_wrap">
                     <button class="btn_gameStart">게임시작아이콘넣기</button>
                     <button class="btn_login">로그인아이콘넣기</button>
                     <br>
@@ -45,6 +46,28 @@
         </div>
     </div>
     <!-- header end -->
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="board_wrap">
+            <div class="board_title">
+                <strong>자유게시판</strong>
+            </div>
+            <div class="board_list_wrap">
+                <div class="board_list">
+                    <div class="top"></div>
+                    <div class=""></div>
+                </div>
+                <div class="board_page">
+
+                </div>
+                <div class="board_btn_wrap">
+                    <a href="" class="on">목록</a>
+                    <a href="">수정</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- footer -->
     <div class="footer">
@@ -69,13 +92,13 @@
 </div>
 
     <script>
-        $(".navbar_menu ul").mouseover(function(){
-            if($(".navbar_menu > ul > li").css("display") == "none"){
-                $(".navbar_menu > ul > li").css("display","block");
+        $(".nav_menu ul").mouseover(function(){
+            if($(".nav_menu > ul > li").css("display") == "none"){
+                $(".nav_menu > ul > li").css("display","block");
             }
         })
-        $(".navbar_menu").mouseleave(function(){
-            $(".navbar_menu > ul > li").css("display","none");
+        $(".nav_menu").mouseleave(function(){
+            $(".nav_menu > ul > li").css("display","none");
         })
         
         

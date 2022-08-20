@@ -1,0 +1,30 @@
+/* 게시판 */
+.board_wrap {
+    width: 1000px;
+    margin: 20px auto;
+}
+/* 게시판 타이틀 */
+.board_title {
+    margin-bottom: 30px;
+}
+.board_title strong {
+    font-size: 30px;
+}
+/* 게시판 작성버튼 */
+.board_btn_wrap {
+    margin-top: 30px;
+    text-align: center;
+}
+.board_btn_wrap a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    min-width: 80px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+.board_btn_wrap a.on {
+    background: black;
+    color: white;
+}
