@@ -15,11 +15,11 @@
     <!-- header  -->
     <div class="nav_background">
         <div class="navbar">
-            <div class="nav_design">
+            <div class="nav_wrap">
                 <div class="nav_logo">
                     <a href=""><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
                 </div>
-                <div class="navbar_menu">
+                <div class="nav_menu">
                     <ul><a href="">뉴스</a>
                         <li><a href="">공지사항</a></li>
                         <li><a href="">이벤트</a></li>
@@ -35,7 +35,7 @@
                         <li><a href="">1:1문의</a></li>
                     </ui>
                 </div>
-                <div class="buttonHouse">
+                <div class="nav_btn_wrap">
                     <button class="btn_gameStart">게임시작아이콘넣기</button>
                     <button class="btn_login">로그인아이콘넣기</button>
                     <br>
@@ -45,6 +45,11 @@
         </div>
     </div>
     <!-- header end -->
+
+    <!-- contents -->
+    <div id="contents">
+
+    </div>
 
     <!-- footer -->
     <div class="footer">
@@ -69,13 +74,13 @@
 </div>
 
     <script>
-        $(".navbar_menu ul").mouseover(function(){
-            if($(".navbar_menu > ul > li").css("display") == "none"){
-                $(".navbar_menu > ul > li").css("display","block");
+        $(".nav_menu ul").mouseover(function(){
+            if($(".nav_menu > ul > li").css("display") == "none"){
+                $(".nav_menu > ul > li").css("display","block");
             }
         })
-        $(".navbar_menu").mouseleave(function(){
-            $(".navbar_menu > ul > li").css("display","none");
+        $(".nav_menu").mouseleave(function(){
+            $(".nav_menu > ul > li").css("display","none");
         })
         
         
