@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    background-color: #35363A;
+}
+.nav_background {
+    position: relative;
+    float:left; 
+    width:100%; 
+    height: 560px; 
+    background: url(../../public/img/nav.jpg) center top no-repeat;
+}
+.navbar {
+    padding: 0 auto;
+    position: absolute;
+    height: 600px; 
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav_design {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 1200px;
+    height: 100%;
+
+}
+.nav_logo {
+    z-index: 999;
+    position: absolute;
+    left: 50px;
+}
+/* 메뉴 */
+.navbar_menu ul{
+    padding: 0px 30px;
+    float: left;
+}
