@@ -17,7 +17,6 @@ body {
     height:100%; 
     min-width:1280px; 
     position:relative;
-    margin:  0 auto;
 
 
     /* height: 100px;
@@ -37,21 +36,23 @@ body {
 }
 
 .navbar_menu {
-    /* position: relative; */
-    position: absolute;
+    position: relative;
     top: 30px;
+    left: 400px;
     display: flex;
     list-style: none;
     font-size: 24px;
-    padding-left: 0;
+    padding-left: auto;
+    padding-right: auto;
 }
 
-.navbar_menu li {
-    padding: 8px 12px;
+.navbar_menu ul {
+    padding: 0px 30px;
     /* width: 150px; */
     text-align: center;
+    /* float: left; */
 }
-.navbar_menu li:hover, .navbar_menu li:hover > a {
+.navbar_menu ul:hover, .navbar_menu ul:hover > a {
     font-weight: bold;
     color: #120e74;
 }
@@ -59,11 +60,12 @@ body {
     padding: 8px 12px;
 }
 /* 메뉴탭의 하위 메뉴 */
-.navbar_menu > li > ul {
+.navbar_menu > ul > li {
     position: relative;
     left: -50px; 
     font-size: 18px;
     list-style: none;
+    display: none;
 
     /* right: 50px; */
     /* padding: 8px 12px; */

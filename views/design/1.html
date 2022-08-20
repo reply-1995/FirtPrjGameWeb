@@ -18,28 +18,22 @@
             <div class="navbar_logo">
                 <a href=""><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png"/>로고 게임이름</a>
             </div>
-            <ul class="navbar_menu">
-                <li><a href="">뉴스</a>
-                    <ul>
-                        <li><a href="">공지사항</a></li>
-                        <li><a href="">이벤트</a></li>
-                    </ul>
-                </li>
-                <li><a href="">가이드</a></li>
-                <li><a href="">랭킹</a></li>
-                <li><a href="">커뮤니티</a>
-                    <ul>
-                        <li><a href="">자유게시판</a></li>
-                        <li><a href="">정보게시판</a></li>
-                    </ul>
-                </li>
-                <li><a href="">고객지원</a>
-                    <ul>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="">1:1문의</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="navbar_menu">
+                <ul><a href="">뉴스</a>
+                    <li><a href="">공지사항</a></li>
+                    <li><a href="">이벤트</a></li>
+                </ul>
+                <ul><a href="">가이드</a></ul>
+                <ul><a href="">랭킹</a></ul>
+                <ul><a href="">커뮤니티</a>
+                    <li><a href="">자유게시판</a></li>
+                    <li><a href="">정보게시판</a></li>
+                </ul>
+                <ul><a href="">고객지원</a>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">1:1문의</a></li>
+                </ui>
+            </div>
         </nav>
 
         <div class="navbar_menu_bg" style="display: none; opacity: 1;">
@@ -104,6 +98,7 @@
     </div>
     <script>
         // 마우스가 메뉴에 얹어질때
+
         window.onload = function(){
             $(".navbar_menu > li > ul").addClass("hide");
         }
