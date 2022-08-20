@@ -1,7 +1,7 @@
 /* 게시판 */
 .board_wrap {
     width: 1000px;
-    margin: 20px auto;
+    margin: 0px auto;
 }
 /* 게시판 타이틀 */
 .board_title {
@@ -9,6 +9,7 @@
 }
 .board_title strong {
     font-size: 30px;
+    margin-top: 20px;
 }
 /* 게시판 작성버튼 */
 .board_btn_wrap {
@@ -27,4 +28,49 @@
 .board_btn_wrap a.on {
     background: black;
     color: white;
+}
+.board_list {
+    width: 100%;
+    border-top: 2px solid black;
+}
+.board_list > div {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+}
+.board_list > div.top {
+    border-color: #999;
+    font-weight: 600;
+}
+.board_list > div.top > div.title {
+    text-align: center;
+}
+.board_list > div:last-child {
+    border-bottom: 1px solid black;
+}
+.board_list > div > div {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 16px;
+
+}
+.board_list .num {
+    width: 10%;
+}
+.board_list .title {
+    width: 60%;
+    text-align: left;
+}
+.board_list .title > a {
+    text-decoration: none;
+    color: inherit;
+}
+.board_list .writer {
+    width: 10%;
+}
+.board_list .date {
+    width: 10%;
+}
+.board_list .count {
+    width: 10%;
 }
