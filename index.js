@@ -19,6 +19,8 @@ const mainRouter = require("./routes/mainRouter.js");
 app.use('/', mainRouter);
 const gameRouter = require("./routes/gameRouter.js");
 app.use('/game',gameRouter);
+const communityRouter = require("./routes/communityRouter.js");
+app.use('/community', communityRouter);
 
 app.listen(port, ()=>{
     console.log( "Server Port : ", port );

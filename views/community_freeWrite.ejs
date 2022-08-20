@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>자유게시판 글쓰기</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <style>
+            input {
+
+                width: 80%;
+                height: 30px;
+                font-size: 14px;
+            }
+            #content {
+                width: 80%;
+                height:70%;
+                font-size: 14px;
+                resize: vertical;
+            }
+            
+        </style>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <h1>자유게시판</h1>
+        <hr>
+        <div>
+            <form action="/community/free" method="post" id="freeWrite">
+                <div>제목 </div><input type="text" name="title" id="title"><hr>
+                <div>내용 </div><textarea name="content" id="content"></textarea><hr>
+                <button id="writebutton">글쓰기</button>
+
+            </form>
+        </div>
+    </body>
+</html>
