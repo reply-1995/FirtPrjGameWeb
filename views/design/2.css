@@ -22,18 +22,53 @@ body {
 .nav_design {
     position: relative;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 20px 40px;
     width: 1200px;
     height: 100%;
 
 }
 .nav_logo {
-    z-index: 999;
     position: absolute;
     left: 50px;
+    font-size: 30px;
+    z-index: 999;
 }
 /* 메뉴 */
-.navbar_menu ul{
-    padding: 0px 30px;
+.navbar_menu {
+    position: relative;
+    left: 300px;
+    z-index: 999;
+}
+.navbar_menu ul {
+    padding: 0px 50px;
     float: left;
+    font-size: 24px;
+}
+.navbar_menu > ul > li {
+    padding: 0;
+    text-decoration: none;
+    font-size: 20px;
+    list-style: none;
+    display: none;
+}
+
+
+.footer{
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #747373;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+}
+.footer li{
+    display: inline;
+    list-style: none;
+    padding: 0 7px 0 10px;
+    white-space: nowrap; /* 가로로 긴 줄에서도 줄 바꿈 하지 않고 표시 */
+}
+.footer a{
+    text-decoration: none;
+    color: #464646;
 }
