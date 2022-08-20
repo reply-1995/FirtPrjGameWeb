@@ -1,6 +1,12 @@
 body {
     margin: 0;
     background-color: #35363A;
+    height: 100%;
+}
+.body {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 60px;
 }
 .nav_background {
     position: relative;
@@ -58,10 +64,14 @@ body {
     left: 800px;
 }
 #contents { 
-    position: absolute;
-    top: 560px;
+    /* position: absolute; */
+    /* top: 560px;  */
     width: 100%;
-    padding: 10px 20px;
+    min-height: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+    margin: 0px auto;
 }
 
 /* footer */
@@ -72,6 +82,7 @@ body {
     border-top: 1px solid #747373;
     text-align: center;
     padding: 20px;
+    margin: 20px;
     position: absolute;
     bottom: 0;
 }
