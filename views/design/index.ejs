@@ -1,10 +1,99 @@
-<!-- 로그인 상태일 때 -->
-<% if (isLogin) {%>
-    <%=user%>
-    <button><a href="/user/profile">프로필</a></button>
-    <button><a href="/logout">로그아웃</a></button>
-    <button><a href="/game">게임 스타트</a></button>
-<!-- 로그인 상태 아닐 때 -->
-<% } else { %>
-    <button><a href="/user/login">로그인</a></button>
-<% } %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <title>reply 1995</title>
+</head>
+<body>
+    <div class="body">
+    <!-- header  -->
+    <div class="nav_background">
+        <div class="navbar">
+            <div class="nav_wrap">
+                <div class="nav_logo">
+                    <a href=""><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
+                </div>
+                <div class="nav_menu">
+                    <ul><a href="">뉴스</a>
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">이벤트</a></li>
+                    </ul>
+                    <ul><a href="">가이드</a></ul>
+                    <ul><a href="">랭킹</a></ul>
+                    <ul><a href="">커뮤니티</a>
+                        <li><a href="">자유게시판</a></li>
+                        <li><a href="">정보게시판</a></li>
+                    </ul>
+                    <ul><a href="">고객지원</a>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">1:1문의</a></li>
+                    </ui>
+                </div>
+                <div class="nav_btn_wrap">
+                    <button class="btn_gameStart">게임시작아이콘넣기</button>
+                    <!-- 로그인 상태일 때 -->
+                <% if (isLogin) {%>
+                    <%=user%>
+                    <button><a href="/user/profile">프로필</a></button>
+                    <button><a href="/logout">로그아웃</a></button>
+                    <button><a href="/game">게임 스타트</a></button>
+                <!-- 로그인 상태 아닐 때 -->
+                <% } else { %>
+                    <button><a href="/user/login">로그인</a></button>
+                <% } %>
+                    <br>
+                    <p style="color: white;">로그인을 해야 게임시작 버튼이 나오는건지?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
+
+    <!-- contents -->
+    <div id="contents">
+        <span style="margin: 0px auto;">내용</span>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <ul>
+            <li><a href="">회사소개</a></li>
+            <li><a href="">채용안내</a></li>
+            <li><a href="">이용약관</a></li>
+            <li><a href="">게임이용등급안내</a></li>
+            <li><a href="">개인정보처리방침</a></li>
+            <li><a href="">청소년보호정책</a></li>
+        </ul>
+        <p>
+            <span>(주)000000</span>
+            <span>서울특별시 영등포구 선유로9길 30 106동 청년취업사관학교 영등포캠퍼스 </span>
+            <br>
+            <span>정보1</span>
+            <span>정보2</span>
+            <span>정보3</span>
+        </p>
+    </div>
+    <!-- footer end -->
+    </div>
+
+    <script>
+        $(".nav_menu ul").mouseover(function(){
+            if($(".nav_menu > ul > li").css("display") == "none"){
+                $(".nav_menu > ul > li").css("display","block");
+            }
+        })
+        $(".nav_menu").mouseleave(function(){
+            $(".nav_menu > ul > li").css("display","none");
+        })
+        
+        
+    </script>
+</body>
+</html>

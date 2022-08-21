@@ -13,7 +13,9 @@ body {
     float:left; 
     width:100%; 
     height: 560px; 
-    background: url(../../public/img/nav.jpg) center top no-repeat;
+    /* background: url(../../public/img/nav.jpg) center top no-repeat;
+     */
+     background: url("/img/nav.jpg") center top no-repeat;
 }
 .navbar {
     padding: 0 auto;
