@@ -3,6 +3,7 @@
         <title>아이디 찾기</title>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/find_id.css">
 
         <script>
             function find() {
@@ -33,6 +34,8 @@
         </script>
     </head>
     <body>
+        <div id="container">
+        <h1>FIND ID</h1>
         <form id="submit_form" action="/user/find_id_result", method="post">
             <input type="hidden" name="name">
             <input type="hidden" name="email">
@@ -40,7 +43,12 @@
         <form id="find_form">
             <input type="text" name="name" placeholder="이름"> <br>
             <input type="email" name="email" placeholder="이메일"> <br>
-            <button type="button" onclick="find();">아이디 찾기</button>
+            <button id="find_btn" type="button" onclick="find();">아이디 찾기</button>
         </form>
+        </div>
+
+        <footer>
+        </footer>
+
     </body>
 </html>

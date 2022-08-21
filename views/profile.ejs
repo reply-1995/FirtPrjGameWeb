@@ -2,6 +2,7 @@
     <head>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
+        <link rel="stylesheet" href="/css/profile.css">
         <script>
             function editProfile() {
   	            let form = document.getElementById("form_profile");
@@ -44,19 +45,23 @@
 
     </head>
     <body>
+        <a type="" href="/">MAIN</a>
+        <h1>YOUR PROFILE</h1>
+
         <form id ="form_profile">
             ID : <input type="text" name="id" value="<%=data.id%>" readonly><br>
             <!-- readonly: input의 입력필드가 읽기 전용임을 명시한다.  -->
             NAME : <input type="text" name="name" value="<%=data.name%>" required> <br>
             PASSWORD : <input type="password" name="password" value="<%=data.password%>" required> <br> 
             EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br><br>
+           <div>
             <% if (data.profile == "") { %>
                 <img src="/img/img0.png" style="width: 100"> <br>
             <% } else { %>
                 <img src="/img/<%=data.profile%>.png" style="width: 100"> <br>
-            <% } %>
-            <button type="button" onclick="editProfile();">수정</button>
-            <button type="button" onclick="deleteProfile();">탈퇴</button>
+            <% } %></div>
+            <button id="modify" type="button" onclick="editProfile();">수정</button>
+            <button id="delete" type="button" onclick="deleteProfile();">탈퇴</button>
         </form>
     </body>
 </html>
