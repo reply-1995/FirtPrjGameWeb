@@ -34,7 +34,7 @@
                         // <div>"<p>아이디</p>"</div>
                     //성공했을때    
                     } else{
-                        alert("로그인 성공");
+                        // alert("로그인 성공");
                         location.href = "/";
                         // let form_submit = document.getElementById("form_submit");
                         //숨겨진 input값에 input 창에 입력된 값 넣어주기
@@ -49,6 +49,8 @@
         </script>
     </head>
     <body>
+
+        <div id="container">
         <!-- 폼 전송을 위한 폼(일반 폼 전송) :성공했을떄, 넘겨준다. -->
         <!-- <form id="form_submit" action="/user/profile" method="POST">
             <input type="hidden" name="id">        
@@ -56,19 +58,25 @@
          <!-- 보이는 로그인 폼 (동적 폼 전송) :처음엔 이걸로 폼전송. 여기에 담긴정보를 넘겨서
         백에서 아이디 비번 정보를 확인후에 트루/폴스 전송해준다. 트루일때 위의 form_submit을 넘겨준다. -->
          <form id="login_form">
-            <fieldset style="width: 300">
-            <legend>로그인</legend>
+            <h1>LOG IN</h1>
             <input type="text" name="Id" placeholder="아이디"> <br>
             <input type="password" name="Password" placeholder="비밀번호"> <br><br>
             <!-- 로그인에 실패했을때 실패 문구를 추가해줄 곳 -->
             <div style="height: 30; color: orangered;"></div>
             <ul style="display: flex; list-style-type: none">
                 <li><a href="/user/find_id">아이디 찾기</a></li>
-                <li style="margin: 0 10 0 10">|</li>
+                <li style="margin: 0 10 0 10"><a>|</a></li>
                 <li><a href="/user/find_pw">비밀번호 찾기</a></li>
             </ul>
-            <button type="button" onclick="login();">로그인</button>
-            </fieldset>
+            <button id="login_btn" type="button" onclick="login();">로그인</button>
+            <p style="color:whitesmoke">혹시 회원이 아니신가요?</p>
+            <a style="text-decoration: none;" href="/user"><button id="register_btn" type="button" onclick="register();">회원가입</button></a>
+
          </form>
+        </div>
+        
+        <footer>
+        </footer>
+
     </body>
 </html>
