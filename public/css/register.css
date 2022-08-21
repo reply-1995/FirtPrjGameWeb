@@ -1,9 +1,17 @@
 body {
     margin: 0;
+    background-image: url("/img/bg1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 80%;
 }
 
+h1{
+    color :whitesmoke;
+}
+
+
 #container {
-    margin: 30% auto 0 auto;
+    margin: 10% auto 0 auto;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -17,19 +25,22 @@ input {
     width: 300;
     height: 50;
     border: none;
-    border-radius: 10px;
-    background-color: black;
-    margin-bottom: 5px;
+    border-radius: 30px;
+    margin-bottom: 15px;
     padding-left: 10px;
-    color: white
+    background-color: whitesmoke;
+    opacity: 0.2;
+    color: whitesmoke;
 }
 
+/* placeholder아이디~등의 그거.. */
 input::placeholder {
     color: white;
 }
 
+/* focus: 커서클릭했을때 상태/ outline: 테두리 */
 input:focus {
-    outline: 2px solid red;
+    outline: 2px solid whitesmoke;
 }
 
 img:hover {
