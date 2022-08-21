@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    background-image: url("/img/bg7.png");
+    background-repeat: no-repeat;
+    background-size: 100% 110%;
+}
+
+a:first-child{
+    position:absolute;
+    background-color: rgba(255, 255, 255, 0.201);
+    color: rgb(48, 124, 255);
+    text-align: left;
+    left: 25px;
+    top: 15px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+h1{
+    margin-top: 40px;
+    color :whitesmoke;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#form_profile{
+    width: 300;
+    height: 50;
+}
+
+form {
+    margin: auto;
+}
+
+input {
+    width: 300;
+    height: 50;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0.564);
+    color: rgba(0, 0, 0, 0.654);
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+div{
+    margin-left: 35%;
+}
+
+#buttons{
+    margin-top: 5%;
+    margin-left: 25%;
+}
+
+#delete{
+    margin-left: 18%;
+    width: 80;
+    height: 35;
+    background-color: rgb(0, 62, 117, 0.7);
+    color: whitesmoke;
+    border-radius: 30px;
+    border: none;
+}
+
+#modify{
+    margin-left: 15%;
+    width: 80;
+    height: 35;
+    background-color: rgba(0, 62, 117, 0.7);
+    color: whitesmoke;
+    border-radius: 30px;
+    border: none;
+}
