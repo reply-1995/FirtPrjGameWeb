@@ -34,7 +34,7 @@
                     return rep.data;
                 }).then((data) => {
                     if ( data ) {
-                        $("#register_text").css("color", "green");
+                        $("#register_text").css("color", "white");
                         $("#register_text").text("사용할 수 있는 아이디입니다.");
                         $( "button" ).removeAttr("disabled")
                     } else {
@@ -88,7 +88,11 @@
 
     <body>
         <div id="container">
-            <h1>회원가입</h1>
+            <div id="buttons">
+                <a href="/user"><button>SIGN UP</button></a>
+                <a href="/user/login"><button>LOG IN</button></a>
+            </div>
+            <h1>WELCOME!</h1>
             <form id="form_register">
                 <input type="text" name="Id" placeholder="아이디" required onkeyup="checkID( this );">
                 <p id="register_text"></p>
@@ -107,10 +111,11 @@
                     <img src="/img/img3.png" style="width: 100" name="img3">
                     <img src="/img/img4.png" style="width: 100" name="img4">
                     <img src="/img/img5.png" style="width: 100" name="img5">
+                    <img src="/img/img6.png" style="width: 100" name="img6">
                 </div>
     
                 <input type="hidden" name="picture"> <br>
-                <button type="button" onclick="register();" disabled>회원가입</button>
+                <button id="register_btn" type="button" onclick="register();" disabled>회원가입</button>
             </form>
         </div>
 
@@ -129,7 +134,7 @@
                 console.log(target);
                 console.log(brothers);
 
-                $(target).css("border", "2px solid black");
+                $(target).css("border", "2px solid white");
                 $(brothers).css("border", "none");
             });
         </script>
