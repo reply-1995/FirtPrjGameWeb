@@ -47,6 +47,13 @@
             //alert를 띄우기 위한 동적 폼 전송 이용.
             function register(){
                 let form = document.getElementById("form_register");
+
+                let result = form.checkValidity();
+                if(!result){
+                    form.reportValidity();
+                    return false;
+                }
+
                 axios({
                     method: 'post',
                     url: 'http://localhost:8080/user/register',
