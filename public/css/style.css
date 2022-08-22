@@ -74,3 +74,31 @@
 .board_list .count {
     width: 10%;
 }
+
+/* 게시글view */
+.board_view {
+    width: 100%;
+    border-top: 2px solid black;
+}
+.board_view .title {
+    padding: 20px 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 20px;
+}
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid gray;
+}
+.board_view .info dl {
+    display: inline-block;
+    padding: 0 20px;
+}
+.board_view .info dl:first-child {
+    padding-left: 0;
+}
+.board_view .info dl dt {
+    display: inline-block;
+}
+.board_view .info dl dd {
+    display: inline-block;
+}
