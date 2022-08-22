@@ -6,7 +6,7 @@ exports.Free_page = (req, res) => {
     
     models.Community.findAll() // sequelize 문법. Select * FROM visitor;
     .then((result) => {
-        console.log(result);
+        //console.log(result);
         if (user != undefined) {
             res.render("community_freeList", {isLogin: true, user: user, data: result});
         } else {
@@ -47,6 +47,19 @@ exports.Free_writeview = (req, res) => {
     if (user != undefined) {
         res.render("community_freeWrite");
     } else {
-        res.send("로그인을 해주세요");
+        res.redirect('/user/login');
     }
+}
+
+
+exports.Free_read = (req, res) => {
+    const user = req.session.user;
+
+    models.Community.findOne({
+        where: { idx: req.query.idx,}
+    }).then((result) => {
+        console.log( result);
+        res.render("community_freeSelect",{ result : result, sessionID: user});
+    })
+
 }
