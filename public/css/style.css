@@ -9,7 +9,7 @@
 }
 .board_title strong {
     font-size: 30px;
-    margin-top: 20px;
+    padding-top: 50px;
 }
 /* 게시판 작성버튼 */
 .board_btn_wrap {
@@ -92,6 +92,7 @@
 .board_view .info dl {
     display: inline-block;
     padding: 0 20px;
+    margin: auto;
 }
 .board_view .info dl:first-child {
     padding-left: 0;
@@ -101,4 +102,9 @@
 }
 .board_view .info dl dd {
     display: inline-block;
+    padding-left: 10px;
+    color: gray;
+}
+.board_view .cont {
+    padding: 15px;
 }
