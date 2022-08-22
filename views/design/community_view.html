@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <title>reply 1995</title>
+</head>
+<body>
+    <div class="body">
+        <!-- header  -->
+        <div class="nav_background">
+            <div class="navbar">
+                <div class="nav_wrap">
+                    <div class="nav_logo">
+                        <a href=""><img src="/public/img/logo_ufo.png">로고</a>
+                    </div>
+                    <div class="nav_menu">
+                        <ul><a href="">뉴스</a>
+                            <li><a href="">공지사항</a></li>
+                            <li><a href="">이벤트</a></li>
+                        </ul>
+                        <ul><a href="">가이드</a></ul>
+                        <ul><a href="">랭킹</a></ul>
+                        <ul><a href="">커뮤니티</a>
+                            <li><a href="">자유게시판</a></li>
+                            <li><a href="">정보게시판</a></li>
+                        </ul>
+                        <ul><a href="">고객지원</a>
+                            <li><a href="">FAQ</a></li>
+                            <li><a href="">1:1문의</a></li>
+                        </ui>
+                    </div>
+                    <div class="nav_btn_wrap">
+                        <button class="btn_gameStart">게임시작아이콘넣기</button>
+                        <button class="btn_login">로그인아이콘넣기</button>
+                        <br>
+                        <p style="color: white;">로그인을 해야 게임시작 버튼이 나오는건지?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header end -->
+
+        <!-- contents -->
+        <div id="contents">
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>자유게시판</strong>
+                </div>
+                <div class="board_view_wrap">
+                    <div class="board_view">
+                        <div class="title">
+                            게시글 제목
+                        </div>
+                        <div class="info">
+                            <dl>
+                                <dt>번호</dt>
+                                <dd>1</dd>
+                            </dl>
+                            <dl>
+                                <dt>작성자</dt>
+                                <dd>아이디</dd>
+                            </dl>
+                            <dl>
+                                <dt>작성일</dt>
+                                <dd>2022.08.22</dd>
+                            </dl>
+                            <dl>
+                                <dt>조회</dt>
+                                <dd>0</dd>
+                            </dl>
+                        </div>
+                        <div class="cont">
+                            글 내용<br>
+                            글 내용<br>
+                            글 내용<br>
+                            글 내용<br>
+                            글 내용<br>
+                            글 내용
+                        </div>
+                    </div>
+
+                    <div class="board_btn_wrap">
+                        <a href="" class="on">목록</a>
+                        <a href="">수정</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <ul>
+                <li><a href="">회사소개</a></li>
+                <li><a href="">채용안내</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">게임이용등급안내</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+                <li><a href="">청소년보호정책</a></li>
+            </ul>
+            <p>
+                <span>(주)000000</span>
+                <span>서울특별시 영등포구 선유로9길 30 106동 청년취업사관학교 영등포캠퍼스 </span>
+                <br>
+                <span>정보1</span>
+                <span>정보2</span>
+                <span>정보3</span>
+            </p>
+        </div>
+        <!-- footer end -->
+    </div>
+
+    <script>
+        $(".nav_menu ul").mouseover(function(){
+            if($(".nav_menu > ul > li").css("display") == "none"){
+                $(".nav_menu > ul > li").css("display","block");
+            }
+        })
+        $(".nav_menu").mouseleave(function(){
+            $(".nav_menu > ul > li").css("display","none");
+        })
+        
+        
+    </script>
+</body>
+</html>
