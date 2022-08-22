@@ -13,7 +13,7 @@ body {
     float:left; 
     width:100%; 
     height: 560px; 
-    background: url("/public/img/nav.jpg") center top no-repeat;
+    background: url("/img/nav.jpg") center top no-repeat;
 }
 .navbar {
     padding: 0 auto;
@@ -64,13 +64,10 @@ body {
     left: 800px;
 }
 #contents { 
-    /* position: absolute; */
-    /* top: 560px;  */
+    clear :both;
     width: 100%;
     min-height: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 30px;
+    padding: 30px 40px;
     margin: 0px auto;
 }
 
