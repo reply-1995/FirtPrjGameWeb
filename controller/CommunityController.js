@@ -3,12 +3,17 @@ const models = require("../model"); // -> 시퀄라이즈에 사용
 
 exports.Free_page = (req, res) => {
     const user = req.session.user;
-    if (user != undefined) {
-        res.render("community_freeList", {isLogin: true, user: user});
-    } else {
-        res.render("community_freeList", {isLogin: false});
-    }
-
+    
+    models.Community.findAll() // sequelize 문법. Select * FROM visitor;
+    .then((result) => {
+        console.log(result);
+        if (user != undefined) {
+            res.render("community_freeList", {isLogin: true, user: user, data: result});
+        } else {
+            res.render("community_freeList", {isLogin: false, data: result});
+        }
+        
+    });
     
 }
 exports.Free_write = (req, res) => {
@@ -30,12 +35,9 @@ exports.Free_write = (req, res) => {
     models.Community.create( object )
     .then((result) => {
         console.log(result);
-        if (user != undefined) {
-            res.render("community_freeList", {isLogin: true, user: user});
-        } else {
-            res.render("community_freeList", {isLogin: false});
-        }
+        res.redirect('/community/free');
     });
+    
 
 
     
@@ -45,6 +47,6 @@ exports.Free_writeview = (req, res) => {
     if (user != undefined) {
         res.render("community_freeWrite");
     } else {
-        alert("로그인을 해주세요");
+        res.send("로그인을 해주세요");
     }
 }

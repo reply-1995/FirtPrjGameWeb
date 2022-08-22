@@ -26,4 +26,3 @@ create table communityFree(
     create_date date not null
 );
 
-alter table communityfree modify content mediumtext;
