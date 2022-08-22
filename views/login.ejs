@@ -30,7 +30,7 @@
                     // !data = true -> data = false
                     if(!data) {
                         let html = "<p>아이디 또는 비밀번호가 틀렸습니다.</p>";
-                        $("div").html(html);
+                        $("#login_text").html(html);
                         // <div>"<p>아이디</p>"</div>
                     //성공했을때    
                     } else{
@@ -62,17 +62,16 @@
             <input type="text" name="Id" placeholder="아이디"> <br>
             <input type="password" name="Password" placeholder="비밀번호"> <br><br>
             <!-- 로그인에 실패했을때 실패 문구를 추가해줄 곳 -->
-            <div style="height: 30; color: orangered;"></div>
+            <div id="login_text" style="height: 30; color: orangered;"></div>
             <ul style="display: flex; list-style-type: none">
                 <li><a href="/user/find_id">아이디 찾기</a></li>
                 <li style="margin: 0 10 0 10"><a>|</a></li>
                 <li><a href="/user/find_pw">비밀번호 찾기</a></li>
             </ul>
             <button id="login_btn" type="button" onclick="login();">로그인</button>
-            <p style="color:whitesmoke">혹시 회원이 아니신가요?</p>
-            <a style="text-decoration: none;" href="/user"><button id="register_btn" type="button" onclick="register();">회원가입</button></a>
-
          </form>
+         <p style="color:whitesmoke">혹시 회원이 아니신가요?</p>
+         <a style="text-decoration: none;" href="/user"><button id="register_btn">회원가입</button></a>
         </div>
         
         <footer>
