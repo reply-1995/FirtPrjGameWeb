@@ -188,3 +188,7 @@ exports.find_pw_result = (req, res) => {
         res.render("find_pw_result", {password: result.password});
     })
 }
+
+exports.customer = (req, res) => {
+    res.render("customer");
+}

@@ -14,7 +14,8 @@
                         id: form.id.value,
                         password: form.password.value,
                         name: form.name.value,                        
-                        email: form.email.value
+                        email: form.email.value,
+                        profile: form.picture.value
                     }
                 }).then((response) => {
                     return response.data;
@@ -53,16 +54,52 @@
             <!-- readonly: input의 입력필드가 읽기 전용임을 명시한다.  -->
             NAME : <input type="text" name="name" value="<%=data.name%>" required> <br>
             PASSWORD : <input type="password" name="password" value="<%=data.password%>" required> <br> 
-            EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br><br>
-           <div>
-            <% if (data.profile == "") { %>
-                <img src="/img/img0.png" style="width: 100"> <br>
-            <% } else { %>
-                <img src="/img/<%=data.profile%>.png" style="width: 100"> <br>
-            <% } %></div>
+            EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br>
+            <br>
+            <div id="characters">
+                <% if (data.profile == "") { %>
+                    <img src="/img/img0.png" style="width: 100" name="img0"> <br>
+                <% } else { %>
+                    <img src="/img/img1.png" style="width: 100" name="img1">
+                    <img src="/img/img2.png" style="width: 100" name="img2">
+                    <img src="/img/img3.png" style="width: 100" name="img3">
+                    <img src="/img/img4.png" style="width: 100" name="img4">
+                    <img src="/img/img5.png" style="width: 100" name="img5">
+                    <img src="/img/img6.png" style="width: 100" name="img6">
+                <% } %>
+            </div>
+            <input type="hidden" name="picture"> 
             <button id="modify" type="button" onclick="editProfile();">수정</button>
             <button id="delete" type="button" onclick="deleteProfile();">탈퇴</button>
         </form>
+
+        <script>
+            window.onload = function() {
+                console.log("<%=data.profile%>");
+                let img_number = "<%=data.profile%>".slice(3,4);
+                console.log(img_number);
+                let profiles = document.querySelectorAll("#characters img");
+                console.log(profiles);
+                let profile_selected = profiles[Number(img_number)-1]
+                console.log(profile_selected);
+                $(profile_selected).css("border", "2px solid white");
+
+            }
+            $("img").on("click", function( obj ) {
+                let form = document.getElementById("form_profile");
+                let target = obj.currentTarget;
+                let brothers = $(target).siblings();
+
+                form.picture.value = target['name'];
+
+                console.log(target);
+                console.log(brothers);
+
+                $(target).css("border", "2px solid white");
+                $(brothers).css("border", "none");
+            });
+        </script>
+
     </body>
 </html>
 

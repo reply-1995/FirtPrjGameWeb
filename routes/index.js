@@ -31,5 +31,6 @@ router.post("/find_pw", user.find_pw);
 
 router.post("/find_pw_result", user.find_pw_result);
 
+router.get("/customer", user.customer);
 
 module.exports = router;
