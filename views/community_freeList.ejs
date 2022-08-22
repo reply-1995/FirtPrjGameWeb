@@ -19,7 +19,7 @@
             <div class="navbar">
                 <div class="nav_wrap">
                     <div class="nav_logo">
-                        <a href=""><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
+                        <a href="/"><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
                     </div>
                     <div class="nav_menu">
                         <ul><a href="">뉴스</a>
@@ -38,11 +38,22 @@
                         </ui>
                     </div>
                     <div class="nav_btn_wrap">
-                        <button class="btn_gameStart">게임시작아이콘넣기</button>
-                        <button class="btn_login">로그인아이콘넣기</button>
+                        <!-- <button class="btn_gameStart">게임시작아이콘넣기</button> -->
+                        <!-- 로그인 상태일 때 -->
+                    <% if (isLogin) {%>
+                        <%=user%>
+                        <button><a href="/user/profile">프로필</a></button>
+                        <button><a href="/logout">로그아웃</a></button>
+                        <button><a href="/game">게임 스타트</a></button>
+                    <!-- 로그인 상태 아닐 때 -->
+                    <% } else { %>
+                        <button><a href="/user/login">로그인</a></button>
+                        <button><a href="/user">회원가입</a></button>
+                    <% } %>
                         <br>
                         <p style="color: white;">로그인을 해야 게임시작 버튼이 나오는건지?</p>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -63,41 +74,21 @@
                             <div class="date">작성일</div>
                             <div class="count">조회</div>
                         </div>
-                        <div>
-                            <div class="num">100</div>
-                            <div class="title"><a href="#">난 너무 예뻐요</a></div>
-                            <div class="writer">선미</div>
-                            <div class="date">2008.06.03</div>
-                            <div class="count">33</div>                   
-                        </div>
-                        <div>
-                            <div class="num">99</div>
-                            <div class="title"><a href="#">난 너무 매력있어</a></div>
-                            <div class="writer">소희</div>
-                            <div class="date">2008.06.03</div>
-                            <div class="count">33</div>                   
-                        </div>
-                        <div>
-                            <div class="num">98</div>
-                            <div class="title"><a href="#">난 너무 멋져</a></div>
-                            <div class="writer">선예</div>
-                            <div class="date">2008.06.03</div>
-                            <div class="count">33</div>                   
-                        </div>
-                        <div>
-                            <div class="num">97</div>
-                            <div class="title"><a href="#">내 다리는 좀 하지 원~</a></div>
-                            <div class="writer">유빈</div>
-                            <div class="date">2008.06.03</div>
-                            <div class="count">33</div>                   
-                        </div>
-                        <div>
-                            <div class="num">96</div>
-                            <div class="title"><a href="#">엄마는 왜 날 이렇게 낳아놔서ㅠㅠ</a></div>
-                            <div class="writer">예은</div>
-                            <div class="date">2008.06.03</div>
-                            <div class="count">33</div>                   
-                        </div>
+                        
+                        <%
+                        for ( let i = data.length - 1; i >= 0; i-- ){
+                        %>
+                            <div>
+                                <div class="num"><%=data[i].idx%></div>
+                                <div class="title"><a href="#"><%=data[i].title%></a></div>
+                                <div class="writer"><%=data[i].id%></div>
+                                <div class="date"><%=data[i].create_date%></div>
+                                <div class="count"><%=data[i].clicked%></div>                   
+                            </div>
+                            
+                        <%
+                            }
+                        %>
 
                     </div>
                     <div class="board_page">
