@@ -55,11 +55,35 @@ exports.Free_writeview = (req, res) => {
 exports.Free_read = (req, res) => {
     const user = req.session.user;
 
+    
+    models.Community.findOne({
+            where: { idx: req.query.idx,}
+        }).then((result) => {
+            let newObj = {
+                clicked : result.clicked+1,
+            }    
+            models.Community.update(newObj, { where: { idx: req.query.idx } })
+            .then((result) => {
+                console.log(result.clicked);
+            })
+    })
+
+
+
     models.Community.findOne({
         where: { idx: req.query.idx,}
     }).then((result) => {
         console.log( result);
-        res.render("community_freeSelect",{ result : result, sessionID: user});
+        res.render("community_view",{ result : result, sessionID: user});
     })
 
+}
+
+exports.Free_delete = (req, res) => {
+    models.Community.destroy({
+        where: { idx: req.query.idx*1 }
+    }).then((result) => {
+        console.log( result );
+        res.redirect('/community/free');
+    })
 }
