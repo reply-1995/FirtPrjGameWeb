@@ -18,4 +18,12 @@ router.get("/logout", (req,res) => {
     });
 })
 
+router.get("/customer", (req,res) => {
+    res.render("customer");
+});
+
+router.get("/request", (req,res) =>{
+    res.render("request");
+});
+
 module.exports = router;

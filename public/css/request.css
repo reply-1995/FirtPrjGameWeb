@@ -1,0 +1,13 @@
+@import url(main.css);
+@import url(style.css);
+@import url(media.css);
+
+.titles{
+    text-align: center;
+    display: flex;
+}
+
+.title{
+    border: 1px solid;
+    margin: 0 10px;
+}
