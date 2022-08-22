@@ -36,7 +36,7 @@
                 <a href="/community/free">목록</a>
                 <% if(sessionID==result.id){ %>
                     <button>수정</button>
-                    <button>삭제</button>
+                    <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
                 <%}%>
             </form>
         </div>
