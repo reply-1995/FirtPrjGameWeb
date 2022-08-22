@@ -25,7 +25,7 @@
     border: 1px solid black;
     border-radius: 2px;
 }
-.board_btn_wrap a.on {
+.board_btn_wrap a:hover {
     background: black;
     color: white;
 }
@@ -73,4 +73,37 @@
 }
 .board_list .count {
     width: 10%;
+}
+
+.board_page {
+    margin-top: 30px;
+    text-align: center;
+}
+.board_page a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+.board_page a.btn_ {
+    font-size: 14px;
+    padding: 2px;
+}
+.board_page a.num {
+    font-size: 16px;
+    padding: 2px;
+}
+.board_page a:hover {
+    background-color: black;
+    color: white;
+}
+.numclick {
+    font-size: 16px;
+    padding: 2px;
+    background-color: black;
+    color: white;
 }
