@@ -8,6 +8,37 @@
 }
 
 .title{
-    border: 1px solid;
+    border: 1px solid rgb(187, 187, 187);
     margin: 0 10px;
+    border-radius: 5px;
+    width: 500px; height: 200px;
+    text-align: left;
+    padding: 15px;
+}
+
+.title:hover {
+    background-color: rgb(250, 75, 6);
+    box-shadow: 5px 5px 5px rgb(237, 237, 237);
+    color: white;
+}
+
+.title p {
+    font-weight: bolder;
+}
+
+.hide {
+    display: none; 
+}
+
+.content{
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.toggle_text {
+    background-color: rgb(250, 75, 6);
+    box-shadow: 5px 5px 5px rgb(237, 237, 237);
+    color: white;
 }
