@@ -192,3 +192,7 @@ exports.find_pw_result = (req, res) => {
 exports.customer = (req, res) => {
     res.render("customer");
 }
+
+exports.request = (req, res) => {
+    res.render("request");
+}
