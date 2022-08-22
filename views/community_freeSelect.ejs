@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>자유게시판 글</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <style>
+            input {
+
+                width: 80%;
+                height: 30px;
+                font-size: 14px;
+            }
+            #content {
+                width: 80%;
+                height:70%;
+                font-size: 14px;
+                resize: vertical;
+            }
+            
+        </style>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <h1>자유게시판</h1>
+        <hr>
+
+        <div>
+            작성자<%=result.id%> <hr>
+            작성일자<%=result.create_date%> <hr>
+            조회수<%=result.clicked%> <hr>
+            <form action="/community/free" method="post" id="freeWrite">
+                <div>제목 </div><p><%=result.title%></p><hr>
+                <div>내용 </div><p><%=result.content%><p><hr>
+                <a href="/community/free">목록</a>
+                <% if(sessionID==result.id){ %>
+                    <button>수정</button>
+                    <button>삭제</button>
+                <%}%>
+            </form>
+        </div>
+    </body>
+</html>
