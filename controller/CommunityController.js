@@ -4,7 +4,9 @@ const models = require("../model"); // -> 시퀄라이즈에 사용
 exports.Free_page = (req, res) => {
     const user = req.session.user;
     
-    models.Community.findAll() // sequelize 문법. Select * FROM visitor;
+    models.Community.findAll({
+        where: {isdeleted: 'N',}
+    }) 
     .then((result) => {
         //console.log(result);
         if (user != undefined) {
@@ -25,6 +27,7 @@ exports.Free_write = (req, res) => {
     var day = ('0' + today.getDate()).slice(-2);
 
     var dateString = year + '-' + month  + '-' + day;
+
 
     let object = {
         id: user,
@@ -57,36 +60,66 @@ exports.Free_read = (req, res) => {
 
     
     models.Community.findOne({
-            where: { idx: req.query.idx,}
+            where: { idx: req.query.idx, isdeleted: 'N',}
         }).then((result) => {
             let newObj = {
                 clicked : result.clicked+1,
             }    
-            models.Community.update(newObj, { where: { idx: req.query.idx } })
+            models.Community.update(newObj, { where: { idx: req.query.idx, isdeleted: 'N',} })
             .then((result) => {
-                console.log(result.clicked);
+                console.log(result);
             })
     })
 
 
 
     models.Community.findOne({
-        where: { idx: req.query.idx,}
+        where: { idx: req.query.idx, isdeleted: 'N',}
     }).then((result) => {
         console.log( result);
-        res.render("community_view",{ result : result, sessionID: user});
+
+        if (user != undefined) {
+            res.render("community_view", {isLogin: true, result : result, user: user});
+        } else {
+            res.render("community_view", {isLogin: false, result : result, user: user});
+        }
+
+
     })
 
 }
 
 exports.Free_delete = (req, res) => {
-    models.Community.destroy({
-        where: { idx: req.query.idx*1 }
+
+    models.Community.findOne({
+        where: { idx: req.query.idx, isdeleted: 'N',}
     }).then((result) => {
-        console.log( result );
-        res.redirect('/community/free');
-    })
+        let newObj = {
+            isdeleted : 'Y',
+        }    
+        models.Community.update(newObj, { where: { idx: req.query.idx } })
+        .then((result) => {
+            console.log(result);
+            res.redirect('/community/free')
+        })
+})
+
 }
-exports.smarteditor = (req,res) => {
-    res.render("smarteditorTEST");
+
+exports.Free_modify = (req, res) => {
+    console.log(req.body);
+    models.Community.findOne({
+        where: { idx: req.body.idx, isdeleted: 'N',}
+    }).then((result) => {
+        let newObj = {
+            title: req.body.title,
+            content: req.body.content,
+        }    
+        models.Community.update(newObj, { where: { idx: req.body.idx } })
+        .then((result) => {
+            console.log(result);
+            res.redirect('/community/free/read?idx=' +req.body.idx);
+        })
+})
+
 }
