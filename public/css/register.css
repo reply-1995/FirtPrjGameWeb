@@ -82,10 +82,21 @@ footer {
  
 }
 
-a:first-child{
+a{
+    color: whitesmoke;
+    font-size: small;
+    text-decoration: none;
+    padding-top:8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+/* a:first-child{
     margin-right: 10;
 }
 
 a:last-child{
     margin-left: 10;
-}
+} */
