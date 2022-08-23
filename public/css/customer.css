@@ -1,109 +1,44 @@
 @import url(main.css);
+@import url(style.css);
+@import url(media.css);
 
-/* body {
-    margin: 0;
-    background-image: url("/img/bg8.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 80%;
-} */
+.titles{
+    text-align: center;
+    display: flex;
+}
 
-body {
-    margin: 0;
-    background-color: #35363A;
-    height: 100%;
+.title{
+    border: 1px solid rgb(187, 187, 187);
+    margin: 0 10px;
+    border-radius: 5px;
+    width: 500px; height: 200px;
+    text-align: left;
+    padding: 15px;
 }
-.body {
-    position: relative;
-    min-height: 100%;
-    padding-bottom: 60px;
-}
-.nav_background {
-    position: relative;
-    float:left; 
-    width:100%; 
-    height: 560px; 
-    /* background: url(../../public/img/nav.jpg) center top no-repeat;
-     */
-    background: url("/img/nav.jpg") center top no-repeat;
-}
-.navbar {
-    padding: 0 auto;
-    position: absolute;
-    height: 600px; 
-}
-.navbar a {
-    text-decoration: none;
+
+.title:hover {
+    background-color: rgb(250, 75, 6);
+    box-shadow: 5px 5px 5px rgb(237, 237, 237);
     color: white;
 }
 
-.nav_wrap {
-    position: relative;
-    margin: 0 auto;
-    padding: 20px 40px;
-    width: 1200px;
-    height: 100%;
-}
-.nav_logo {
-    position: absolute;
-    left: 50px;
-    font-size: 30px;
-    z-index: 999;
+.title p {
+    font-weight: bolder;
 }
 
-/* 메뉴 */
-.nav_menu {
-    position: relative;
-    left: 300px;
-    z-index: 999;
-    font-size: 0;
-}
-.nav_menu ul {
-    padding: 0px 50px;
-    float: left;
-    font-size: 25px;
-}
-.nav_menu > ul > li {
-    padding: 0;
-    text-decoration: none;
-    font-size: 18px;
-    list-style: none;
-    display: none;
-}
-.nav_btn_wrap {
-    position: absolute;
-    top: 350px;
-    left: 800px;
-}
-#contents { 
-    /* position: absolute; */
-    /* top: 560px;  */
-    width: 100%;
-    min-height: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 30px;
-    margin: 0px auto;
+.hide {
+    display: none; 
 }
 
-/* footer */
-.footer{
-    height: 50px;
-    width: 100%;
-    background-color: white;
-    border-top: 1px solid #747373;
-    text-align: center;
+.content{
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
     padding: 20px;
-    margin: 20px;
-    position: absolute;
-    bottom: 0;
+    margin-top: 10px;
 }
-.footer li{
-    display: inline;
-    list-style: none;
-    padding: 0 7px 0 10px;
-    white-space: nowrap; /* 가로로 긴 줄에서도 줄 바꿈 하지 않고 표시 */
-}
-.footer a{
-    text-decoration: none;
-    color: #464646;
+
+.toggle_text {
+    background-color: rgb(250, 75, 6);
+    box-shadow: 5px 5px 5px rgb(237, 237, 237);
+    color: white;
 }

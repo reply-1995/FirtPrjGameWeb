@@ -18,6 +18,12 @@
             $(`#${content}`).toggleClass("hide");
         }
     </script> -->
+
+    <!-- chatbot -->
+    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <div class="body">
@@ -60,86 +66,57 @@
             <div class="board_wrap">
                 <div class="board_title">
                     <strong>1:1 문의</strong>
-                </div>
-                <div class="board_list_wrap">
-                    <div class="container">
-                        <div class="titles">
-                            <div class="title">
-                                <h4>01</h4>
-                                <p>서버 목록이 보이지 않거나 방화벽 오류 메시지가 떠요</p>
+                    <br><br>
+                    <h4>고객센터</h4><br><br>
+                    <p id="ask">문의하기<br>오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</p><br>
+                    <div class="chat-bar-collapsible">
+                        <button id="chat-button" type="button" class="collapsible">reply1995에게 문의하기
+                            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+                        </button>
+                
+                        <div class="content">
+                            <div class="full-chat-block">
+                                <!-- Message Container -->
+                                <div class="outer-container">
+                                    <div class="chat-container">
+                                        <!-- Messages -->
+                                        <div id="chatbox">
+                                            <h5 id="chat-timestamp"></h5>
+                                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                                        </div>
+                
+                                        <!-- User input box -->
+                                        <div class="chat-bar-input-block">
+                                            <div id="userInput">
+                                                <input id="textInput" class="input-box" type="text" name="msg"
+                                                    placeholder="엔터(Enter)키로 메시지 보내기">
+                                                <p></p>
+                                            </div>
+                
+                                            <div class="chat-bar-icons">
+                                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                                    onclick="heartButton()"></i>
+                                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                                    onclick="sendButton()"></i>
+                                            </div>
+                                        </div>
+                
+                                        <div id="chat-bar-bottom">
+                                            <p></p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                
                             </div>
-                            <div class="title">
-                                <h4>02</h4>
-                                <p>STOVE클라이언트에서 문제가 발생합니다</p>
-                            </div>
-                            <div class="title">
-                                <h4>03 </h4>
-                                <p>계정 도용(해킹) <br>당했어요</p>
-                            </div>
-                            <div class="title">
-                                <h4>04 </h4>
-                                <p>상품함에서<br> 내려받은 아이템을 청약철회하고 싶어요</p>
-                            </div>
-                            <div class="title">
-                                <h4>05  </h4>
-                                <p>서버 선택 화면이 안나타나고 에러발생후 종료됩니다.</p>
-                            </div>
                         </div>
-                        <div id="contents1" class="hide content">
-                            말씀해주신 증상은 방화벽에 의해 reply1995가 차단되어 있을 경우 나타날 수 있습니다<br>
-                            아래 안내해드리는 방법을 참고해주시기 바랍니다<br><br>
-
-                            1.[제어판]-[시스템 및 보안]-[Windows방화벽]-[Windows 방화벽에서 프로그램 허용]클릭<br>
-                            2.[다른 프로그램 허용(R)] 클릭<br>
-                            3.이후 [프로그램 추가]화면에서 [찾아보기(B)]선택<br>
-                            4.설치된 경로로 이동하여 '게임시작'클릭<br><br>
-
-                            네트워크 연결 상태에 따라 해당 문제가 발생할 수도 있습니다<br><br>
-
-                            더불어, 네트워크 연결 상태에 따라 해당 문제가 발생할 수도 있습니다<br>
-                            가급적 공유기를 통한 무선 네트워크보다는 LAN선을 PC연결하여 이용을 권장드립니다<br><br>
-
-                            끝으로, 사용중인 백신 프로그램에 의해서도 동일 현상이 나타날 수 있습니다<br>
-                            백신 프로그램을 잠시 종료해주시는 것도 하나의 해결 방법입니다<br>
-                        </div>
-                        <div id="contents2" class="hide content">
-                            STOVE 클라이언트에서 발생하는 문제는<br>
-                            아래 안내해드리는 페이지에서 다양한 해결 방법을 확인하실 수 있습니다<br><br>
-
-                            [클라이언트 도움말]<br><br>
-
-                            해당 페이지에 기재되지 않았거나 안내된 내용을 모두 수행했음에도<br>
-                            문제가 지속될 경우 고객센터를 이용해 주시기 바랍니다 
-                        </div>
-                        <div id="contents3" class="hide content">
-                            계정 도용으로 인해 피해가 발생한 경우,<br>
-                            아래와 같이 신고를 접수해 주시면 도움을 받으실 수 있습니다<br><br>
-
-                            * 계정 도용 신고 방법<br><br>
-                            1.신고센터 방문 <br>
-                            2.피해 계정 로그인<br>
-                            3.본인인증<br>
-                            - 본인인증은 휴대폰 및 아이핀을 통해 진행됩니다<br>
-                            - 허위신고 및 계정 도용 접수를 취소하는 등의 2차 피해를 예방하기 위해 본인인증이 필요하니 양해 바랍니다<br>
-                            4.신고서 작성 및 신고 접수<br>
-                            - 계정도용(해킹)신고가 아닌 다른 신고내용은 [고객센터-문의하기]를 이용해 주시기 바랍니다<br>
-                        </div>
-                        <div id="contents4" class="hide content">
-                            청약철회는 구매 후 7일 이내의 상품을 [상품함]에서 내려받지 않은 경우에만 가능합니다<br><br>
-                            상품함에서 내려받아 캐릭터에 지급된 아이템은 청약철회하실 수 없으니
-                            상품을 내려받기 전 꼭 다시 한번 구매여부를 확인해 주세요
-                        </div>
-                        <div id="contents5" class="hide content">
-                            방화벽 설정을 통해 허용했음에도
-                            이와같은 증상이 발생하는 경우 기본 방화벽이 아닌 다른 방화벽 프로그램에 의해 발생할 수 있습니다
-                            <br><br>
-                            혹시 별도의 방화벽 프로그램을 설치하셨다면 해당 프로그램에서 파일을 허용해 주시거나, 프로그램을 잠시 종료해주시길 권하여 드립니다<br><br>
-                            끝으로, 사용중인 백신 프로그램에 의해서도 해당 현상이 발생할 수 있습니다<br>
-                            번거로우시더라도 백신 프로그램을 잠시 종료해주시는것도 하나의 해결 방법입니다<br>
-                        </div>
-                    </div>    
-            </div>
-        </div>
+                
+                    </div>
+                
+                </body>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="../public/mscbot-main/mscbot/static/scripts/chat.js"></script>
+                <script src="../public/mscbot-main/mscbot/static/scripts/responses.js"></script>
 
         <!-- footer -->
         <div class="footer">
@@ -173,35 +150,133 @@
             $(".nav_menu > ul > li").css("display","none");
         })
 
-        $(".title").on("click", function( obj ) {
-            let target = obj.currentTarget;
-            let brothers = $(target).siblings();
-            let index = Number($(target).prevAll().length) + 1;
 
-            let container = document.querySelector(".container");
-            let content_brothers = $(container).children();
-            content_brothers = content_brothers.slice(1,);
+        // bot js
+        // Collapsible
+        var coll = document.getElementsByClassName("collapsible");
 
-            // console.log(target);
-            // console.log(brothers);
-            // console.log(index);
-            // console.log(`#contents${index}`);
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
 
-            console.log(container);
-            console.log(content_brothers);
+                var content = this.nextElementSibling;
 
-            $(`#contents${index}`).toggleClass("hide");
-            $(target).toggleClass("toggle_text");
-            $(brothers).removeClass("toggle_text");
-
-            for (let i=1; i<6; i++) {
-                if (i == index) {
-                    continue;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
-                $(`#contents${i}`).addClass("hide");
+
+            });
+        }
+
+        function getTime() {
+            let today = new Date();
+            hours = today.getHours();
+            minutes = today.getMinutes();
+
+            if (hours < 10) {
+                hours = "0" + hours;
             }
 
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            let time = hours + ":" + minutes;
+            return time;
+        }
+
+        // Gets the first message
+        function firstBotMessage() {
+            let firstMessage = "안녕하세요? 무엇을 도와드릴까요?"
+            document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
+
+            let time = getTime();
+
+            $("#chat-timestamp").append(time);
+            document.getElementById("userInput").scrollIntoView(false);
+        }
+
+        firstBotMessage();
+
+        // Retrieves the response
+        function getHardResponse(userText) {
+            let botResponse = getBotResponse(userText);
+            let botHtml = '<p class="botText"><span>' + botResponse + '</span></p>';
+            $("#chatbox").append(botHtml);
+
+            document.getElementById("chat-bar-bottom").scrollIntoView(true);
+        }
+
+        //Gets the text text from the input box and processes it
+        function getResponse() {
+            let userText = $("#textInput").val();
+
+            if (userText == "") {
+                userText = "문의하기";
+            }
+
+            let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
+
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+            document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+            setTimeout(() => {
+                getHardResponse(userText);
+            }, 1000)
+
+        }
+
+        // Handles sending text via button clicks
+        function buttonSendText(sampleText) {
+            let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
+
+            $("#textInput").val("");
+            $("#chatbox").append(userHtml);
+            document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+            //Uncomment this if you want the bot to respond to this buttonSendText event
+            // setTimeout(() => {
+            //     getHardResponse(sampleText);
+            // }, 1000)
+        }
+
+        function sendButton() {
+            getResponse();
+        }
+
+        function heartButton() {
+            buttonSendText("하트!")
+        }
+
+        // Press enter to send a message
+        $("#textInput").keypress(function (e) {
+            if (e.which == 13) {
+                getResponse();
+            }
         });
+
+        function getBotResponse(input) {
+            //rock paper scissors
+            if (input == "안녕") {
+                return "안녕하세요 이용자님";
+            } else if (input == "문의하기") {
+                return "어떤것을 도와드릴까요";
+            } else if (input == "버그 해결해줘") {
+                return "안녕하세요, 이용자님. 저희 게임을 이용해주셔서 감사합니다.<br> 빠른해결을 원하시면 FAQ 게시판을 참고해주세요. <br>더많은 도움이 필요하시면 1995-1995로 연락부탁드립니다.<br> 감사합니다.";
+            }
+
+            // Simple responses
+            if (input == "게임시작하는법 알려줘") {
+                return "안녕하세요, 이용자님. 저희 게임을 이용해주셔서 감사합니다. 로그인해주시면 게임시작 버튼이 보입니다. 아직 회원이 아니시라면 회원가입 부탁드립니다. <br>즐거운플레이하세요!";
+            } else if (input == "반가워") {
+                return "저도 반갑습니다";
+            } else {
+                return "잘 이해하지 못했어요. 다른 이야기를 써주시겠어요?";
+            }
+        }
     </script>
 </body>
 </html>
