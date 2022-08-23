@@ -3,6 +3,23 @@ body {
     background-color: #35363A;
     height: 100%;
 }
+button {
+    color: black;
+    background: white;
+    display: inline-block;
+    min-width: 80px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+button > a {
+    text-decoration: none;
+    color: black;
+}
+button:hover {
+    background: black;
+    color: white;
+}
 .body {
     position: relative;
     min-height: 100%;
