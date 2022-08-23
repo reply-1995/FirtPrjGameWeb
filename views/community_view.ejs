@@ -18,9 +18,7 @@
             }
             
         </style>
-        <script>
-            
-        </script>
+        
     </head>
     <body>
         <h1>자유게시판</h1>
@@ -32,7 +30,8 @@
             조회수<%=result.clicked%> <hr>
             <form action="/community/free" method="post" id="freeWrite">
                 <div>제목 </div><p><%=result.title%></p><hr>
-                <div>내용 </div><p><%=result.content%><p><hr>
+                <div>내용 </div><%-result.content%><hr>
+                    
                 <a href="/community/free">목록</a>
                 <% if(sessionID==result.id){ %>
                     <button>수정</button>
