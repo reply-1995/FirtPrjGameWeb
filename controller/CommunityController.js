@@ -87,3 +87,6 @@ exports.Free_delete = (req, res) => {
         res.redirect('/community/free');
     })
 }
+exports.smarteditor = (req,res) => {
+    res.render("smarteditorTEST");
+}
