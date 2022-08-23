@@ -86,16 +86,33 @@
     font-size: 20px;
 }
 .board_view .info {
-    padding: 15px;
+    padding: 10px;
+    padding-bottom: 0;
     border-bottom: 1px solid gray;
 }
 .board_view .info dl {
+    position: relative;
     display: inline-block;
     padding: 0 20px;
     margin: auto;
 }
-.board_view .info dl:first-child {
+.board_view .info dl:first-child{
     padding-left: 0;
+}
+    /* 가상선택자를 이용한 라인 만들기 */
+.board_view .info dl::before{
+    content: '';
+    /* 부모태그(.info dl)를 position relative로 두고 */
+    position: absolute; 
+    top: 6px;
+    left: 1px;
+    display: block;
+    width: 1px;
+    height: 13px;
+    background: gray
+}
+.board_view .info dl:first-child::before{
+    display: none;
 }
 .board_view .info dl dt {
     display: inline-block;
@@ -107,4 +124,5 @@
 }
 .board_view .cont {
     padding: 15px;
+    border-bottom: 1px solid black;
 }
