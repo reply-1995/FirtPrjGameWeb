@@ -49,6 +49,10 @@ h6 {
     font-weight: bolder;
 }
 
+.gamestart{
+    margin-left: 20px;
+}
+
 .container5 {
     justify-content: center;
     padding-top: 50px;
