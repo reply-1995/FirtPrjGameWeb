@@ -7,9 +7,9 @@ create table user(
     name varchar(20) not null,
     profile varchar(10) not null default "img0",
     email varchar(20) not null,
-    score int(3) not null default "0"
+    score int not null default "0"
 );
-insert into user values('test', '1234', 'test', '', 'test@naver.com', '');
+insert into user (id, password, name, email) values('test', '1234', 'test', 'test@naver.com');
 
 drop table user;
 

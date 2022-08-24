@@ -15,9 +15,10 @@
 .board_btn_wrap {
     /* margin-top: 30px; */
     text-align: right;
+    margin-top: 10px;
 }
 .board_btn_wrap a{
-    margin-top: 2px;
+    
     text-decoration: none;
     font-size: 10px;
     padding : 5px;
