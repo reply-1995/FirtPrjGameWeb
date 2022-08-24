@@ -97,7 +97,8 @@ exports.edit = (req, res) => {
     let obj = {
         password: req.body.password,
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        profile: req.body.profile
     }
     models.User.update(obj, {where: {id: req.body.id}})
     .then((result) => {
