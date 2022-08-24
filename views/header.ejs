@@ -45,3 +45,16 @@
     </div>
 </div>
 <!-- header end -->
+
+<script>
+    $(".nav_menu ul").mouseover(function(){
+        if($(".nav_menu > ul > li").css("display") == "none"){
+            $(".nav_menu > ul > li").css("display","block");
+        }
+    })
+    $(".nav_menu").mouseleave(function(){
+        $(".nav_menu > ul > li").css("display","none");
+    })
+    
+    
+</script>

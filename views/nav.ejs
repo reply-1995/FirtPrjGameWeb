@@ -1,10 +1,17 @@
 <nav>
     <div class="top">
-        <button class="signup1">회원가입</button>
-        <button class="login1">로그인</button>
+        <div style="visibility: hidden">
+            <button class="signup1" type="button" onclick="location.href='/user';">회원가입</button>
+            <button class="login1" onclick="loginpage();">로그인</button>
+        </div>
+        <a href="/"><h6>응답하라 1995</h6></a>
+        <div>
+            <button class="signup1">회원가입</button>
+            <button class="login1">로그인</button>
+        </div>
     </div>
     <div class="container5" style="display: flex;">
-        <ul>
+        <ul id="logo">
             <img src="/img/img11.png"  class="nav_logo">
         </ul>
         <ul class="nav_ul">
