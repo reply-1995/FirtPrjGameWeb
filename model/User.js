@@ -34,8 +34,12 @@ const User = (Sequelize, DataTypes ) =>{
             email:{
                 type: DataTypes.STRING(20),
                 allowNull: false
+            },
+            score:{
+                type: DataTypes.INTEGER(3),
+                allowNull: false,
+                defaultValue: 0
             }
-         
         },
         {
             timestamps: false,
