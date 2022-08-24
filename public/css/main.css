@@ -75,11 +75,11 @@ button:hover {
     list-style: none;
     display: none;
 }
-.nav_btn_wrap {
+/* .nav_btn_wrap {
     position: absolute;
     top: 350px;
     left: 800px;
-}
+} */
 #contents { 
     clear :both;
     width: 100%;
