@@ -41,9 +41,7 @@
                 </div>
                 <div class="board_view_wrap" id="view">
                     <div class="board_view">
-                        <div class="title" id="viewtitle">
-                            <%=result.title%>
-                        </div>
+                        <div class="title" id="viewtitle"><%=result.title%></div>
                         <div class="info">
                             <dl>
                                 <dt>번호</dt>
@@ -65,21 +63,22 @@
                         <div class="cont" id="viewcontent">
                             <%-result.content%>
                         </div>
+                        <div class="board_btn_wrap">
+                            <a href="/community/free">목록</a>
+                            <% if(user==result.id){ %>
+                                <a href="#" onclick="changemodify();">수정</a>
+                                <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
+                            <%}%>
+                        </div>
                     </div>
 
-                    <div class="board_btn_wrap">
-                        <a href="/community/free">목록</a>
-                        <% if(user==result.id){ %>
-                            <a href="#" onclick="changemodify();">수정</a>
-                            <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
-                        <%}%>
-                    </div>
+                    
                 </div>
 
                 <div id="modify">
                     <form action="/community/free/modify" method="post" id="freeWrite">
                         <input type="hidden" name="idx" id="idx" value="<%=result.idx%>">
-                        <div>제목 </div><input type="text" name="title" id="title" value="<%=result.title%>"><hr>
+                        <div>제목 </div><input type="text" name="title" id="title" value="<%=result.title%>" style="width:766px;"><hr>
                         <div>내용 </div><textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px; display:none;"><%-result.content%></textarea><hr>
                         <!--textarea name="content" id="content" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
                         <p>

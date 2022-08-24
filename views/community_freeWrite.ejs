@@ -36,12 +36,12 @@
                                 <div>제목 </div><input type="text" name="title" id="title" style="width: 766px;"><hr>
                                 <div>내용 </div><textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea><hr>
                                 <!--textarea name="content" id="content" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
-                                <p>
+                                <div class='board_btn_wrap' style="text-align:left">
                                     <!-- <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" /> -->
                                     <!-- <input type="button" onclick="showHTML();" value="본문 내용 가져오기" /> -->
-                                    <input type="button" onclick="submitContents(this);" value="글쓰기" />
+                                    <a onclick="submitContents();" href="#">글쓰기</a>
                                     <!-- <input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" /> -->
-                                </p>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -94,7 +94,8 @@
                 // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
                 
                 try {
-                    elClickedObj.form.submit();
+                    let form = document.getElementById("freeWrite");
+                    form.submit();
                 } catch(e) {}
             }
             

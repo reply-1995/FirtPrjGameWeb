@@ -13,8 +13,18 @@
 }
 /* 게시판 작성버튼 */
 .board_btn_wrap {
-    margin-top: 30px;
-    text-align: center;
+    /* margin-top: 30px; */
+    text-align: right;
+}
+.board_btn_wrap a{
+    margin-top: 2px;
+    text-decoration: none;
+    font-size: 10px;
+    padding : 5px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: black;
 }
 .board_btn_wrap button {
     background-color: white;
@@ -24,7 +34,7 @@
     border: 1px solid black;
     border-radius: 2px;
 }
-.board_btn_wrap button:hover, a {
+.board_btn_wrap a:hover {
     background: black;
     color: white;
 }
@@ -82,8 +92,7 @@
 .board_view .title {
     padding: 20px 15px;
     border-bottom: 1px dashed #ddd;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
 }
 .board_view .info {
     padding: 10px;
