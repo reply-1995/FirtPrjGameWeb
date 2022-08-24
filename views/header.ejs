@@ -1,43 +1,47 @@
-            <!-- header  -->
-            <div class="nav_background">
-                <div class="navbar">
-                    <div class="nav_wrap">
-                        <div class="nav_logo">
-                            <a href="/"><img src="/img/logo_ufo.png">로고</a>
-                        </div>
-                        <div class="nav_menu">
-                            <ul><a href="#">뉴스</a>
-                                <li><a href="#">공지사항</a></li>
-                                <li><a href="#">이벤트</a></li>
-                            </ul>
-                            <ul><a href="#">가이드</a></ul>
-                            <ul><a href="#">랭킹</a></ul>
-                            <ul><a href="#">커뮤니티</a>
-                                <li><a href="#">자유게시판</a></li>
-                                <li><a href="#">정보게시판</a></li>
-                            </ul>
-                            <ul><a href="#">고객지원</a>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">1:1문의</a></li>
-                            </ui>
-                        </div>
-                        <div class="nav_btn_wrap">
-                            <!-- <button class="btn_gameStart">게임시작아이콘넣기</button> -->
-                            <!-- 로그인 상태일 때 -->
-                        <% if (isLogin) {%>
-                            <%=user%>
-                            <button><a href="/user/profile">프로필</a></button>
-                            <button><a href="/logout">로그아웃</a></button>
-                            <button><a href="/game">게임 스타트</a></button>
-                        <!-- 로그인 상태 아닐 때 -->
-                        <% } else { %>
-                            <button><a href="/user/login">로그인</a></button>
-                            <button><a href="/user">회원가입</a></button>
-                        <% } %>
-                            <br>
-                        </div>
-                        
-                    </div>
-                </div>
+<!-- header  -->
+<div class="nav_background">
+    <div class="navbar">
+        <div class="nav_wrap">
+            <div class="nav_logo">
+                <a href="/"><img src="/img/logo_ufo.png">로고</a>
             </div>
-            <!-- header end -->
+            <div class="nav_menu">
+                <ul><a href="#">뉴스</a>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">이벤트</a></li>
+                </ul>
+                <ul><a href="#">가이드</a></ul>
+                <ul><a href="#">랭킹</a></ul>
+                <ul><a href="#">커뮤니티</a>
+                    <li><a href="/community/free">자유게시판</a></li>
+                    <li><a href="#">정보게시판</a></li>
+                </ul>
+                <ul><a href="#">고객지원</a>
+                    <li><a href="/faq">FAQ</a></li>
+                    <% if (isLogin) { %>
+                        <li><a href="/request">1:1문의</a></li>
+                    <% } else { %>
+                        <li onclick="alertlogin();"><a href="#">1:1문의</a></li>
+                    <% } %>
+                </ui>
+            </div>
+            <div class="nav_btn_wrap">
+                <!-- <button class="btn_gameStart">게임시작아이콘넣기</button> -->
+                <!-- 로그인 상태일 때 -->
+            <% if (isLogin) {%>
+                <%=user%>
+                <button><a href="/user/profile">프로필</a></button>
+                <button><a href="/logout">로그아웃</a></button>
+                <button><a href="/game">게임 스타트</a></button>
+            <!-- 로그인 상태 아닐 때 -->
+            <% } else { %>
+                <button><a href="/user/login">로그인</a></button>
+                <button><a href="/user">회원가입</a></button>
+            <% } %>
+                <br>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- header end -->

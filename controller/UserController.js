@@ -4,11 +4,11 @@ const models = require("../model"); // -> 시퀄라이즈에 사용
 
 exports.register_page = (req,res) => {
     // index.ejs 파일 불러오기
-    res.render("register");
+    res.render("register", {isLogin: false});
 }
 
 exports.login_page = (req, res) => {
-    res.render("login");
+    res.render("login", {isLogin: false});
     // user/login에 접속하면 login.ejs 파일불러오기.
 }
 
@@ -69,7 +69,7 @@ exports.profile = (req, res) => {
 
     models.User.findOne({where: {id: user}})
     .then((result) => {
-        res.render("profile", {data: result})
+        res.render("profile", {isLogin: true, data: result})
     })
 }
 
@@ -137,7 +137,7 @@ exports.overlap = (req,res) => {
 
 // 아이디 찾기 page
 exports.find_id_page = (req, res) => {
-    res.render("find_id");
+    res.render("find_id", {isLogin: false});
 }
 
 // 아이디 정보가 있는지 확인
@@ -158,14 +158,14 @@ exports.find_id_result = (req, res) => {
     models.User.findOne({
         where: {name: req.body.name, email: req.body.email}
     }).then((result) => {
-        res.render("find_id_result", {id: result.id});
+        res.render("find_id_result", {isLogin: false, id: result.id});
     })
 }
 
 
 // 비밀번호 찾기 page
 exports.find_pw_page = (req, res) => {
-    res.render("find_pw");
+    res.render("find_pw", {isLogin: false});
 }
 
 // 비밀번호 정보가 있는지 확인
@@ -186,14 +186,26 @@ exports.find_pw_result = (req, res) => {
     models.User.findOne({
         where: {id: req.body.id, email: req.body.email}
     }).then((result) => {
-        res.render("find_pw_result", {password: result.password});
+        res.render("find_pw_result", {isLogin: false, password: result.password});
     })
 }
 
-exports.customer = (req, res) => {
-    res.render("customer");
+exports.faq = (req, res) => {
+    const user = req.session.user;
+
+    if (user != undefined) {
+        res.render("faq", {isLogin: true, user: user});
+    } else {
+        res.render("faq", {isLogin: false})
+    }
 }
 
 exports.request = (req, res) => {
-    res.render("request");
+    const user = req.session.user;
+
+    if (user != undefined) {
+        res.render("request", {isLogin: true, user: user});
+    } else {
+        res.render("request", {isLogin: false})
+    }
 }
