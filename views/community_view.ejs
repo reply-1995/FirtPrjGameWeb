@@ -15,18 +15,6 @@
         <title>자유게시판</title>
 
         <style>
-            input {
-
-                width: 80%;
-                height: 30px;
-                font-size: 14px;
-            }
-            #content {
-                width: 80%;
-                height:70%;
-                font-size: 14px;
-                resize: vertical;
-            }
             #view{
                 display: block;
             }
@@ -41,55 +29,142 @@
     <body>
         <div class="body">
             <!-- header  -->
-            <div class="nav_background">
-                <div class="navbar">
-                    <div class="nav_wrap">
-                        <div class="nav_logo">
-                            <a href="/"><img src="/img/logo_ufo.png">로고</a>
-                        </div>
-                        <div class="nav_menu">
-                            <ul><a href="#">뉴스</a>
-                                <li><a href="#">공지사항</a></li>
-                                <li><a href="#">이벤트</a></li>
-                            </ul>
-                            <ul><a href="#">가이드</a></ul>
-                            <ul><a href="#">랭킹</a></ul>
-                            <ul><a href="#">커뮤니티</a>
-                                <li><a href="#">자유게시판</a></li>
-                                <li><a href="#">정보게시판</a></li>
-                            </ul>
-                            <ul><a href="#">고객지원</a>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">1:1문의</a></li>
-                            </ui>
-                        </div>
-                        <div class="nav_btn_wrap">
-                            <!-- <button class="btn_gameStart">게임시작아이콘넣기</button> -->
-                            <!-- 로그인 상태일 때 -->
-                        <% if (isLogin) {%>
-                            <%=user%>
-                            <button><a href="/user/profile">프로필</a></button>
-                            <button><a href="/logout">로그아웃</a></button>
-                            <button><a href="/game">게임 스타트</a></button>
-                        <!-- 로그인 상태 아닐 때 -->
-                        <% } else { %>
-                            <button><a href="/user/login">로그인</a></button>
-                            <button><a href="/user">회원가입</a></button>
-                        <% } %>
-                            <br>
-                            <p style="color: white;">로그인을 해야 게임시작 버튼이 나오는건지?</p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+            <%-include('header.ejs')%>
             <!-- header end -->
 
         <!-- content -->
-        <h1>자유게시판</h1>
-        <hr>
+        <div id="contents">
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>자유게시판</strong>
+                </div>
+                <div class="board_view_wrap" id="view">
+                    <div class="board_view">
+                        <div class="title">
+                            <p id="viewtitle"><%=result.title%></p>
+                        </div>
+                        <div class="info">
+                            <dl>
+                                <dt>번호</dt>
+                                <dd><%=result.idx%></dd>
+                            </dl>
+                            <dl>
+                                <dt>작성자</dt>
+                                <dd><%=result.id%></dd>
+                            </dl>
+                            <dl>
+                                <dt>작성일</dt>
+                                <dd><%=result.create_date%></dd>
+                            </dl>
+                            <dl>
+                                <dt>조회</dt>
+                                <dd><%=result.clicked%></dd>
+                            </dl>
+                        </div>
+                        <div class="cont" id="viewcontent">
+                            <%-result.content%>
+                        </div>
+                    </div>
 
-        <div id="view">
+                    <div class="board_btn_wrap">
+                        <a href="/community/free">목록</a>
+                        <% if(user==result.id){ %>
+                            <a href="#" onclick="changemodify();">수정</a>
+                            <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
+                        <%}%>
+                    </div>
+                </div>
+
+                <div id="modify">
+                    <form action="/community/free/modify" method="post" id="freeWrite">
+                        <input type="hidden" name="idx" id="idx" value="<%=result.idx%>">
+                        <div>제목 </div><input type="text" name="title" id="title" value="<%=result.title%>"><hr>
+                        <div>내용 </div><textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px; display:none;"><%-result.content%></textarea><hr>
+                        <!--textarea name="content" id="content" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
+                        <p>
+                            <!-- <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" /> -->
+                            <!-- <input type="button" onclick="showHTML();" value="본문 내용 가져오기" /> -->
+                            <input type="button" onclick="submitContents(this);" value="글수정" />
+                            <input type="button" onclick="cancelmodify();" value="취소" />
+                            <!-- <input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" /> -->
+                        </p>
+                    </form>
+                    <script type="text/javascript">
+                        var oEditors = [];
+                        
+                        var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+                        
+                        // 추가 글꼴 목록
+                        //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+                        
+                        nhn.husky.EZCreator.createInIFrame({
+                            oAppRef: oEditors,
+                            elPlaceHolder: "content",
+                            sSkinURI: "/smarteditor2/SmartEditor2Skin.html",	
+                            htParams : {
+                                bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+                                bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+                                bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+                                //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+                                //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+                                fOnBeforeUnload : function(){
+                                    //alert("완료!");
+                                },
+                                I18N_LOCALE : sLang
+                            }, //boolean
+                            fOnAppLoad : function(){
+                                //예제 코드
+                                //oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+                            },
+                            fCreator: "createSEditor2"
+                        });
+                        
+                        function pasteHTML() {
+                            var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+                            oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
+                        }
+                        
+                        function showHTML() {
+                            var sHTML = oEditors.getById["content"].getIR();
+                            alert(sHTML);
+                        }
+                            
+                        function submitContents(elClickedObj) {
+                            oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+                            
+                            // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
+                            
+                            try {
+                                elClickedObj.form.submit();
+                            } catch(e) {}
+                        }
+                        
+                        
+                        function setDefaultFont() {
+                            var sDefaultFont = '궁서';
+                            var nFontSize = 24;
+                            oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+                        }
+                        </script>
+                        <script>
+                            function changemodify(){
+                                $("#view").css('display', 'none');
+                                $("#modify").css('visibility', 'visible');
+                            }
+                            function cancelmodify(){
+                                $("#view").css('display', 'block');
+                                $("#modify").css('visibility', 'hidden');
+                                $('#title').val($('#viewtitle').text());
+                                oEditors.getById["content"].exec("SET_IR",[$('#viewcontent').html()]);
+                            }
+                        </script>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div id="view">
             작성자<%=result.id%> <hr>
             작성일자<%=result.create_date%> <hr>
             조회수<%=result.clicked%> <hr>
@@ -101,117 +176,16 @@
                 <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
             <%}%>
             <p></p>
-        </div>
+        </div> -->
 
 
 
-        <div id="modify">
-            <form action="/community/free/modify" method="post" id="freeWrite">
-                <input type="hidden" name="idx" id="idx" value="<%=result.idx%>">
-                <div>제목 </div><input type="text" name="title" id="title" value="<%=result.title%>"><hr>
-                <div>내용 </div><textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px; display:none;"><%-result.content%></textarea><hr>
-                <!--textarea name="content" id="content" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
-                <p>
-                    <!-- <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" /> -->
-                    <!-- <input type="button" onclick="showHTML();" value="본문 내용 가져오기" /> -->
-                    <input type="button" onclick="submitContents(this);" value="글수정" />
-                    <input type="button" onclick="cancelmodify();" value="취소" />
-                    <!-- <input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" /> -->
-                </p>
-            </form>
-            <script type="text/javascript">
-                var oEditors = [];
-                
-                var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
-                
-                // 추가 글꼴 목록
-                //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-                
-                nhn.husky.EZCreator.createInIFrame({
-                    oAppRef: oEditors,
-                    elPlaceHolder: "content",
-                    sSkinURI: "/smarteditor2/SmartEditor2Skin.html",	
-                    htParams : {
-                        bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-                        bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-                        bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-                        //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-                        //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-                        fOnBeforeUnload : function(){
-                            //alert("완료!");
-                        },
-                        I18N_LOCALE : sLang
-                    }, //boolean
-                    fOnAppLoad : function(){
-                        //예제 코드
-                        //oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-                    },
-                    fCreator: "createSEditor2"
-                });
-                
-                function pasteHTML() {
-                    var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-                    oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-                }
-                
-                function showHTML() {
-                    var sHTML = oEditors.getById["content"].getIR();
-                    alert(sHTML);
-                }
-                    
-                function submitContents(elClickedObj) {
-                    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-                    
-                    // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
-                    
-                    try {
-                        elClickedObj.form.submit();
-                    } catch(e) {}
-                }
-                
-                
-                function setDefaultFont() {
-                    var sDefaultFont = '궁서';
-                    var nFontSize = 24;
-                    oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
-                }
-                </script>
-                <script>
-                    function changemodify(){
-                        $("#view").css('display', 'none');
-                        $("#modify").css('visibility', 'visible');
-                    }
-                    function cancelmodify(){
-                        $("#view").css('display', 'block');
-                        $("#modify").css('visibility', 'hidden');
-                        $('#title').val($('#viewtitle').text());
-                        oEditors.getById["content"].exec("SET_IR",[$('#viewcontent').html()]);
-                    }
-                </script>
-            
-        </div>
+        
         
         <!-- content end -->
 
         <!-- footer -->
-        <div class="footer">
-            <ul>
-                <li><a href="#">회사소개</a></li>
-                <li><a href="#">채용안내</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">게임이용등급안내</a></li>
-                <li><a href="#">개인정보처리방침</a></li>
-                <li><a href="#">청소년보호정책</a></li>
-            </ul>
-            <p>
-                <span>(주)000000</span>
-                <span>서울특별시 영등포구 선유로9길 30 106동 청년취업사관학교 영등포캠퍼스 </span>
-                <br>
-                <span>정보1</span>
-                <span>정보2</span>
-                <span>정보3</span>
-            </p>
-        </div>
+        <%-include('footer.ejs')%>
         <!-- footer end -->
     </div>
 

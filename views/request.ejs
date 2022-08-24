@@ -24,40 +24,17 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
+        .content{
+            z-index: 9;
+        }
+    </style>
+
 </head>
 <body>
     <div class="body">
         <!-- header  -->
-        <div class="nav_background">
-            <div class="navbar">
-                <div class="nav_wrap">
-                    <div class="nav_logo">
-                        <a href="/"><img src="https://img.icons8.com/dusk/64/000000/planet-globe.png">로고</a>
-                    </div>
-                    <div class="nav_menu">
-                        <ul><a href="">뉴스</a>
-                            <li><a href="">공지사항</a></li>
-                            <li><a href="">이벤트</a></li>
-                        </ul>
-                        <ul><a href="">가이드</a></ul>
-                        <ul><a href="">랭킹</a></ul>
-                        <ul><a href="">커뮤니티</a>
-                            <li><a href="/community/free">자유게시판</a></li>
-                            <li><a href="">정보게시판</a></li>
-                        </ul>
-                        <ul><a href="">고객지원</a>
-                            <li><a href="/customer">FAQ</a></li>
-                            <li><a href="/request">1:1문의</a></li>
-                        </ui>
-                    </div>
-                    <div class="nav_btn_wrap">
-                        <button class="btn_gameStart">게임시작아이콘넣기</button>
-                        <button class="btn_login">로그인아이콘넣기</button>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%-include('header.ejs') %>
         <!-- header end -->
 
         <!-- contents -->
@@ -118,24 +95,7 @@
                 <script src="../public/mscbot-main/mscbot/static/scripts/responses.js"></script>
 
         <!-- footer -->
-        <div class="footer">
-            <ul>
-                <li><a href="">회사소개</a></li>
-                <li><a href="">채용안내</a></li>
-                <li><a href="">이용약관</a></li>
-                <li><a href="">게임이용등급안내</a></li>
-                <li><a href="">개인정보처리방침</a></li>
-                <li><a href="">청소년보호정책</a></li>
-            </ul>
-            <p>
-                <span>(주)000000</span>
-                <span>서울특별시 영등포구 선유로9길 30 106동 청년취업사관학교 영등포캠퍼스 </span>
-                <br>
-                <span>정보1</span>
-                <span>정보2</span>
-                <span>정보3</span>
-            </p>
-        </div>
+        <%-include('footer.ejs')%>
         <!-- footer end -->
     </div>
 
