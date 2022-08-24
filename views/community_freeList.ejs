@@ -55,16 +55,13 @@
 
                         </div>
                         
-                        <div id="abc" class="board_btn_wrap">
+                        <div class="board_btn_wrap">
+                            <% if(isLogin){ %>
+                                <a href="/community/free/write">글쓰기</a>
+                            <%}%>
                             
                         </div>
-                        <script>
-                            let writeButton = "<form action='/community/free/write' method='GET'><button>글쓰기</button></form>";
-                            let isLogin = "<%= isLogin %>";
-                            if(isLogin == 'true'){
-                                $("#abc").append(writeButton);
-                            }
-                        </script>
+                        
                     </div>
                 </div>
             </div>
