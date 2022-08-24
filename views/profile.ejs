@@ -57,16 +57,12 @@
             EMAIL : <input type="eamil" name="email" value="<%=data.email%>" required> <br>
             <br>
             <div id="characters">
-                <% if (data.profile == "") { %>
-                    <img src="/img/img0.png" style="width: 100" name="img0"> <br>
-                <% } else { %>
                     <img src="/img/img1.png" style="width: 100" name="img1">
                     <img src="/img/img2.png" style="width: 100" name="img2">
                     <img src="/img/img3.png" style="width: 100" name="img3">
                     <img src="/img/img4.png" style="width: 100" name="img4">
                     <img src="/img/img5.png" style="width: 100" name="img5">
                     <img src="/img/img6.png" style="width: 100" name="img6">
-                <% } %>
             </div>
             <input type="hidden" name="picture"> 
             <button id="modify" type="button" onclick="editProfile();">수정</button>
