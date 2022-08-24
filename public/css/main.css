@@ -3,7 +3,7 @@ body {
     background-color: #35363A;
     height: 100%;
 }
-button {
+/* button {
     color: black;
     background: white;
     display: inline-block;
@@ -19,7 +19,7 @@ button > a {
 button:hover {
     background: black;
     color: white;
-}
+} */
 .body {
     position: relative;
     min-height: 100%;
