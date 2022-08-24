@@ -1,5 +1,6 @@
 const express = require("express");
 const front = require("../controller/FrontController");
+const user = require("../controller/UserController");
 const router = express.Router();
 
 router.get("/", front.index);
@@ -18,12 +19,8 @@ router.get("/logout", (req,res) => {
     });
 })
 
-router.get("/customer", (req,res) => {
-    res.render("customer");
-});
+router.get("/faq", user.faq);
 
-router.get("/request", (req,res) =>{
-    res.render("request");
-});
+router.get("/request", user.request);
 
 module.exports = router;
