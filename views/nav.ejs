@@ -12,7 +12,7 @@
     </div>
     <div class="container5" style="display: flex;">
         <ul id="logo">
-            <img src="/img/img11.png"  class="nav_logo">
+            <a href="/"><img src="/img/img11.png"  class="nav_logo"></a>
         </ul>
         <ul class="nav_ul">
             <a href="#">
@@ -43,15 +43,19 @@
         <ul class="nav_ul">
             <li class="main">커뮤니티</li>
             <div class="hidden">
-                <li class="sub">자유게시판</li>
-                <li class="bt">정보게시판</li>
+                <a href="/community/free"><li class="sub">자유게시판</li></a>
+                <a href="#"><li class="bt">정보게시판</li></a>
             </div>
         </ul>
         <ul class="nav_ul">
             <li class="main">고객지원</li>
             <div class="hidden">
-                <li class="sub">FAQ</li>
-                <li class="bt">1:1문의</li>
+                <a href="/faq"><li class="sub">FAQ</li></a>
+                <% if (isLogin) { %>
+                <a href="/request"><li class="bt">1:1문의</li></a>
+                <% } else { %>
+                <li class="bt" onclick="alertlogin();"><a href="#">1:1문의</a></li>
+                <% } %>
             </div>
         </ul>
     </div>
