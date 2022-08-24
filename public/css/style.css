@@ -82,7 +82,8 @@
 .board_view .title {
     padding: 20px 15px;
     border-bottom: 1px dashed #ddd;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: bold;
 }
 .board_view .info {
     padding: 10px;
