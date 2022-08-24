@@ -853,6 +853,20 @@ updateCanvas = () => {
 	drawExplosions(ctx);
 	if (!ship.alive) {
 		drawGameOver(ctx);
+		
+		// axios({
+		// 	method: "post",
+		// 	url: "http://localhost:8080/user/login",
+		// 	data: {
+		// 		id: form.Id.value,
+		// 		password: form.Password.value,
+		// 		score: ship.score
+		// 	}
+		// }).then((rep) => {
+		// 	return rep.data;
+		// })
+		
+		
 	}
 	if (waveData.newWave) {
 		drawWaveNumber(ctx);

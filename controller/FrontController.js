@@ -3,9 +3,9 @@ exports.index = (req,res) => {
     const user = req.session.user;
 //정보가 없으면 undefinde로 뜨니까 user!= undefined는 정보가 있을때,
     if (user != undefined) {
-        res.render("design/index", {isLogin: true, user: user});
+        res.render("index", {isLogin: true, user: user});
         //user앞은 key값이고 뒤의 user는 const한 user.
     } else {
-        res.render("design/index", {isLogin: false})
+        res.render("index", {isLogin: false})
     }
 }
