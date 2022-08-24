@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    		<meta charset='utf-8'/>
-    		<title>Shooting Game</title>
-    		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-    		<script src='/game/game.js'></script>
+		<meta charset='utf-8'/>
+		<title>Shooting Game</title>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+		<script src='/game/game.js'></script>
 		<link rel='stylesheet' href='/game/gamestyle.css'>
 	</head>
-  	<body>
+	<body>
 		<div class='content'>
 			<div class='title'>
 				<img src='/game/gameImgs/title.png' alt='title'>
 			</div>
-  			<canvas id='gameArea' width='750' height='500'></canvas>
-  			<table id='values'>
-	  			<tr>
-		  			<td id='score'></td> 
-		  			<td id='missiles'></td> 
-		  			<td id='shield'></td> 
-		  			<td id='bombs'></td> 
-	  			</tr>
-  			</table>
-  			<table id='labels'>
-	  			<tr>
-		  			<td id='score_label'><%=data.id%>님 SCORE</td> 
+			<canvas id='gameArea' width='750' height='500'></canvas>
+			<table id='values'>
+				<tr>
+					<td id='score'></td> 
+					<td id='missiles'></td> 
+					<td id='shield'></td> 
+					<td id='bombs'></td> 
+				</tr>
+			</table>
+			<table id='labels'>
+				<tr>
+					<td id='score_label'><%=data.id%>님 SCORE</td> 
 					<td><img src='/game/gameImgs/missiles.png', alt='missiles'></td> 
 					<td><img src='/game/gameImgs/shield.png', alt='shield'</td> 
 					<td><img src='/game/gameImgs/bomb.png', alt='bomb'</td> 
-	  			</tr>
+				</tr>
 
-  			</table>
+			</table>
 			<h3>CONTROLS</h3>
-  			<table id='controls'>
-	  			<tr>
+			<table id='controls'>
+				<tr>
 					<td class='control_label'>WASD</td> 
 					<td class='control_label'>SPACE</td> 
 					<td class='control_label'>SHIFT</td> 
 					<td class='control_label'>F<td> 
-	  			</tr>
-	  			<tr>
-		  			<td class='control_description'>MOVE SHIP</td> 
-		  			<td class='control_description'>FIRE MISSILES</td> 
-		  			<td class='control_description'>ACTIVATE SHIELD</td> 
-		  			<td class='control_description'>DROP BOMBS<td> 
-	  			</tr>
-	  			<tr>
+				</tr>
+				<tr>
+					<td class='control_description'>MOVE SHIP</td> 
+					<td class='control_description'>FIRE MISSILES</td> 
+					<td class='control_description'>ACTIVATE SHIELD</td> 
+					<td class='control_description'>DROP BOMBS<td> 
+				</tr>
+				<tr>
 					<td class='control_label' colspan='4'>R / C</td> 
-	  			</tr>
-	  			<tr>
+				</tr>
+				<tr>
 					<td class='control_description' colspan='4'>RESTART AT WAVE 1 (R) OR 5-WAVE CHECKPOINT (C) ON GAME OVER</td> 
-	  			</tr>
-  			</table>
+				</tr>
+			</table>
 			<h3 class='meet'>MEET THE CAST</h3>
-  			<table>
-	  			<tr>
+			<table>
+				<tr>
 					<td class='cast top'><img src='/game/gameImgs/red.png', alt='simple'></td> 
 					<td class='cast top'><img src='/game/gameImgs/blue.png', alt='siney'</td> 
 					<td class='cast top'><img src='/game/gameImgs/yellow.png', alt='crawly'</td> 
 					<td class='cast top'><img src='/game/gameImgs/white.png', alt='fasty'</td> 
 					<td class='cast top last'><img src='/game/gameImgs/green.png', alt='circley'</td> 
-	  			</tr>
-	  			<tr>
+				</tr>
+				<tr>
 					<td class='cast'>SIMPLE</td> 
 					<td class='cast'>SINEY</td> 
 					<td class='cast'>CRAWLEY</td> 
 					<td class='cast'>FASTY</td> 
 					<td class='cast last'>CIRCLEY</td> 
-	  			</tr>
-	  			<tr>
+				</tr>
+				<tr>
 					<td class='cast_description'>
 						<ul>
 							<li>BEHAVIOR</li>
@@ -148,8 +148,8 @@
 							<li class='description bullet'>* BEING PUT IN A BOX</li>
 						</ul>
 					</td> 
-	  			</tr>
-  			</table>
+				</tr>
+			</table>
 		</div>
 	</body>
 </html>

@@ -6,13 +6,15 @@ create table user(
     password varchar(20) not null,
     name varchar(20) not null,
     profile varchar(10) not null default "img0",
-    email varchar(20) not null
+    email varchar(20) not null,
+    score int(3) not null default "0"
 );
-insert into user values('test', '1234', 'test', '', 'test@naver.com');
+insert into user values('test', '1234', 'test', '', 'test@naver.com', '');
 
 drop table user;
 
 desc user;
+SELECT * FROM user;
 
 
 
