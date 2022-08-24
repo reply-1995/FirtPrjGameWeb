@@ -40,8 +40,8 @@
                 </div>
                 <div class="board_view_wrap" id="view">
                     <div class="board_view">
-                        <div class="title">
-                            <p id="viewtitle"><%=result.title%></p>
+                        <div class="title" id="viewtitle">
+                            <%=result.title%>
                         </div>
                         <div class="info">
                             <dl>
@@ -163,6 +163,10 @@
             </div>
         </div>
 
+        <!-- footer -->
+        <%-include('footer.ejs')%>
+        <!-- footer end -->
+
 
         <!-- <div id="view">
             작성자<%=result.id%> <hr>
@@ -184,9 +188,7 @@
         
         <!-- content end -->
 
-        <!-- footer -->
-        <%-include('footer.ejs')%>
-        <!-- footer end -->
+        
     </div>
 
     <script>

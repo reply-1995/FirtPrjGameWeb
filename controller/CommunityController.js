@@ -48,7 +48,7 @@ exports.Free_write = (req, res) => {
 exports.Free_writeview = (req, res) => {
     const user = req.session.user;
     if (user != undefined) {
-        res.render("community_freeWrite");
+        res.render("community_freeWrite", {isLogin: true, user: user});
     } else {
         res.redirect('/user/login');
     }
