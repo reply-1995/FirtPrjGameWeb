@@ -22,6 +22,7 @@ h6 {
     margin-right: 20px;
 }
 
+
 .signup1 {
     height: 30px;
     border: none;
@@ -56,9 +57,13 @@ h6 {
 .container5 {
     justify-content: center;
     padding-top: 50px;
-    background-color: rgba(0, 0, 0, 0.807);
+    background-color: rgba(215, 215, 215, 0.045);
     /* position: relative; */
     font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container5:hover{
+    background-color: rgba(0, 0, 0, 0.807);
 }
 
 
@@ -84,14 +89,19 @@ h6 {
 
 .main{
     font-size: 23px;
+    font-weight: bold;
     margin-bottom: 30px;
-    color: white;
+    color: rgb(0, 0, 0);
+}
+
+.main:hover{
+    color:aliceblue
 }
 
 .sub {
     font-size: 13px;
     margin-top: 5px;
-    color: antiquewhite;
+    color: rgba(250, 241, 215, 0.937);
 }
 
 .bt {
