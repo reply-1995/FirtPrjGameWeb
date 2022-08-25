@@ -833,6 +833,8 @@ updateState = () => {
 	updateDisplay();
 }
 
+let scoreSaved = false;
+
 // Main Draw Function, tied to browser refresh rate
 updateCanvas = () => {
 	window.requestAnimationFrame(updateCanvas);
@@ -851,23 +853,27 @@ updateCanvas = () => {
 	drawPowerup(ctx);
 	drawShip(ctx);
 	drawExplosions(ctx);
+
 	if (!ship.alive) {
 		drawGameOver(ctx);
 		
-		axios({
-			method: "post",
-			url: "http://localhost:8080/game/scoresave",
-			data: {
-				score: ship.score,
-			}
-		}).then((rep) => {
-			alert(rep);
-		})
-		
+		if (!scoreSaved) {
+			axios({
+				method: "post",
+				url: "http://localhost:8080/game/scoresave",
+				data: {
+					score: ship.score,
+				}
+			}).then((rep) => {
+				alert(rep.data);
+				scoreSaved = true;
+			})
+		}
 		
 	}
 	if (waveData.newWave) {
 		drawWaveNumber(ctx);
+		scoreSaved = false;
 	}
 }
 
