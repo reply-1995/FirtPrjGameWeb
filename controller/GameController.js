@@ -27,3 +27,7 @@ exports.scoreSave = (req, res) => {
     })
 
 }
+
+exports.ranking = (req, res) => {
+    res.render("ranking");
+}
