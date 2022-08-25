@@ -13,18 +13,48 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="/js/alert.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <%-include('head.ejs') %>
         <script>
-            function getComment(){
-                axios({
+            
+            async function crtComment(){
+                var form = document.getElementById('form_comment');
+                await axios({
                     method: "post",
-                    url: "http://localhost:8080/community/free/getcomment",
+                    url: "http://localhost:8080/community/free/createcomment",
                     data: {
-                        id: form.Id.value,
-                        password: form.Password.value,
+                        parentidx : form.parentidx.value,
+                        category : form.category.value,
+                        id: form.userid.value,
+                        content: form.text_comment.value,
+                        
                     }
-                }).then((rep) => {
-                    return rep.data;
-                })
+                }).then((rep) => { return rep.data; })
+                .then((data) => {
+                    console.log('data: ' ,data);
+                    
+                    datemoment = moment(data.create_date).format('YYYY/MM/DD HH:mm:ss');
+                    
+                    let html = 
+                            "<tr id='tr_" + data.idx + "'><td>"+data.id+"</td><td>"+ data.content+ 
+                                "</td><td>"+datemoment+"</td><td><button type='button' onclick='deleteComment( "+
+                                    data.idx+ ") ;'>삭제</button></td></tr>";        
+
+                    $( "tbody" ).append(html);
+                    $('#text_comment').val('');
+                });
+            }
+            function deleteComment(idx){
+                axios({
+                    method: 'delete',
+                    url: 'http://localhost:8080/community/free/deletecomment',
+                    data: { idx: idx }
+                }).then((rep) => { return rep.data })
+                .then((dat) => {
+                    alert( dat );
+                    var tr = document.getElementById("tr_" + idx);
+                    $( tr ).remove();
+                });
             }
             
         </script>
@@ -38,7 +68,7 @@
     <body>
         <div class="body">
             <!-- header  -->
-            <%-include('header.ejs')%>
+            <%-include('nav.ejs')%>
             <!-- header end -->
 
         <!-- content -->
@@ -179,25 +209,43 @@
                 <div class="comment_list">
                     
                     <table>
-                        
                         <colgroup>
                             <col width="100px">
                             <col width="600px">
                             <col width="200px">
                             <col width="100px">
                         </colgroup>
-                        <tr>
-                            <td>아이디</td>
-                            <td>댓글내용</td>
-                            <td>작성시간</td>
-                            <td>삭제</td>
-                        </tr>
+                        <tbody>
+                            <%
+                                for ( let i = 0; i < com.length; i++ ){
+                            %>
+                                <tr id="tr_<%=com[i].idx%>">
+                                    <td><%=com[i].id%></td>
+                                    <td><%=com[i].content%></td>
+                                    <td><%=moment(com[i].create_date).format("YYYY/MM/DD HH:mm:ss")%></td>
+                                    <td><button type="button" onclick="deleteComment( '<%=com[i].idx%>') ;">삭제</button></td>
+                                </tr>
+                            <%
+                                }
+                            %>
+                            
+                        </tbody>
+                        
                         
                     </table>
                 </div>
-                <div class="comment_write">
-
-                </div>
+                <%if(isLogin){%>
+                    <div class="comment_write">
+                        <form id="form_comment">
+                            <input type="hidden" id="parentidx" name="parentidx" value=<%=result.idx%>>
+                            <input type="hidden" id="category" name="category" value="free">
+                            <input type="hidden" id="userid" name="userid" value="<%=user%>">
+                            <textarea name="text_comment" id="text_comment" cols="90" rows="3" placeholder="댓글쓰기" maxlength="250"></textarea>
+                            <button type="button" onclick="crtComment();">댓글등록</button>
+                        </form>
+                    </div>
+                <%}%>
+                
             </div>
 
             <!-- comment end -->
@@ -220,17 +268,7 @@
         
     </div>
 
-    <script>
-        $(".nav_menu ul").mouseover(function(){
-            if($(".nav_menu > ul > li").css("display") == "none"){
-                $(".nav_menu > ul > li").css("display","block");
-            }
-        })
-        $(".nav_menu").mouseleave(function(){
-            $(".nav_menu > ul > li").css("display","none");
-        })
-        
-        
-    </script>
+    
+    <script src="/js/nav.js"></script>
     </body>
 </html>

@@ -39,5 +39,7 @@ create table comment(
     id varchar(20) not null,
     content varchar(250) not null,
     isdeleted varchar(1) null default 'N',
-    create_date date not null
+    create_date datetime not null
 );
+
+select * from comment;
