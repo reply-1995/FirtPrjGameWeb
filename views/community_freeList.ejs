@@ -58,24 +58,16 @@
                     </div>
                 </div>
             </div>
+            <!-- contents end -->
 
             <!-- footer -->
-            <%-include('footer.ejs')%>
+            <footer>
+                <%-include('footer.ejs')%>
+            </footer>
             <!-- footer end -->
         </div>
 
-        <script>
-            $(".nav_menu ul").mouseover(function(){
-                if($(".nav_menu > ul > li").css("display") == "none"){
-                    $(".nav_menu > ul > li").css("display","block");
-                }
-            })
-            $(".nav_menu").mouseleave(function(){
-                $(".nav_menu > ul > li").css("display","none");
-            })
-            
-            
-        </script>
+        
          <script src="/js/nav.js"></script>
     </body>
 </html>
