@@ -58,7 +58,7 @@ exports.Free_writeview = (req, res) => {
 exports.Free_read = (req, res) => {
     const user = req.session.user;
 
-    
+    // 조회할때마다 조회수 증가
     models.Community.findOne({
             where: { idx: req.query.idx, isdeleted: 'N',}
         }).then((result) => {
@@ -77,6 +77,7 @@ exports.Free_read = (req, res) => {
         where: { idx: req.query.idx, isdeleted: 'N',}
     }).then((result) => {
         console.log( result);
+
 
         if (user != undefined) {
             res.render("community_view", {isLogin: true, result : result, user: user});

@@ -28,3 +28,14 @@ create table communityFree(
     create_date date not null
 );
 
+
+
+create table comment(
+	idx int not null primary key auto_increment,
+    parentidx int null,
+    category varchar(10) not null default 'free',
+    id varchar(20) not null,
+    content varchar(250) not null,
+    isdeleted varchar(1) null default 'N',
+    create_date date not null
+);

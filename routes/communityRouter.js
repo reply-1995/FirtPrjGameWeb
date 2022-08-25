@@ -9,5 +9,6 @@ router.post("/free", community.Free_write)// 글쓰기 페이지에서 글작성
 router.get("/free/read", community.Free_read);
 router.get("/free/delete", community.Free_delete);
 router.post("/free/modify", community.Free_modify);
+router.post("/free/getcomment", community.Free_getComment);
 
 module.exports = router;

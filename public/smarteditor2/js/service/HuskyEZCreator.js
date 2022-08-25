@@ -66,11 +66,12 @@ nhn.husky.EZCreator = new (function(){
 		var elIFrame, nEditorHeight;
 
 		try{
-			elIFrame = document.createElement("<IFRAME frameborder=0 scrolling=no>");
+			elIFrame = document.createElement("<IFRAME frameborder=0 scrolling='no' class='class_smarteditor2'>");
 		}catch(e){
 			elIFrame = document.createElement("IFRAME");
 			elIFrame.setAttribute("frameborder", "0");
 			elIFrame.setAttribute("scrolling", "no");
+			elIFrame.setAttribute("class", "class_smarteditor2");
 		}
 		
 		elIFrame.style.width = "1px";
