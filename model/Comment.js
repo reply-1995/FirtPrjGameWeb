@@ -1,6 +1,6 @@
-const Community = (Sequelize, DataTypes ) =>{
+const Comment = (Sequelize, DataTypes ) =>{
     const model = Sequelize.define(
-        'communityfree',
+        'comment',
         {
             idx:{
                 type: DataTypes.INTEGER,
@@ -8,22 +8,22 @@ const Community = (Sequelize, DataTypes ) =>{
                 primaryKey: true,
                 autoIncrement: true,
             },
+            parentidx:{
+                type: DataTypes.INTEGER,
+                allowNull: true,
+            },
+            category:{
+                type: DataTypes.STRING(10),
+                allowNull: false,
+                defaultValue: 'free',
+            },
             id:{
                 type: DataTypes.STRING(20),
                 allowNull: false,
             },
-            title:{
-                type: DataTypes.STRING(100),
-                allowNull: false
-            },
             content:{
-                type: DataTypes.TEXT('medium'),
-                allowNull: false,
-            },
-            clicked:{
-                type: DataTypes.INTEGER,
-                allowNull: true,
-                defaultValue: 0,
+                type: DataTypes.STRING(250),
+                allowNull: false
             },
             isdeleted:{
                 type: DataTypes.STRING(1),
@@ -38,11 +38,11 @@ const Community = (Sequelize, DataTypes ) =>{
         },
         {
             timestamps: false,
-            tableName: 'communityfree',
+            tableName: 'comment',
             freezeTableName: true,
         },
     );
     return model;    
 }
 
-module.exports = Community;
+module.exports = Comment;

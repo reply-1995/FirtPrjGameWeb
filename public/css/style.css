@@ -13,11 +13,11 @@
 }
 /* 게시판 작성버튼 */
 .board_btn_wrap {
-    /* margin-top: 30px; */
     text-align: right;
+    margin-top: 10px;
 }
 .board_btn_wrap a{
-    margin-top: 2px;
+    
     text-decoration: none;
     font-size: 10px;
     padding : 5px;
@@ -174,4 +174,9 @@
     padding: 15px;
     box-sizing: border-box;
     resize: vertical; /*크기조절*/
+}
+.comment_wrap{
+    margin-top: 30px;
+    border-top: 1px solid rgb(138, 138, 138);
+    padding-top: 10px;
 }

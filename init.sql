@@ -9,7 +9,9 @@ create table user(
     email varchar(20) not null,
     score int not null default "0"
 );
-insert into user values('test', '1234', 'test', '', 'test@naver.com', '0');
+
+insert into user (id, password, name, email) values('test', '1234', 'test', 'test@naver.com');
+
 
 drop table user;
 
@@ -28,3 +30,14 @@ create table communityFree(
     create_date date not null
 );
 
+
+
+create table comment(
+	idx int not null primary key auto_increment,
+    parentidx int null,
+    category varchar(10) not null default 'free',
+    id varchar(20) not null,
+    content varchar(250) not null,
+    isdeleted varchar(1) null default 'N',
+    create_date date not null
+);
