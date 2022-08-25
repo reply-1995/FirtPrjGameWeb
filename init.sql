@@ -9,7 +9,9 @@ create table user(
     email varchar(20) not null,
     score int not null default "0"
 );
+
 insert into user (id, password, name, email) values('test', '1234', 'test', 'test@naver.com');
+
 
 drop table user;
 

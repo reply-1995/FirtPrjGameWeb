@@ -854,17 +854,15 @@ updateCanvas = () => {
 	if (!ship.alive) {
 		drawGameOver(ctx);
 		
-		// axios({
-		// 	method: "post",
-		// 	url: "http://localhost:8080/user/login",
-		// 	data: {
-		// 		id: form.Id.value,
-		// 		password: form.Password.value,
-		// 		score: ship.score
-		// 	}
-		// }).then((rep) => {
-		// 	return rep.data;
-		// })
+		axios({
+			method: "post",
+			url: "http://localhost:8080/game/scoresave",
+			data: {
+				score: ship.score,
+			}
+		}).then((rep) => {
+			alert(rep);
+		})
 		
 		
 	}

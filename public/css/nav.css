@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+.hidden {
+    display: none;
+}
+
+h6 {
+    position: relative;
+    top: 24px;
+}
+
+.top a{
+    text-decoration: none;
+    color: black;
+}
+
+.top {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.signup1 {
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    margin: 20px 20px 0 0;
+}
+
+.signup1:hover {
+    color: rgb(38, 144, 249);
+}
+
+.login1:hover{
+    background-color: rgb(38, 144, 249);
+    border: 2px solid transparent;
+    color: white;
+}
+
+.login1 {
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 0px 20px;
+    margin-top: 20px;
+    background-color: transparent;
+    font-weight: bolder;
+}
+
+.gamestart{
+    margin-left: 20px;
+}
+
+.container5 {
+    justify-content: center;
+    padding-top: 50px;
+    background-color: rgba(0, 0, 0, 0.807);
+    /* position: relative; */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.nav_logo {
+    /* position: relative;
+    bottom: 45%;
+    left: 10%; */
+    position: fixed;
+    left: 170px;
+    top: 100px;
+}
+
+.container5 ul {
+    width: 200px;
+    /* margin: 0 auto; */
+}
+
+.container5 ul, .container5 li {
+    list-style-type: none;
+    text-align: center;
+    word-break: keep-all;
+}
+
+.main{
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.sub {
+    font-size: 13px;
+    margin-top: 5px;
+    color: antiquewhite;
+}
+
+.bt {
+    font-size: 13px;
+    margin: 5px 0 30px;
+    color: antiquewhite;
+}
+
+.nav_ul {
+    padding: 0 10px 0;
+}
+
+.nav_ul a {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.container5 img {
+    width: 60px;
+    height: 60px;
+}

@@ -3,7 +3,7 @@ body {
     background-color: #35363A;
     height: 100%;
 }
-button {
+/* button {
     color: black;
     background: white;
     display: inline-block;
@@ -19,12 +19,12 @@ button > a {
 button:hover {
     background: black;
     color: white;
-}
-.body {
+} */
+/* .body {
     position: relative;
     min-height: 100%;
     padding-bottom: 60px;
-}
+} */
 .nav_background {
     position: relative;
     float:left; 
@@ -49,12 +49,12 @@ button:hover {
     width: 1200px;
     height: 100%;
 }
-.nav_logo {
+/* .nav_logo {
     position: absolute;
     left: 50px;
     font-size: 30px;
     z-index: 999;
-}
+} */
 
 /* 메뉴 */
 .nav_menu {
@@ -68,6 +68,7 @@ button:hover {
     float: left;
     font-size: 25px;
 }
+
 .nav_menu > ul > li {
     padding: 0;
     text-decoration: none;
@@ -75,11 +76,14 @@ button:hover {
     list-style: none;
     display: none;
 }
-.nav_btn_wrap {
+
+/* .nav_btn_wrap {
     position: absolute;
     top: 350px;
     left: 800px;
-}
+} */
+
+
 #contents { 
     clear :both;
     width: 100%;

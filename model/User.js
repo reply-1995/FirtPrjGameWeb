@@ -36,7 +36,7 @@ const User = (Sequelize, DataTypes ) =>{
                 allowNull: false
             },
             score:{
-                type: DataTypes.INTEGER(3),
+                type: DataTypes.INTEGER,
                 allowNull: false,
                 defaultValue: 0
             }
