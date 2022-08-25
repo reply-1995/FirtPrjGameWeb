@@ -865,8 +865,8 @@ updateCanvas = () => {
 					score: ship.score,
 				}
 			}).then((rep) => {
-				alert(rep.data);
 				scoreSaved = true;
+				alert(rep.data);
 			})
 		}
 		
