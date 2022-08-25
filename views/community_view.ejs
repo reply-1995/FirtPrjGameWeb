@@ -223,7 +223,11 @@
                                     <td><%=com[i].id%></td>
                                     <td><%=com[i].content%></td>
                                     <td><%=moment(com[i].create_date).format("YYYY/MM/DD HH:mm:ss")%></td>
-                                    <td><button type="button" onclick="deleteComment( '<%=com[i].idx%>') ;">삭제</button></td>
+                                    <td>
+                                    <%if(user==com[i].id){%>
+                                        <button type="button" onclick="deleteComment( '<%=com[i].idx%>') ;">삭제</button>
+                                    <%}%>
+                                    </td>
                                 </tr>
                             <%
                                 }
