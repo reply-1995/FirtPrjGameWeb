@@ -20,18 +20,24 @@ button:hover {
     background: black;
     color: white;
 } */
+
 /* .body {
     position: relative;
     min-height: 100%;
     padding-bottom: 60px;
 } */
-/* .nav_background {
-    position: relative;
-    float:left; 
+
+.nav_background {
+    /* float:left;  */
+    /* position: relative; */
+
+    position: absolute;
+    top: 195.5px;
     width:100%; 
     height: 560px; 
     background: url("/img/nav.jpg") center top no-repeat;
-} */
+}
+
 .navbar {
     padding: 0 auto;
     position: absolute;
@@ -84,7 +90,7 @@ button:hover {
 } */
 
 
-#contents { 
+/* #contents { 
     clear :both;
     height: auto;
     width: 100%;
@@ -92,7 +98,7 @@ button:hover {
     padding: 30px 40px;
     margin: 0px auto;
     padding-bottom: (50px);
-}
+} */
 
 /* footer */
 footer{
@@ -105,10 +111,10 @@ footer{
     background-color: white;
     border-top: 1px solid #747373;
     text-align: center;
-    padding: 20px;
-    margin: 20px;
-    position: absolute;
-    
+    padding-bottom: 50px;
+    /* margin: 20px; */
+    /* position: absolute;
+     */
 }
 .footer li{
     display: inline;
