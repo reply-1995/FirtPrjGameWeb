@@ -3,10 +3,20 @@
 <head>
     <%-include('head.ejs')%>
     <link rel="stylesheet" href="/css/css.css">
+    <style>
+        .bg {
+            background-image: url("/img/nav.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 80%; height: 700px;
+            margin: auto;
+        }       
+    </style>
 </head>
 <body>
-    <%-include('nav.ejs')%>
-    
+    <div class="bg">
+        <%-include('nav.ejs') %>
+    </div>
     <!-- contents -->
     <div id="contents">
         <div class="board_wrap">
@@ -31,7 +41,7 @@
             </div>
         </div>
     </div>
-    
     <%-include('footer.ejs')%>
+    <script src="/js/nav.js"></script>
 </body>
 </html>

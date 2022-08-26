@@ -90,7 +90,7 @@ button:hover {
 } */
 
 
-/* #contents { 
+#contents { 
     clear :both;
     height: auto;
     width: 100%;
@@ -98,7 +98,7 @@ button:hover {
     padding: 30px 40px;
     margin: 0px auto;
     padding-bottom: (50px);
-} */
+}
 
 /* footer */
 footer{
@@ -112,7 +112,7 @@ footer{
     border-top: 1px solid #747373;
     text-align: center;
     padding-bottom: 50px;
-    /* margin: 20px; */
+    margin: 50px;
     /* position: absolute;
      */
 }
