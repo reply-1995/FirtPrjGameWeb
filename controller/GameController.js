@@ -29,5 +29,11 @@ exports.scoreSave = (req, res) => {
 }
 
 exports.ranking = (req, res) => {
-    res.render("ranking");
+    const user = req.session.user;
+
+    if (user != undefined) {
+        res.render("ranking", {isLogin: true, user: user});
+    } else {
+        res.render("ranking", {isLogin: false})
+    }
 }
