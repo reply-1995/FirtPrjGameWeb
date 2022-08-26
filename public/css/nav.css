@@ -57,21 +57,27 @@ h6 {
 .container5 {
     justify-content: center;
     padding-top: 50px;
-    background-color: rgba(113, 113, 113, 0.765);
+    background-color: rgba(255, 255, 255, 0.059);
     /* position: relative; */
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* .container5:hover{
-    background-color: rgba(0, 0, 0, 0.807);
-} */
+.container5:hover{
+    position: relative;
+    /* background-color: rgba(0, 0, 0, 0.723); */
+    background-color: rgb(85, 61, 61);
+    z-index: 1000;
+
+}
+
+.con
 
 
 .nav_logo {
     /* position: relative;
     bottom: 45%;
     left: 10%; */
-    position: fixed;
+    position: absolute;
     left: 170px;
     top: 100px;
 }
@@ -124,10 +130,15 @@ h6 {
     height: 60px;
 }
 
-.nav_background img{
-    /* position: static; */
+/* .nav_background {
     position: relative;
+} */
+
+/* .nav_background img{ */
+    /* position: static; */
+    /* position: relative;
     float:left; 
+
     width:100%; 
     height: 560px; 
-}
+} */
