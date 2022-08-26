@@ -19,7 +19,7 @@ h6 {
     background-color: white;
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    padding-right: 20px;
 }
 
 
@@ -57,7 +57,7 @@ h6 {
 .container5 {
     justify-content: center;
     padding-top: 50px;
-    background-color: rgba(255, 255, 255, 0.059);
+    background-color: transparent;
     /* position: relative; */
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -65,7 +65,7 @@ h6 {
 .container5:hover{
     position: relative;
     /* background-color: rgba(0, 0, 0, 0.723); */
-    background-color: rgb(85, 61, 61);
+    background-color: rgb(0, 0, 0);
     z-index: 1000;
 
 }
@@ -97,12 +97,12 @@ h6 {
     font-size: 23px;
     font-weight: bold;
     margin-bottom: 30px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
-.main:hover{
+/* .main:hover{
     color:aliceblue
-}
+} */
 
 .sub {
     font-size: 13px;

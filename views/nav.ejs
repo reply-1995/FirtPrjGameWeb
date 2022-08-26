@@ -2,11 +2,16 @@
    
         <div class="top">
             <div style="visibility: hidden">
-                <button class="signup1" type="button" onclick="location.href='/user';">회원가입</button>
-                <button class="login1" onclick="loginpage();">로그인</button>
-                <button><a href="#">프로필</a></button>
-                <button><a href="#">로그아웃</a></button>
-                <button><a href="#">게임 스타트</a></button>
+                <% if (isLogin) {%>
+                    <%=user%>
+                <button class="signup1" onclick="location.href='/user/profile';">프로필</button>
+                <button class="login1" onclick="gamepage();">게임 스타트</button>
+                <button class="login1" onclick="logoutpage();">로그아웃</button>
+            <!-- 로그인 상태 아닐 때 -->
+            <% } else { %>
+                <button class="signup1" onclick="location.href='/user';">회원가입</button>
+                <button class="login1"  onclick="loginpage();">로그인</button>
+                <% } %>
             </div>
             <a href="/"><h6>응답하라 1995</h6></a>
             <div>
@@ -72,8 +77,5 @@
                     <% } %>
                 </div>
             </ul>   
-        </div>
-         <div class="nav_background">
-         <img src="/img/nav.jpg">
-         </div>
+
 </nav>
