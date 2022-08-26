@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <link rel="stylesheet" href="/css/customer.css">
+    <link rel="stylesheet" href="/css/faq.css">
  
     <%-include('head.ejs')%>
 
+    <style>
+        .bg {
+            background-image: url("/img/nav.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 80%; height: 700px;
+            margin: auto;
+        }
+        
+    </style>
     <title>reply 1995</title>
 </head>
 <body>
-    <div class="body">
+    <div class="bg">
         <!-- header  -->
         <%-include('nav.ejs')%>
         <!-- header end -->
-
+    </div>
         <!-- contents -->
         <div id="contents">
             <div class="board_wrap">
@@ -98,24 +108,11 @@
                     </div>    
             </div>
         </div>
-        <!-- footer -->
-            <footer>
-                <%-include('footer.ejs')%>
-            </footer>
-        <!-- footer end -->
-    </div>
+    
+
 
     <script>
-        $(".nav_menu ul").mouseover(function(){
-            if($(".nav_menu > ul > li").css("display") == "none"){
-                $(".nav_menu > ul > li").css("display","block");
-            }
-        })
-        $(".nav_menu").mouseleave(function(){
-            $(".nav_menu > ul > li").css("display","none");
-        })
-
-        $(".title").on("click", function( obj ) {
+          $(".title").on("click", function( obj ) {
             let target = obj.currentTarget;
             let brothers = $(target).siblings();
             let index = Number($(target).prevAll().length) + 1;
@@ -145,6 +142,8 @@
 
         });
     </script>
+    
+    <%-include('footer.ejs')%>
      <script src="/js/nav.js"></script>
 </body>
 </html>

@@ -3,15 +3,23 @@
     <head>
         <link rel="stylesheet" href="/css/css.css">
         <%-include('head.ejs') %>
-        
+        <style>
+            .bg {
+                background-image: url("/img/nav.jpg");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                width: 80%; height: 700px;
+                margin: auto;
+            }
+           
+        </style>        
         <title>자유게시판</title>
     </head>
     <body>
-        <div class="body">
-            <!-- header  -->
-            <%-include('nav.ejs')%>
-            <!-- header end -->
-
+        <div class="bg">
+            <%-include('nav.ejs') %>
+        </div>
+ 
             <!-- contents -->
             <div id="contents">
                 <div class="board_wrap">
@@ -61,13 +69,8 @@
             <!-- contents end -->
 
             <!-- footer -->
-            <footer>
                 <%-include('footer.ejs')%>
-            </footer>
-            <!-- footer end -->
-        </div>
-
-        
+            <!-- footer end -->     
          <script src="/js/nav.js"></script>
     </body>
 </html>

@@ -3,7 +3,16 @@
 <head>
     <link rel="stylesheet" href="/css/request.css">
     <%-include('head.ejs') %>
-
+    <style>
+        .bg {
+            background-image: url("/img/nav.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 80%; height: 700px;
+            margin: auto;
+        }
+       
+    </style>
     <title>reply 1995</title>
 
     <!-- <script>
@@ -19,221 +28,26 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
-        .content{
-            z-index: 9;
-        }
-    </style>
+  
 
 </head>
 <body>
-    <div class="body">
-        <!-- header  -->
-        <%-include('nav.ejs') %>
-        <!-- header end -->
-
-        <!-- contents -->
+        <div class="bg">
+            <%-include('nav.ejs') %>
+        </div>
         <div id="contents">
             <div class="board_wrap">
                 <div class="board_title">
                     <strong>1:1 문의</strong>
                     <br><br>
                     <h4>고객센터</h4><br><br>
-                    <p id="ask">문의하기<br>오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</p><br>
-                    <div class="chat-bar-collapsible">
-                        <button id="chat-button" type="button" class="collapsible">reply1995에게 문의하기
-                            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
-                        </button>
-                
-                        <div class="content">
-                            <div class="full-chat-block">
-                                <!-- Message Container -->
-                                <div class="outer-container">
-                                    <div class="chat-container">
-                                        <!-- Messages -->
-                                        <div id="chatbox">
-                                            <h5 id="chat-timestamp"></h5>
-                                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                                        </div>
-                
-                                        <!-- User input box -->
-                                        <div class="chat-bar-input-block">
-                                            <div id="userInput">
-                                                <input id="textInput" class="input-box" type="text" name="msg"
-                                                    placeholder="엔터(Enter)키로 메시지 보내기">
-                                                <p></p>
-                                            </div>
-                
-                                            <div class="chat-bar-icons">
-                                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
-                                                    onclick="heartButton()"></i>
-                                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
-                                                    onclick="sendButton()"></i>
-                                            </div>
-                                        </div>
-                
-                                        <div id="chat-bar-bottom">
-                                            <p></p>
-                                        </div>
-                
-                                    </div>
-                                </div>
-                
-                            </div>
-                        </div>
-                
-                    </div>
-                
-                </body>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <script src="../public/mscbot-main/mscbot/static/scripts/chat.js"></script>
-                <script src="../public/mscbot-main/mscbot/static/scripts/responses.js"></script>
-
-    <!-- footer -->
-        <footer>
-            <%-include('footer.ejs')%>
-        </footer>
-    <!-- footer end -->
-    </div>
-
-    <script>
-        $(".nav_menu ul").mouseover(function(){
-            if($(".nav_menu > ul > li").css("display") == "none"){
-                $(".nav_menu > ul > li").css("display","block");
-            }
-        })
-        $(".nav_menu").mouseleave(function(){
-            $(".nav_menu > ul > li").css("display","none");
-        })
-
-
-        // bot js
-        // Collapsible
-        var coll = document.getElementsByClassName("collapsible");
-
-        for (let i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-
-                var content = this.nextElementSibling;
-
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-
-            });
-        }
-
-        function getTime() {
-            let today = new Date();
-            hours = today.getHours();
-            minutes = today.getMinutes();
-
-            if (hours < 10) {
-                hours = "0" + hours;
-            }
-
-            if (minutes < 10) {
-                minutes = "0" + minutes;
-            }
-
-            let time = hours + ":" + minutes;
-            return time;
-        }
-
-        // Gets the first message
-        function firstBotMessage() {
-            let firstMessage = "안녕하세요? 무엇을 도와드릴까요?"
-            document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
-
-            let time = getTime();
-
-            $("#chat-timestamp").append(time);
-            document.getElementById("userInput").scrollIntoView(false);
-        }
-
-        firstBotMessage();
-
-        // Retrieves the response
-        function getHardResponse(userText) {
-            let botResponse = getBotResponse(userText);
-            let botHtml = '<p class="botText"><span>' + botResponse + '</span></p>';
-            $("#chatbox").append(botHtml);
-
-            document.getElementById("chat-bar-bottom").scrollIntoView(true);
-        }
-
-        //Gets the text text from the input box and processes it
-        function getResponse() {
-            let userText = $("#textInput").val();
-
-            if (userText == "") {
-                userText = "문의하기";
-            }
-
-            let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
-
-            $("#textInput").val("");
-            $("#chatbox").append(userHtml);
-            document.getElementById("chat-bar-bottom").scrollIntoView(true);
-
-            setTimeout(() => {
-                getHardResponse(userText);
-            }, 1000)
-
-        }
-
-        // Handles sending text via button clicks
-        function buttonSendText(sampleText) {
-            let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
-
-            $("#textInput").val("");
-            $("#chatbox").append(userHtml);
-            document.getElementById("chat-bar-bottom").scrollIntoView(true);
-
-            //Uncomment this if you want the bot to respond to this buttonSendText event
-            // setTimeout(() => {
-            //     getHardResponse(sampleText);
-            // }, 1000)
-        }
-
-        function sendButton() {
-            getResponse();
-        }
-
-        function heartButton() {
-            buttonSendText("하트!")
-        }
-
-        // Press enter to send a message
-        $("#textInput").keypress(function (e) {
-            if (e.which == 13) {
-                getResponse();
-            }
-        });
-
-        function getBotResponse(input) {
-            //rock paper scissors
-            if (input == "안녕") {
-                return "안녕하세요 이용자님";
-            } else if (input == "문의하기") {
-                return "어떤것을 도와드릴까요";
-            } else if (input == "버그 해결해줘") {
-                return "안녕하세요, 이용자님. 저희 게임을 이용해주셔서 감사합니다.<br> 빠른해결을 원하시면 FAQ 게시판을 참고해주세요. <br>더많은 도움이 필요하시면 1995-1995로 연락부탁드립니다.<br> 감사합니다.";
-            }
-
-            // Simple responses
-            if (input == "게임시작하는법 알려줘") {
-                return "안녕하세요, 이용자님. 저희 게임을 이용해주셔서 감사합니다. 로그인해주시면 게임시작 버튼이 보입니다. 아직 회원이 아니시라면 회원가입 부탁드립니다. <br>즐거운플레이하세요!";
-            } else if (input == "반가워") {
-                return "저도 반갑습니다";
-            } else {
-                return "잘 이해하지 못했어요. 다른 이야기를 써주시겠어요?";
-            }
-        }
-    </script>
-       <script src="/js/nav.js"></script>
+                    <p id="ask">문의하기<br>오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</p>
+                </div>
+            </div>
+        </div>
+        <%-include('footer.ejs')%>
+        <script src="/js/nav.js"></script>
+    </body>
+    
 </body>
 </html>
