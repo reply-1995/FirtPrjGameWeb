@@ -20,8 +20,7 @@
                 background-repeat: no-repeat;
                 width: 80%; height: 700px;
                 margin: auto;
-            }
-           
+            }           
         </style>
 
         <script>
@@ -30,12 +29,9 @@
     </head>
     <body>
 
-        <div class="body">
-            <!-- header  -->
-            <%-include('nav.ejs')%>
-            <!-- header end -->
-
-            <!-- content -->
+        <div class="bg">
+            <%-include('nav.ejs') %>
+        </div>
             <div id="contents">
                 <div class="board_wrap">
                     <div class="board_title">
@@ -116,9 +112,6 @@
                 oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
             }
             </script>
-
-            <!-- content end -->
-            <!-- footer -->
             <%-include('footer.ejs')%>
             <!-- footer end -->        
             
