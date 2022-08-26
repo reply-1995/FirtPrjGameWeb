@@ -162,3 +162,12 @@ exports.Free_deleteComment = (req, res) => {
         })
     })
 }
+exports.Screen_write = (req, res) => {
+    const user = req.session.user;
+
+    if (user != undefined) {
+        res.render('community_screenWrite', {isLogin: true, user: user});
+    } else {
+        res.render('community_screenWrite', {isLogin: false, user: user});
+    }
+}

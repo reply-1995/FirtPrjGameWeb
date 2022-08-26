@@ -11,5 +11,5 @@ router.get("/free/delete", community.Free_delete);
 router.post("/free/modify", community.Free_modify);
 router.post("/free/createcomment", community.Free_createComment);
 router.delete("/free/deletecomment", community.Free_deleteComment);
-
+router.get("/screen/write", community.Screen_write);
 module.exports = router;
