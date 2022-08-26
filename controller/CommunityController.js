@@ -1,6 +1,9 @@
 const models = require("../model"); // -> 시퀄라이즈에 사용
 
 const moment = require("moment"); //datetime format 해주는 module
+//const { DATE } = require("sequelize");
+var func = require('../public/js/func');
+
 
 exports.Free_page = (req, res) => {
     const user = req.session.user;
@@ -41,8 +44,6 @@ exports.Free_write = (req, res) => {
         res.redirect('/community/free');
     });
     
-
-
     
 }
 exports.Free_writeview = (req, res) => {
@@ -81,10 +82,11 @@ exports.Free_read = (req, res) => {
         }) 
         .then((com) => {
 
+
             if (user != undefined) {
-                res.render("community_view", {isLogin: true, result : result, user: user, com: com, moment: moment, });
+                res.render("community_view", {isLogin: true, result : result, user: user, com: com, elap: func.elapsedTime,});
             } else {
-                res.render("community_view", {isLogin: false, result : result, user: user, com: com, moment: moment, });
+                res.render("community_view", {isLogin: false, result : result, user: user, com: com, elap: func.elapsedTime,});
             }
         });
     })
@@ -130,11 +132,6 @@ exports.Free_modify = (req, res) => {
 exports.Free_createComment = (req, res) => {
     const user = req.session.user;
     
-  
-    // 24 Hour format
-    let completeDate = moment().format("YYYY/MM/DD HH:mm:ss");
-    
-    console.log(completeDate);
 
     let object = {
         idx: req.body.idx,
@@ -142,7 +139,7 @@ exports.Free_createComment = (req, res) => {
         category : req.body.category,
         id: req.body.id,
         content: req.body.content,
-        create_date: completeDate,
+        create_date: new Date(),
     }
     models.Comment.create( object )
     .then((result) => {
