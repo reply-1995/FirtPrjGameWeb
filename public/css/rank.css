@@ -1,0 +1,31 @@
+.board_list > div {
+    text-align: center;
+}
+.board_list > div.top_ranking {
+    border-color: #999;
+    font-weight: 600;
+}
+.board_list .ranking {
+    width: 20%;
+    vertical-align: middle;
+}
+.board_list .profile {
+    width: 30%;
+    vertical-align: middle;
+}
+.board_list .profile img{
+    height:  100px;
+}
+.board_list .user {
+    width: 30%;
+    vertical-align: middle;
+}
+.board_list .score {
+    width: 20%;
+    vertical-align: middle;
+}
+.board_list > div.cont_rancking {
+    height: 100px;
+    vertical-align: middle;
+}
+
