@@ -1,0 +1,13 @@
+body {
+    font-family: 'Sunflower', sans-serif;
+    background-color: black;
+    
+}
+p {
+    color: white;
+}
+.content {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
