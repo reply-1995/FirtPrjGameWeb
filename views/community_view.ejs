@@ -13,10 +13,38 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="/js/alert.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
         <%-include('head.ejs') %>
+        
         <script>
+            function elapsedTime(date){
+            const start = new Date(date);
+            const end = new Date(); // 현재 날짜
             
+            const diff = (end - start); // 경과 시간
+            
+            const times = [
+                {time: "분", milliSeconds: 1000 * 60},
+                {time: "시간", milliSeconds: 1000 * 60 * 60},
+                {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
+                {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
+                {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
+            ].reverse();
+            
+            // 년 단위부터 알맞는 단위 찾기
+            for (const value of times) {
+                const betweenTime = Math.floor(diff / value.milliSeconds);
+                    
+                // 큰 단위는 0보다 작은 소수 단위 나옴
+                if (betweenTime > 0) {
+                return `${betweenTime}${value.time} 전`;
+                }
+            }
+            
+            // 모든 단위가 맞지 않을 시
+            return "방금 전";
+            
+            }
             async function crtComment(){
                 var form = document.getElementById('form_comment');
                 await axios({
@@ -33,11 +61,11 @@
                 .then((data) => {
                     console.log('data: ' ,data);
                     
-                    datemoment = moment(data.create_date).format('YYYY/MM/DD HH:mm:ss');
+                    etTime = elapsedTime(data.create_date);
                     
                     let html = 
                             "<tr id='tr_" + data.idx + "'><td>"+data.id+"</td><td>"+ data.content+ 
-                                "</td><td>"+datemoment+"</td><td><button type='button' onclick='deleteComment( "+
+                                "</td><td>"+etTime+"</td><td><button type='button' onclick='deleteComment( "+
                                     data.idx+ ") ;'>삭제</button></td></tr>";        
 
                     $( "tbody" ).append(html);
@@ -56,6 +84,9 @@
                     $( tr ).remove();
                 });
             }
+
+            
+
             
         </script>
 
@@ -222,7 +253,7 @@
                                 <tr id="tr_<%=com[i].idx%>">
                                     <td><%=com[i].id%></td>
                                     <td><%=com[i].content%></td>
-                                    <td><%=moment(com[i].create_date).format("YYYY/MM/DD HH:mm:ss")%></td>
+                                    <td><%=elap(com[i].create_date);%></td>
                                     <td>
                                     <%if(user==com[i].id){%>
                                         <button type="button" onclick="deleteComment( '<%=com[i].idx%>') ;">삭제</button>
