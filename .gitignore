@@ -1,5 +1,5 @@
 **/node_modules
 **/package-lock.json
 **/.DS_Store
-!public/img/screenshotCommunity/
+!public/img/screenshotCommunity/a.txt
 public/img/screenshotCommunity/*
