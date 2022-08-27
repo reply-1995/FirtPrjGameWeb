@@ -38,7 +38,7 @@ exports.ranking = (req, res) => {
     }
 }
 
-exports.ranking = (req, res) => {
+exports.guide = (req, res) => {
     const user = req.session.user;
 
     if (user != undefined) {
