@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/mail.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    }
+
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: #001660;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    form{
+        background: #ffff;
+        display: flex;
+        flex-direction: column;
+        padding: 2vw 4vw;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+
+    form h3{
+        color:#555;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    form input, form textarea{
+        border:0;
+        margin: 10px 0;
+        padding: 20px;
+        outline: noen;
+        background: #f5f5f5;
+        font-size: 16px;
+    }
+
+    form button{
+        padding: 15px;
+        background: #ff5361;
+        color: #fff;
+        font-size: 18px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        width: 150px;
+        margin:20px auto 0;
+        border-radius: 30px;
+    }
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="eamil" placeholder="Email id" required>
+            <input type="text" id="phone" placeholder="Phone no." required>
+            <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.gamil.com",
+                Username : "pr2reply@gmail.com",
+                Password : "sqfrimaihamjxaju",
+                To : 'pr2reply@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "New Contact Form Enquiry",
+                Body : "Name: " + document.getElementById("name").value +"<br> Email: " + document.getElementById("email").value + "<br> Phone no: " + document.getElementById("phone").value +"<br> Message: " +  document.getElementById("message").value
+            }).then(
+            message => alert("Message Sent Succesfully"),
+            console.log("되라")
+            );
+        }
+    </script>
+</body>
+</html>

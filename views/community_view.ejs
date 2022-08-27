@@ -15,7 +15,15 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         
         <%-include('head.ejs') %>
-        
+        <style>
+            .bg {
+                background-image: url("/img/nav.jpg");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                width: 80%; height: 700px;
+                margin: auto;
+            }           
+        </style>
         <script>
             function elapsedTime(date){
             const start = new Date(date);
@@ -143,11 +151,9 @@
     </head>
 
     <body>
-        <div class="body">
-            <!-- header  -->
-            <%-include('nav.ejs')%>
-            <!-- header end -->
-
+        <div class="bg">
+            <%-include('nav.ejs') %>
+        </div>
         <!-- content -->
         <div id="contents">
             <div class="board_wrap">
@@ -373,16 +379,10 @@
         <!-- content end -->
 
         <!-- footer -->
-        <!-- <footer>
-            <%-include('footer.ejs')%>
-        </footer> -->
-        
-        <!-- footer end -->
 
-        
-    </div>
+            <%-include('footer.ejs')%>        
+        <!-- footer end -->     
 
-    
     <script src="/js/nav.js"></script>
     </body>
 </html>

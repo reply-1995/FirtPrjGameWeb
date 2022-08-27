@@ -37,3 +37,13 @@ exports.ranking = (req, res) => {
         res.render("ranking", {isLogin: false})
     }
 }
+
+exports.guide = (req, res) => {
+    const user = req.session.user;
+
+    if (user != undefined) {
+        res.render("game_guide", {isLogin: true, user: user});
+    } else {
+        res.render("game_guide", {isLogin: false})
+    }
+}
