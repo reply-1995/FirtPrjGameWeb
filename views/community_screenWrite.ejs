@@ -6,11 +6,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/css.css">
+        <%-include('head.ejs')%>
         <script type="text/javascript" src="/smarteditor2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
        
         <style>
             .bg {
@@ -22,13 +24,59 @@
             }
         </style>
 
+=======
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
         <title>스크린샷 게시판</title>
 
         
         <script>
-            function saveImg(input){
+            async function saveImg(input){
+               
+                var form = document.getElementById("myform");
+                
+                
+                await axios({
+                    method: 'post',
+                    url: 'http://localhost:8080/community/screen/saveimg/id',
+                    data: {
+                        id : form.id.value,
+                        category : form.BoardName.value,
+                    }
+                }).then((rep) => {return rep.data; })
+                .then((data) => {
+                    //data.idx, data.id, data.category
+                    var formData = new FormData();
+                    formData.append("idx", data.idx);
+                    formData.append("category", data.category);
+                    formData.append("id", data.id);
+                    formData.append("fileimg", input.files[0]);
+                    console.log(input.files[0]);
+                    async function exec(){
+                        await axios
+                            .post("http://localhost:8080/community/screen/saveimg/file", formData, {
+                                headers: {
+                                    "Content-Type": "multipart/form-data",
+                                },
+                            })
+                            .then((res) => {
+                                alert(res.data);
+                                var filepath = "/img/screenshotCommunity/" + res.data;
+                                var sHTML = "<img src=" + filepath + " style='max-width:800px;'>";
+                                oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
+                                
 
-            }
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    }
+                    exec();
+                    
+                })
+                
+                
+                }
         </script>
     </head>
     <body>
@@ -44,9 +92,8 @@
                     </div>
                     <div class="board_view_wrap" id="view">
                         <div class="board_view">
-                            <form action="/community/screen" name='myform' enctype='multipart/form-data' method='post'>
+                            <form action="/community/screen" id='myform' method='post'>
                                 <input type="hidden" name="id"				value="<%=user%>">
-                                <input type="hidden" name="idx"				value="">
                                 <input type="hidden" name="BoardName"		value="screenshot">
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="board_write">
                                     <tr>
@@ -58,15 +105,18 @@
                                         <td><textarea name="content" id="content" style="width:850px; height:412px; display:none;"></textarea></td>
                                     </tr>
                                     <tr>
-                                        <th style="width:200px;">파일첨부</th>
-                                        <td style="color:#727272;"><input onchange='saveImg(this);' type="file" name="files" style="height:28px;width:850px;color:#000;border: 1px solid #555;" ></br> 		<input type="button" onclick="pasteHTML();" value="본문에 사진 넣기" />	<br>※2MB이하의 이미지파일 하나만 허용 됩니다.</td>
+                                        <th style="width:200px;">사진첨부</th>
+                                        <td style="color:#727272; padding-top: 10px;">
+                                            <input onchange='saveImg(this);' type="file" name="files" style="height:28px;width:850px;color:#000;border: 1px solid #555;" > 
+                                            <br>※5MB이하의 이미지파일 하나만 허용 됩니다.
+                                        </td>
                                     </tr>
+                                    
                                 </table>
                             </form>
-                            <div class='board_btn_wrap' style="text-align:left">
+                            <div class='board_btn_wrap' style="text-align:right">
                                 <a onclick="submitContents();" href="#">글쓰기</a>
                             </div>
-                           
                         </div>
                     </div>
                 </div>

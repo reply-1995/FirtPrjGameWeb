@@ -53,11 +53,57 @@
             return "방금 전";
             
             }
+            async function saveImg(input){
+               
+               var form = document.getElementById("myform");
+               
+               
+               await axios({
+                   method: 'post',
+                   url: 'http://localhost:8080/community/screen/saveimg/id',
+                   data: {
+                       id : form.id.value,
+                       category : form.BoardName.value,
+                   }
+               }).then((rep) => {return rep.data; })
+               .then((data) => {
+                   //data.idx, data.id, data.category
+                   var formData = new FormData();
+                   formData.append("idx", data.idx);
+                   formData.append("category", data.category);
+                   formData.append("id", data.id);
+                   formData.append("fileimg", input.files[0]);
+                   console.log(input.files[0]);
+                   async function exec(){
+                       await axios
+                           .post("http://localhost:8080/community/screen/saveimg/file", formData, {
+                               headers: {
+                                   "Content-Type": "multipart/form-data",
+                               },
+                           })
+                           .then((res) => {
+                               alert(res.data);
+                               var filepath = "/img/screenshotCommunity/" + res.data;
+                               var sHTML = "<img src=" + filepath + " style='max-width:800px;'>";
+                               oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
+                               
+
+                           })
+                           .catch((err) => {
+                               console.log(err);
+                           });
+                   }
+                   exec();
+                   
+               })
+               
+               
+               }
             async function crtComment(){
                 var form = document.getElementById('form_comment');
                 await axios({
                     method: "post",
-                    url: "http://localhost:8080/community/free/createcomment",
+                    url: "http://localhost:8080/community/createcomment",
                     data: {
                         parentidx : form.parentidx.value,
                         category : form.category.value,
@@ -83,7 +129,7 @@
             function deleteComment(idx){
                 axios({
                     method: 'delete',
-                    url: 'http://localhost:8080/community/free/deletecomment',
+                    url: 'http://localhost:8080/community/deletecomment',
                     data: { idx: idx }
                 }).then((rep) => { return rep.data })
                 .then((dat) => {
@@ -98,7 +144,7 @@
             
         </script>
 
-        <title>자유게시판</title>
+        <title>커뮤니티</title>
         
 
         
@@ -112,7 +158,12 @@
         <div id="contents">
             <div class="board_wrap">
                 <div class="board_title">
-                    <strong>자유게시판</strong>
+                    <% if(result.category=='free'){ %>
+                        <strong>자유게시판</strong>
+                    <%}else if(result.category=='screenshot'){%>
+                        <strong>스크린샷게시판</strong>
+                    <%}%>
+                    
                 </div>
                 <div class="board_view_wrap" id="view" style="display: block;">
                     <div class="board_view">
@@ -139,10 +190,14 @@
                             <%-result.content%>
                         </div>
                         <div class="board_btn_wrap">
-                            <a href="/community/free">목록</a>
+                            <% if(result.category=='free'){ %>
+                                <a href="/community/free">목록</a>
+                            <%}else if(result.category=='screenshot'){%>
+                                <a href="/community/screen">목록</a>
+                            <%}%>
                             <% if(user==result.id){ %>
                                 <a href="#" onclick="changemodify();">수정</a>
-                                <a href="/community/free/delete?idx=<%=result.idx%>">삭제</a>
+                                <a href="/community/delete?idx=<%=result.idx%>&category=<%=result.category%>">삭제</a>
                             <%}%>
                         </div>
                     </div>
@@ -150,12 +205,30 @@
                     
                 </div>
 
+                
                 <div id="modify" style="display: none">
-                    <form action="/community/free/modify" method="post" id="freeWrite">
-                        <input type="hidden" name="idx" id="idx" value="<%=result.idx%>">
-                        <div>제목 </div><input type="text" name="title" id="title" value="<%=result.title%>" style="width:766px;"><hr>
-                        <div>내용 </div><textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px; display:none;"><%-result.content%></textarea><hr>
-                        <!--textarea name="content" id="content" rows="10" cols="100" style="width:100%; height:412px; min-width:610px; display:none;"></textarea-->
+                    <form action="/community/<%=result.category%>/modify" id='myform' method='post'>
+                        <input type="hidden" name="id"				value="<%=user%>">
+                        <input type="hidden" name="idx"				value="<%=result.idx%>">
+                        <input type="hidden" name="BoardName"		value="<%=result.category%>">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="board_write">
+                            <tr>
+                                <th style="width:200px;">제목</th>
+                                <td style="border-top:1px solid #444;"><input type="text" name="title" id="title" style="width:850px;" maxlength="50" value="<%=result.title%>"></input></td>
+                            </tr>
+                            <tr>
+                                <th style="width:200px;">내용</th>
+                                <td><textarea name="content" id="content" style="width:850px; height:412px; display:none;"><%-result.content%></textarea></td>
+                            </tr>
+                            <tr>
+                                <th style="width:200px;">사진첨부</th>
+                                <td style="color:#727272; padding-top: 10px;">
+                                    <input onchange='saveImg(this);' type="file" name="files" style="height:28px;width:850px;color:#000;border: 1px solid #555;" > 
+                                    <br>※5MB이하의 이미지파일만 허용 됩니다.
+                                </td>
+                            </tr>
+                            
+                        </table>
                         <p>
                             <!-- <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" /> -->
                             <!-- <input type="button" onclick="showHTML();" value="본문 내용 가져오기" /> -->
@@ -164,82 +237,88 @@
                             <!-- <input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" /> -->
                         </p>
                     </form>
-                    <script type="text/javascript">
-                        var oEditors = [];
-                        
-                        var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
-                        
-                        // 추가 글꼴 목록
-                        //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-                        
-                        nhn.husky.EZCreator.createInIFrame({
-                            oAppRef: oEditors,
-                            elPlaceHolder: "content",
-                            sSkinURI: "/smarteditor2/SmartEditor2Skin.html",	
-                            htParams : {
-                                bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-                                bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-                                bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-                                //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-                                //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-                                fOnBeforeUnload : function(){
-                                    //alert("완료!");
-                                },
-                                I18N_LOCALE : sLang
-                            }, //boolean
-                            fOnAppLoad : function(){
-                                //예제 코드
-                                //oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-                            },
-                            fCreator: "createSEditor2"
-                        });
-                        
-                        function pasteHTML() {
-                            var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-                            oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-                        }
-                        
-                        function showHTML() {
-                            var sHTML = oEditors.getById["content"].getIR();
-                            alert(sHTML);
-                        }
-                            
-                        function submitContents(elClickedObj) {
-                            oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-                            
-                            // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
-                            
-                            try {
-                                elClickedObj.form.submit();
-                            } catch(e) {}
-                        }
-                        
-                        
-                        function setDefaultFont() {
-                            var sDefaultFont = '궁서';
-                            var nFontSize = 24;
-                            oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
-                        }
-                        </script>
-                        <script>
-                            function changemodify(){
-                                $("#view").css('display', 'none');
-                                $(".comment_wrap").css('display', 'none');
-                                $("#modify").css('display', 'block');
-
-                                $('.class_smarteditor2').css('height', '300px'); // 스마트 에디터 height 지정
-                                $('.class_smarteditor2').attr('src',$('.class_smarteditor2').attr('src')); // 스마트 에디터 iframe 새로고칭
-                            }
-                            function cancelmodify(){
-                                $("#view").css('display', 'block');
-                                $(".comment_wrap").css('display', 'block');
-                                $("#modify").css('display', 'none');
-                                $('#title').val($('#viewtitle').text());
-                                oEditors.getById["content"].exec("SET_IR",[$('#viewcontent').html()]);
-                            }
-                        </script>
-                    
                 </div>
+
+                <div id="">
+
+
+                </div>
+
+
+                <script type="text/javascript">
+                    var oEditors = [];
+                    
+                    var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
+                    
+                    // 추가 글꼴 목록
+                    //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
+                    
+                    nhn.husky.EZCreator.createInIFrame({
+                        oAppRef: oEditors,
+                        elPlaceHolder: "content",
+                        sSkinURI: "/smarteditor2/SmartEditor2Skin.html",	
+                        htParams : {
+                            bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+                            bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+                            bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+                            //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+                            //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+                            fOnBeforeUnload : function(){
+                                //alert("완료!");
+                            },
+                            I18N_LOCALE : sLang
+                        }, //boolean
+                        fOnAppLoad : function(){
+                            //예제 코드
+                            //oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+                        },
+                        fCreator: "createSEditor2"
+                    });
+                    
+                    function pasteHTML() {
+                        var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+                        oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
+                    }
+                    
+                    function showHTML() {
+                        var sHTML = oEditors.getById["content"].getIR();
+                        alert(sHTML);
+                    }
+                        
+                    function submitContents(elClickedObj) {
+                        oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+                        
+                        // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
+                        
+                        try {
+                            elClickedObj.form.submit();
+                        } catch(e) {}
+                    }
+                    
+                    
+                    function setDefaultFont() {
+                        var sDefaultFont = '궁서';
+                        var nFontSize = 24;
+                        oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+                    }
+                    </script>
+                    <script>
+                        function changemodify(){
+                            $("#view").css('display', 'none');
+                            $(".comment_wrap").css('display', 'none');
+                            $("#modify").css('display', 'block');
+
+                            $('.class_smarteditor2').css('height', '300px'); // 스마트 에디터 height 지정
+                            $('.class_smarteditor2').attr('src',$('.class_smarteditor2').attr('src')); // 스마트 에디터 iframe 새로고칭
+                        }
+                        function cancelmodify(){
+                            $("#view").css('display', 'block');
+                            $(".comment_wrap").css('display', 'block');
+                            $("#modify").css('display', 'none');
+                            $('#title').val($('#viewtitle').text());
+                            oEditors.getById["content"].exec("SET_IR",[$('#viewcontent').html()]); //에디터 []안의 내용으로 초기화 
+                        }
+                    </script>
                 <!-- comment -->
             <div class="comment_wrap">
                 <p>댓글</p>
@@ -279,7 +358,7 @@
                     <div class="comment_write">
                         <form id="form_comment">
                             <input type="hidden" id="parentidx" name="parentidx" value=<%=result.idx%>>
-                            <input type="hidden" id="category" name="category" value="free">
+                            <input type="hidden" id="category" name="category" value=<%=result.category%>>
                             <input type="hidden" id="userid" name="userid" value="<%=user%>">
                             <textarea name="text_comment" id="text_comment" cols="90" rows="3" placeholder="댓글쓰기" maxlength="250"></textarea>
                             <button type="button" onclick="crtComment();">댓글등록</button>
@@ -300,8 +379,10 @@
         <!-- content end -->
 
         <!-- footer -->
+
             <%-include('footer.ejs')%>        
         <!-- footer end -->     
+
     <script src="/js/nav.js"></script>
     </body>
 </html>
