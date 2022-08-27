@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
+.bg {
+            background-image: url("/img/nav.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 80%; height: 700px;
+            margin: auto;
+        }
+
+
 .hidden {
     display: none;
 }
