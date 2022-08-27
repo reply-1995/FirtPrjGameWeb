@@ -11,24 +11,62 @@
             width: 80%; height: 700px;
             margin: auto;
         }
-       
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            }
+
+
+            .context{
+                width: 100%;
+                height: 100vh;
+                /* background: #001660; */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            form{
+                background: #ffff;
+                display: flex;
+                flex-direction: column;
+                padding: 2vw 4vw;
+                width: 90%;
+                max-width: 600px;
+                border-radius: 10px;
+            }
+
+            form h3{
+                color:#555;
+                font-weight: 800;
+                margin-bottom: 20px;
+            }
+
+            form input, form textarea{
+                border:0;
+                margin: 10px 0;
+                padding: 20px;
+                outline: noen;
+                background: #f5f5f5;
+                font-size: 16px;
+            }
+
+            form button{
+                padding: 15px;
+                background: #ff5361;
+                color: #fff;
+                font-size: 18px;
+                border: 0;
+                outline: none;
+                cursor: pointer;
+                width: 150px;
+                margin:20px auto 0;
+                border-radius: 30px;
+            }            
     </style>
     <title>reply 1995</title>
-
-    <!-- <script>
-        function show(content) {
-            console.log("되라");
-            console.log(`#${content}`);
-            $(`#${content}`).toggleClass("hide");
-        }
-    </script> -->
-
-    <!-- chatbot -->
-    <link rel="stylesheet" href="/css/chat.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  
 
 </head>
 <body>
@@ -39,12 +77,50 @@
             <div class="board_wrap">
                 <div class="board_title">
                     <strong>1:1 문의</strong>
-                    <br><br>
-                    <h4>고객센터</h4><br><br>
-                    <p id="ask">문의하기<br>오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</p>
+                    <br>
+                    <p id="ask">운영시간<br>오전 10시 ~ 오후 6시 (주말, 공휴일 제외)</p>
+                    <div class="context">
+                            <form onsubmit="sendEmail(); reset(); return false;">
+                            <h3>문의하기</h3>
+                            <input type="text" id="name" placeholder="이름" required>
+                            <input type="email" id="eamil" placeholder="이메일주소" required>
+                            <input type="text" id="phone" placeholder="휴대폰번호" required>
+                            <textarea id="message" rows="4" placeholder="문의사항을 적어주세요"></textarea>
+                            <button type="submit">보내기</button>
+                        </form>
+                    </div>
+                    <script src="https://smtpjs.com/v3/smtp.js"></script>
+                    <script>
+                        function sendEmail(){
+
+                        //     Email.send({
+                        //         Host : "smtp.yourisp.com",
+                        //         Username : "username",
+                        //         Password : "AFD409F380B36EB9DF83D4C9702061548C46",
+                        //         To : 'them@website.com',
+                        //         From : "you@isp.com",
+                        //         Subject : "This is the subject",
+                        //         Body : "And this is the body"
+                        //     }).then(
+                        //     message => alert(message)
+
+                            Email.send({
+                                SecureToken: "982934c2-ccb8-42df-af01-c92ce36cc1ff",
+                                To : 'pr2rply@gmail.com',
+                                From : document.getElementById("email").value,
+                                Subject : "New Contact Form Enquiry",
+                                Body : "Name: " + document.getElementById("name").value +"<br> Email: " + document.getElementById("email").value + "<br> Phone no: " + document.getElementById("phone").value +"<br> Message: " +  document.getElementById("message").value
+                            }).then(
+                            message => alert("Message Sent Succesfully"),
+                            );
+                            
+                        }
+                    </script>
+
                 </div>
             </div>
         </div>
+    
         <%-include('footer.ejs')%>
         <script src="/js/nav.js"></script>
     </body>
