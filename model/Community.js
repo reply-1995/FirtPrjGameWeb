@@ -12,6 +12,11 @@ const Community = (Sequelize, DataTypes ) =>{
                 type: DataTypes.STRING(20),
                 allowNull: false,
             },
+            category:{
+                type: DataTypes.STRING(10),
+                allowNull: false,
+                defaultValue: 'free',
+            },
             title:{
                 type: DataTypes.STRING(100),
                 allowNull: false
@@ -33,6 +38,10 @@ const Community = (Sequelize, DataTypes ) =>{
             create_date:{
                 type: DataTypes.DATE,
                 allowNull: false
+            },
+            RPimgsrc:{
+                type: DataTypes.STRING(100),
+                allowNull: true,
             }
          
         },
