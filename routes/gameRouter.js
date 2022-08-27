@@ -8,4 +8,6 @@ router.post("/scoresave", game.scoreSave);
 
 router.get("/ranking", game.ranking);
 
+router.get("/guide", game.guide);
+
 module.exports = router;
