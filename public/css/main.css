@@ -112,7 +112,8 @@ footer{
     border-top: 1px solid #747373;
     text-align: center;
     padding-bottom: 50px;
-    margin: 50px;
+    padding-top: 30px;
+    /* margin: 50px; */
     /* position: absolute;
      */
 }
