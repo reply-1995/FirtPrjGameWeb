@@ -14,13 +14,14 @@
 /* 게시판 작성버튼 */
 .board_btn_wrap {
     text-align: right;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .board_btn_wrap a{
     
     text-decoration: none;
-    font-size: 10px;
-    padding : 5px;
+    font-size: 15px;
+    min-width: 80px;
+    padding: 10px;
     background-color: white;
     border: 1px solid black;
     border-radius: 2px;

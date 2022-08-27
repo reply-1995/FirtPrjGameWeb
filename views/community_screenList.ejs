@@ -7,19 +7,17 @@
         <title>스크린샷게시판</title>
         <style>
             .product{
-                display: block;
+                display: inline-block;
                 width: 225px;
                 text-align: center;
                 text-decoration:none;
                 color: black;
-                float:left;
                 margin-left: 20px;
                 margin-right: 20px;
                 margin-bottom: 30px;
             }
             .ss-title{
                 margin-top: 20px;
-                margin-bottom: 4px;
             }
         </style>
     </head>
@@ -47,7 +45,8 @@
                                     </div>
                                     <div class="ss-content" >
                                         <%=data[i].id%> / 
-                                        조회수 : <%=data[i].clicked%>
+                                            조회수 : <%=data[i].clicked%> <br>
+                                            <%=data[i].create_date%>
                                     </div>
                                 </a>      
                             <%
@@ -74,9 +73,9 @@
             <!-- contents end -->
 
             <!-- footer -->
-            <!-- <footer>
+            
                 <%-include('footer.ejs')%>
-            </footer> -->
+            
             <!-- footer end -->
       
 
