@@ -31,12 +31,19 @@
                         <div class="user">아이디</div>
                         <div class="score">점수</div>
                     </div>
-                    <div class="cont_ranking">
-                        <div class="ranking">순위</div>
-                        <div class="profile"><img src="/img/img3.png"></div>
-                        <div class="user">아이디</div>
-                        <div class="score">500점</div>
-                    </div>
+                    
+                            <%
+                                for ( let i = 0; i < data.length; i++ ){
+                            %>
+                                <div class="cont_ranking">
+                                    <div class="ranking"><%=i+1%>위</div>
+                                    <div class="profile"><img src="/img/<%=data[i].profile%>.png"></div>
+                                    <div class="user"><%=data[i].id%></div>
+                                    <div class="score"><%=data[i].score%>점</div>
+                                </div>
+                            <%
+                                }
+                            %>
                 </div>
             </div>
         </div>

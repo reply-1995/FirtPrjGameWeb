@@ -1,4 +1,5 @@
 const models = require("../model"); // -> 시퀄라이즈에 사용
+const { Op } = require('sequelize');
 
 exports.openGame = (req, res) => {
 
@@ -30,12 +31,23 @@ exports.scoreSave = (req, res) => {
 
 exports.ranking = (req, res) => {
     const user = req.session.user;
+    models.User.findAll({
+        order: [['score', 'DESC']],
+        where: {
+            score: { [Op.gt]: 0},
+          },
+    }) 
+    .then((result) => {
+        console.log(result);
+        if (user != undefined) {
+            res.render("ranking", {isLogin: true, user: user, data: result});
+        } else {
+            res.render("ranking", {isLogin: false, data: result});
+        }
+        
+    });
 
-    if (user != undefined) {
-        res.render("ranking", {isLogin: true, user: user});
-    } else {
-        res.render("ranking", {isLogin: false})
-    }
+    
 }
 
 exports.guide = (req, res) => {

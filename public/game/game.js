@@ -9,7 +9,7 @@ var waveData;
 var bomb;
 var ship;
 var display;
-
+let scoreSaved = false;
 
 const root2 = Math.sqrt(2);
 const keys = new Set();
@@ -176,6 +176,7 @@ resetShip = () => {
 	ship.bombs = 1;
 	ship.shield.power = 20;
 	ship.score = 0;
+	scoreSaved = false;
 };
 
 initializeShip = () => {
@@ -833,7 +834,7 @@ updateState = () => {
 	updateDisplay();
 }
 
-let scoreSaved = false;
+
 
 // Main Draw Function, tied to browser refresh rate
 updateCanvas = () => {
@@ -858,22 +859,25 @@ updateCanvas = () => {
 		drawGameOver(ctx);
 		
 		if (!scoreSaved) {
-			axios({
-				method: "post",
-				url: "http://localhost:8080/game/scoresave",
-				data: {
-					score: ship.score,
-				}
-			}).then((rep) => {
-				scoreSaved = true;
-				alert(rep.data);
-			})
+			scoreSaved = true;
+			async function exec(){
+				await axios({
+					method: "post",
+					url: "http://localhost:8080/game/scoresave",
+					data: {
+						score: ship.score,
+					}
+				}).then((rep) => {
+					alert(rep.data);
+				})
+			}
+			exec();
+			
 		}
 		
 	}
 	if (waveData.newWave) {
 		drawWaveNumber(ctx);
-		scoreSaved = false;
 	}
 }
 
