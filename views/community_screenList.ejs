@@ -4,7 +4,24 @@
         <link rel="stylesheet" href="/css/css.css">
         <%-include('head.ejs') %>
         
-        <title>자유게시판</title>
+        <title>스크린샷게시판</title>
+        <style>
+            .product{
+                display: block;
+                width: 225px;
+                text-align: center;
+                text-decoration:none;
+                color: black;
+                float:left;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-bottom: 30px;
+            }
+            .ss-title{
+                margin-top: 20px;
+                margin-bottom: 4px;
+            }
+        </style>
     </head>
     <body>
         <div class="body">
@@ -16,33 +33,30 @@
             <div id="contents">
                 <div class="board_wrap">
                     <div class="board_title">
-                        <strong>자유게시판</strong>
+                        <strong>스크린샷게시판</strong>
                     </div>
                     <div class="board_list_wrap">
                         <div class="board_list">
-                            <div class="top">
-                                <div class="num">카테고리</div>
-                                <div class="title">제목</div>
-                                <div class="writer">작성자</div>
-                                <div class="date">작성일</div>
-                                <div class="count">조회</div>
-                            </div>
                             
                             <%
                             for ( let i = data.length - 1; i >= 0; i-- ){
                             %>
-                                <div>
-                                    <div class="num">자유</div>
-                                    <div class="title"><a href="/community/read?idx=<%=data[i].idx%>&category=<%=data[i].category%>"><%=data[i].title%></a></div>
-                                    <div class="writer"><%=data[i].id%></div>
-                                    <div class="date"><%=data[i].create_date%></div>
-                                    <div class="count"><%=data[i].clicked%></div>                   
-                                </div>
-                                
+                                <a href="/community/read?idx=<%=data[i].idx%>" class="product">
+                                    <img src="<%=data[i].RPimgsrc%>" width="225" height="225">
+                                    <div class="ss-title" >
+                                        <%=data[i].title%>
+                                    </div>
+                                    <div class="ss-content" >
+                                        <%=data[i].id%> / 
+                                        조회수 : <%=data[i].clicked%>
+                                    </div>
+                                </a>      
                             <%
                                 }
                             %>
-
+                                            <!-- TEST -->
+                                    
+                                
                         </div>
                         <div class="board_page">
 
@@ -50,7 +64,7 @@
                         
                         <div class="board_btn_wrap">
                             <% if(isLogin){ %>
-                                <a href="/community/free/write">글쓰기</a>
+                                <a href="/community/screen/write">글쓰기</a>
                             <%}%>
                             
                         </div>
