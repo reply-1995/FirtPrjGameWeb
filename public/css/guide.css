@@ -9,10 +9,14 @@ body {
     margin-right: auto;
 }
 table {
-
 	table-layout: fixed;
 	width: 900px;
 	border-spacing: 0;
+    margin-bottom: 50px;
+}
+a.rankPage {
+    text-decoration: none;
+    font-weight: 700;
 }
 td > img.key {
     width: 200px;
@@ -33,5 +37,8 @@ tr, td {
 }
 td > h1 {
     padding-top: 20px;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
+}
+td.line {
+    padding-top: 20px;
 }
