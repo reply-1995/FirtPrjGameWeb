@@ -1,20 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <$%-include('head.ejs')%>
+    <%-include('head.ejs')%>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sunflower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/guide.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/css.css"
+
 </head>
 <body>
     <div class="bg">
         <%-include('nav.ejs') %>
     </div>
     <div class="content">
-        <p> GAME GUIDE </p>
+        <table>
+            <tr>
+                <td colspan="6">
+                    <img src="/game/gameImgs/title.png">
+                    <br>
+                    <h1> GAME GUIDE </h1>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <p><button class="login1"  onclick="loginpage();">로그인</button>
+                     후 이용 가능합니다.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">GAME START</td>
+                <td colspan="3">MOVE SHIP</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="/img/guide/s.png" alt="s key" class="key_1">
+                </td>
+                <td colspan="3">
+                    <img src="/img/guide/wasd.png" alt="wasd key" class="key">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="line"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    FIRE MISSILES
+                </td>
+                <td colspan="2">
+                    ACTIVATE SHIELD
+                </td>
+                <td colspan="2">
+                    DROP BOMBS
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="/img/guide/space.png" alt="space bar" class="item_space">
+                </td>
+                <td colspan="2">
+                    <img src="/img/guide/shift.png" alt="shift" class="item_shift">
+                </td>
+                <td colspan="2">
+                    <img src="/img/guide/f.png" alt="f key" class="key_1">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <h1>ITEM</h1>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">MISSILES</td>
+                <td colspan="2">SHIELD</td>
+                <td colspan="2">BOMBS</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="/game/gameImgs/missiles.png" alt="missiles" class="item">
+                </td>
+                <td colspan="2">
+                    <img src="/game/gameImgs/shield.png" alt="shield" class="item">
+                </td>
+                <td colspan="2">
+                    <img src="/game/gameImgs/bomb.png" alt="bomb" class="item">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <h1>GAME OVER</h1>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">RESTART AT WAVE 1</td>
+                <td colspan="3">CHECKPOINT</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <img src="/img/guide/r.png" alt="r key" class="key_1">
+                </td>
+                <td colspan="3">
+                    <img src="/img/guide/c.png" alt="c key" class="key_1">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="line"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    WAVE 6 이후 게임 종료 시, 체크포인트 (WAVE 6) 부터 시작할 수 있습니다.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" class="line"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <p>게임 종료 후 알림창을 통해 기록 갱신 여부를 확인 할 수 있으며</p>
+                    <p>모든 유저의 게임 점수 순위는 <a href="/game/ranking/" class="rankPage">[랭킹] 페이지</a>에서 확인이 가능합니다. </p>
+                </td>
+            </tr>
+        </table>
+
     </div>
     
     <%-include('footer.ejs')%>
