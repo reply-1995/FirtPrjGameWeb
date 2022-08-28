@@ -2,12 +2,36 @@ body {
     font-family: 'Sunflower', sans-serif;    
 }
 .content {
-    max-width: 760px;
+    padding-top: 30px;
+    position: relative;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
 table {
+
 	table-layout: fixed;
-	width: 760px;
+	width: 900px;
 	border-spacing: 0;
+}
+td > img.key {
+    width: 200px;
+}
+td > img.key_1 {
+    width: 100px;
+}
+td > img.item_space {
+    width: 130px;
+    height: 60px;
+}
+td > img.item_shift {
+    width: 100px;
+}
+
+tr, td {
+    text-align: center;
+}
+td > h1 {
+    padding-top: 20px;
+    border-bottom: 1px solid gray;
 }
