@@ -2,5 +2,5 @@
 **/package-lock.json
 **/.DS_Store
 
-public/img/screenshotCommunity/*
-!public/img/screenshotCommunity/a.txt
+public/img/server_img_upload/*
+!public/img/server_img_upload/a.txt

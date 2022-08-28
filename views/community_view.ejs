@@ -18,38 +18,36 @@
         
         <script>
             function elapsedTime(date){
-            const start = new Date(date);
-            const end = new Date(); // 현재 날짜
-            
-            const diff = (end - start); // 경과 시간
-            
-            const times = [
-                {time: "분", milliSeconds: 1000 * 60},
-                {time: "시간", milliSeconds: 1000 * 60 * 60},
-                {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
-                {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
-                {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
-            ].reverse();
-            
-            // 년 단위부터 알맞는 단위 찾기
-            for (const value of times) {
-                const betweenTime = Math.floor(diff / value.milliSeconds);
-                    
-                // 큰 단위는 0보다 작은 소수 단위 나옴
-                if (betweenTime > 0) {
-                return `${betweenTime}${value.time} 전`;
+                const start = new Date(date);
+                const end = new Date(); // 현재 날짜
+                
+                const diff = (end - start); // 경과 시간
+                
+                const times = [
+                    {time: "분", milliSeconds: 1000 * 60},
+                    {time: "시간", milliSeconds: 1000 * 60 * 60},
+                    {time: "일", milliSeconds: 1000 * 60 * 60 * 24},
+                    {time: "개월", milliSeconds: 1000 * 60 * 60 * 24 * 30},
+                    {time: "년", milliSeconds: 1000 * 60 * 60 * 24 * 365},
+                ].reverse();
+                
+                // 년 단위부터 알맞는 단위 찾기
+                for (const value of times) {
+                    const betweenTime = Math.floor(diff / value.milliSeconds);
+                        
+                    // 큰 단위는 0보다 작은 소수 단위 나옴
+                    if (betweenTime > 0) {
+                    return `${betweenTime}${value.time} 전`;
+                    }
                 }
-            }
-            
-            // 모든 단위가 맞지 않을 시
-            return "방금 전";
+                
+                // 모든 단위가 맞지 않을 시
+                return "방금 전";
             
             }
             async function saveImg(input){
                
                var form = document.getElementById("myform");
-               
-               
                await axios({
                    method: 'post',
                    url: 'http://localhost:8080/community/screen/saveimg/id',
@@ -75,7 +73,7 @@
                            })
                            .then((res) => {
                                alert(res.data);
-                               var filepath = "/img/screenshotCommunity/" + res.data;
+                               var filepath = "/img/server_img_upload/" + res.data;
                                var sHTML = "<img src=" + filepath + " style='max-width:800px;'>";
                                oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
                                
@@ -111,27 +109,24 @@
                     
                     let html = 
                             "<tr id='tr_" + data.idx + "'><td>"+data.id+"</td><td>"+ data.content+ 
-                                "</td><td>"+etTime+"</td><td><button type='button' onclick='deleteComment( "+
-                                    data.idx+ ") ;'>삭제</button></td></tr>";        
+                                "</td><td>"+etTime+"</td><td><button type='button' onclick='deleteComment(" + data.idx  + ");'>삭제</button></td></tr>";        
 
                     $( "tbody" ).append(html);
                     $('#text_comment').val('');
                 });
             }
-            function deleteComment(idx){
-                axios({
-                    method: 'delete',
-                    url: 'http://localhost:8080/community/deletecomment',
-                    data: { idx: idx }
-                }).then((rep) => { return rep.data })
-                .then((dat) => {
-                    alert( dat );
-                    var tr = document.getElementById("tr_" + idx);
-                    $( tr ).remove();
-                });
+            async function deleteComment(idx){
+                await axios({
+                            method: 'delete',
+                            url: 'http://localhost:8080/community/deletecomment',
+                            data: { idx: idx }
+                        }).then((rep) => { 
+                            alert( rep.data ); 
+                            var tr = document.getElementById("tr_"+idx);
+                            $(tr).remove();
+                        });
+                //바로 쓴 댓글은 삭제해도 html에서 제거가 안됨;;
             }
-
-            
 
             
         </script>
@@ -154,6 +149,8 @@
                         <strong>자유게시판</strong>
                     <%}else if(result.category=='screenshot'){%>
                         <strong>스크린샷게시판</strong>
+                    <%}else if(result.category=='notice'){%>
+                        <strong>공지사항</strong>
                     <%}%>
                     
                 </div>
@@ -167,7 +164,12 @@
                             </dl>
                             <dl>
                                 <dt>작성자</dt>
-                                <dd><%=result.id%></dd>
+                                <% if(result.id === 'admin'){%>
+                                    <dd><img src="/img/notice_admin.PNG" width="60px"></dd>
+                                <% }else{ %>
+                                    <dd><%=result.id%></dd>
+                                <% } %>
+                                
                             </dl>
                             <dl>
                                 <dt>작성일</dt>
@@ -186,7 +188,9 @@
                                 <a href="/community/free">목록</a>
                             <%}else if(result.category=='screenshot'){%>
                                 <a href="/community/screen">목록</a>
-                            <%}%>
+                                <%}else if(result.category=='notice'){%>
+                                    <a href="/community/notice">목록</a>
+                                <%}%>
                             <% if(user==result.id){ %>
                                 <a href="#" onclick="changemodify();">수정</a>
                                 <a href="/community/delete?idx=<%=result.idx%>&category=<%=result.category%>">삭제</a>
@@ -333,7 +337,7 @@
                                     <td><%=elap(com[i].create_date);%></td>
                                     <td>
                                     <%if(user==com[i].id){%>
-                                        <button type="button" onclick="deleteComment( '<%=com[i].idx%>') ;">삭제</button>
+                                        <button type="button" onclick="deleteComment('<%=com[i].idx%>') ;">삭제</button>
                                     <%}%>
                                     </td>
                                 </tr>
