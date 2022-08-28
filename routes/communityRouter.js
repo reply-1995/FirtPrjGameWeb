@@ -7,7 +7,7 @@ const path = require("path");
 const upload = multer({
     storage : multer.diskStorage({
         destination(req, file, done){
-            done(null, 'public/img/screenshotCommunity/');
+            done(null, 'public/img/server_img_upload/');
         },
         filename(req, file, done){
             console.log(req.body);
@@ -28,16 +28,21 @@ router.get("/read", community.community_read);
 router.get("/delete", community.community_delete);
 
 
-router.post("/createcomment", community.Free_createComment);
-router.delete("/deletecomment", community.Free_deleteComment);
+router.post("/createcomment", community.createComment);
+router.delete("/deletecomment", community.deleteComment);
 
 router.get("/screen", community.Screen_page);
 router.get("/screen/write", community.Screen_writeview);
 router.post("/screen/saveImg/id", community.Screen_saveReqID);
 router.post("/screen/saveImg/file", upload.single('fileimg'),community.Screen_saveReqFile);
-router.post("/screen", community.Screen_write)// 글쓰기 페이지에서 글작성 눌렀을 때
+router.post("/screenshot", community.Screen_write)// 글쓰기 페이지에서 글작성 눌렀을 때
 router.post("/screenshot/modify", community.Screen_modify);
 
+
+router.get("/notice", community.Notice_page);
+router.get("/notice/write", community.Notice_writeview);
+router.post("/notice", community.Notice_write);
+router.post("/notice/modify", community.Notice_modify);
 
 
 

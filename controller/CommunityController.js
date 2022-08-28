@@ -108,7 +108,7 @@ exports.community_delete = (req, res) => {
             console.log(result);
             if(req.query.category =='free'){res.redirect('/community/free');}
             else if(req.query.category =='screenshot'){res.redirect('/community/screen');}
-            
+            else if(req.query.category =='notice'){res.redirect('/community/notice');}
         })
     })
 
@@ -133,7 +133,7 @@ exports.Free_modify = (req, res) => {
 
 }
 
-exports.Free_createComment = (req, res) => {
+exports.createComment = (req, res) => {
     const user = req.session.user;
     
 
@@ -152,7 +152,7 @@ exports.Free_createComment = (req, res) => {
     });
 
 }
-exports.Free_deleteComment = (req, res) => {
+exports.deleteComment = (req, res) => {
     models.Comment.findOne({
         where: { idx: req.body.idx, isdeleted: 'N',}
     }).then((result) => {
@@ -213,9 +213,9 @@ exports.Screen_page = (req, res) => {
 //스크린샷게시판 글쓰기 들어가기
 exports.Screen_writeview = (req, res) => {
     const user = req.session.user;
-
+    let category = 'screenshot';
     if (user != undefined) {
-        res.render('community_screenWrite', {isLogin: true, user: user});
+        res.render('community_screenWrite', {isLogin: true, user: user, category: category,});
     } else {
         res.redirect('/user/login');
     }
@@ -267,6 +267,74 @@ exports.Screen_modify = (req, res) => {
             title: req.body.title,
             content: req.body.content,
             RPimgsrc: RPimgsrc,
+        }    
+        models.Community.update(newObj, { where: { idx: req.body.idx } })
+        .then((result) => {
+            console.log(result);
+            res.redirect('/community/read?idx=' +req.body.idx);
+        })
+})
+}
+
+
+
+exports.Notice_page = (req, res) => {
+    const user = req.session.user;
+    models.Community.findAll({
+        where: {isdeleted: 'N', category: 'notice',}
+    }) 
+    .then((result) => {
+        //console.log(result);
+        if (user != undefined) {
+            res.render("Notice_List", {isLogin: true, user: user, data: result});
+        } else {
+            res.render("Notice_List", {isLogin: false, user: user, data: result});
+        }
+        
+    });
+    
+}
+exports.Notice_writeview = (req, res) => {
+    const user = req.session.user;
+    let category = 'notice';
+    
+    res.render('community_screenWrite', {isLogin: true, user: user, category: category,});
+    
+}
+exports.Notice_write = (req, res) => {
+    const user = req.session.user;
+    var today = new Date();
+
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+
+    var dateString = year + '-' + month  + '-' + day;
+
+    let object = {
+        id: req.body.id,
+        title: req.body.title,
+        content: req.body.content,
+        create_date: dateString,
+        category: req.body.BoardName,
+    }
+    models.Community.create( object )
+    .then((result) => {
+        console.log(result);
+        res.redirect('/community/notice');
+    });
+}
+
+
+exports.Notice_modify = (req, res) => {
+    console.log(req.body);
+
+    models.Community.findOne({
+        where: { idx: req.body.idx, isdeleted: 'N',}
+    }).then((result) => {
+        let newObj = {
+            title: req.body.title,
+            content: req.body.content,
         }    
         models.Community.update(newObj, { where: { idx: req.body.idx } })
         .then((result) => {

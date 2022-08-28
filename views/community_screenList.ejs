@@ -8,13 +8,15 @@
         <style>
             .product{
                 display: inline-block;
-                width: 225px;
+                width: 250px;
                 text-align: center;
                 text-decoration:none;
                 color: black;
                 margin-left: 20px;
                 margin-right: 20px;
                 margin-bottom: 30px;
+                background-color:rgba(216, 216, 216, 0.658);
+                border-radius: 15px;
             }
             .ss-title{
                 margin-top: 20px;
@@ -39,7 +41,7 @@
                             for ( let i = data.length - 1; i >= 0; i-- ){
                             %>
                                 <a href="/community/read?idx=<%=data[i].idx%>" class="product">
-                                    <img src="<%=data[i].RPimgsrc%>" width="225" height="225">
+                                    <img src="<%=data[i].RPimgsrc%>" width="250" height="250">
                                     <div class="ss-title" >
                                         <%=data[i].title%>
                                     </div>
