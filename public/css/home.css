@@ -1,6 +1,8 @@
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
 #content {
     scroll-behavior: smooth;
-    font-family: Helvetica, sans-serif, Arial;
+    font-family: Galmuri14;
 }
 /* 
 body {
