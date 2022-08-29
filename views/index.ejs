@@ -75,8 +75,9 @@
                 </a>
             </div> <!-- 메뉴 -->
             
-            <div class="center_menu" style="position:relative;width:500px;height:314px;background:url('https://imgcdn.topgame.kr/tqgame/mh/main/center_menu.png');top:74px;left:246px;">
-                <a href="/community/notice"><img src="https://imgcdn.topgame.kr/tqgame/mh/main/plus.png" style="position:absolute;left:204px;top:6px"></a><!-- 더보기 -->
+            <div class="center_menu"  style="position:relative;width:100px;height:50px;top:80px;left:246px;">
+                <img src="/img/gongi.png" style="position: absolute;left:20px;bottom:20px;" width="130px">
+                <a href="/community/notice"><img src="https://imgcdn.topgame.kr/tqgame/mh/main/plus.png" style="position:absolute;left:150px;top:8px"></a><!-- 더보기 -->
                 <div class="main_hot_data" style="position:absolute;top:46px;margin-top:-6px;width:500px;">
                 <table width="89%" style="margin-left:29px;">
                   <tbody><tr class="txt_tr" style="height:48px;">
@@ -114,8 +115,12 @@
             </div><!-- 공지사항 -->
     
             <div class="right_menu" style="position:absolute;width:400px;height:315px;background:url('/img/bg8.jpg');top:74px;right:0px;background-size: 100% 100%;">
+                <% if (isLogin) { %>
                 <a href="/request">
                     <img src="https://imgcdn.topgame.kr/tqgame/mh/main/banner/help.png" style="position:absolute;left:38px;top:264px"><!-- 문의 -->
+                    <% } else { %>
+                    <li class="bt" onclick="alertlogin();"><img src="https://imgcdn.topgame.kr/tqgame/mh/main/banner/help.png" style="position:absolute;left:38px;top:264px; cursor: pointer;" ></li>
+                    <% } %>
                 </a>
                 <a href="/faq">
                     <img src="https://imgcdn.topgame.kr/tqgame/mh/main/banner/faq.png" style="position:absolute;left:207px;top:264px"><!-- FAQ -->
