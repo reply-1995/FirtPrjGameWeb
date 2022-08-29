@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 .bg {
             background-image: url("/img/nav.jpg");
             background-size: 100% 100%;
             background-repeat: no-repeat;
             width: 80%; height: 700px;
-            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            font-family: Galmuri14;
         }
 
 
@@ -13,33 +16,63 @@
 
 /* 메인 스폐셜버튼        */
 
-.nav_button_wrap{
+.login_from{
     position: absolute;
-    border: 4px solid white;
+    border: 5px dashed gray;
     width: 300px;
     height: 300px;
-    top: 20%;
-    right: 20%;
-    background-color: rgba(0, 0, 0, 0.497);
+    float: right;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
 
     
 }
-.Maingamestart{
+.gamestart_wrap{
     position: relative;
-    width: 300px;
-    height: 140px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    width:'100%'; 
+    
 }
-.Maingamestart span{
-    position: absolute;
-    font-size: 50px;
-    font-family: 'DOSMyungjo';
-    color: white;
+.gamestart_wrap img{
+    width: 100%;
+	vertical-align: middle;
+}
+.gamestart_wrap span{
+    color: whitesmoke;
+    font-size: 40px;
     font-weight: bold;
-    left: 50%;
-    top: 35px;
-    transform: translate(-50%, 0);
+	position: absolute;
+    left: 15%;
+    top: 25%;
+    
+}
+/* .login_wrap{
+    
+} */
+.user_btn {
+    width: 240px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: blueviolet;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+.user_btn span{
+    vertical-align: middle;
+    font-weight: bold;
+}
+.findlogin{
+    display: inline-block;
+    margin-top: 10px;
+    position: relative;
+    right: 10px;
+    
+}
+ul > li > a {
+    text-decoration: none;
+    color: white;
 }
 
 /* 메인 스폐셜버튼 end */
@@ -54,59 +87,7 @@ h6 {
     position: relative;
     top: 24px;
 }
-#gamestartBT{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 160px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 20px;
-    text-align: center;
-    font-family: sans-serif;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: #ccc;
-  }
-  #gamestartBT:before{
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: #a6ff00;
-    color: #fff;
-    transition: 0.5s;
-    transform-origin: bottom;
-    transform: translatey(-100%) rotatex(90deg);
-  }
-  #gamestartBT:hover:before
-  {
-    transform: translatey(0) rotatex(0deg);
-  }
-  
-  #gamestartBT:after{
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: #1eff01;
-    color: #fff;
-    transition: 0.5s;
-    transform-origin: top;
-    transform: translatey(0) rotatex(0deg);
-  }
-  #gamestartBT:hover:after
-  {
-    transform: translatey(100%) rotatex(90deg);
-  }
+
 
 .top a{
     text-decoration: none;
@@ -158,7 +139,6 @@ h6 {
     padding-top: 50px;
     background-color: transparent;
     /* position: relative; */
-    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .container5:hover{
@@ -170,14 +150,7 @@ h6 {
 }
 
 
-.nav_logo {
-    /* position: relative;
-    bottom: 45%;
-    left: 10%; */
-    position: absolute;
-    left: 170px;
-    top: 100px;
-}
+
 
 .container5 ul {
     width: 200px;
@@ -215,6 +188,15 @@ h6 {
 
 .nav_ul {
     padding: 0 10px 0;
+}
+
+.nav_ul #logo{
+    /* position: relative;
+    bottom: 45%;
+    left: 10%; */
+    position: relative;
+    left: 50px;
+    top: -10px;
 }
 
 .nav_ul a {

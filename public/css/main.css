@@ -1,16 +1,15 @@
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-@font-face {
-    font-family: 'DungGeunMo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
-body {
-    font-family: 'DungGeunMo';
+
+body{
+    font-family: Galmuri14;
     margin: 0;
     /* background-color: #35363A; */
     height: 100%;
+}
+
+.mainscnt {
+    font-family: Galmuri14;
 }
 /* button {
     color: black;

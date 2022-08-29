@@ -18,7 +18,7 @@
                 <% if (isLogin) {%>
                     <%=user%>
                 <button class="signup1" onclick="location.href='/user/profile';"><img src="/img/mypage.png" width="120px"></button>
-                <a href="#" id="gamestartBT" data-text="게임 스타트" onclick="gamepage();">게임 스타트</a>
+                
                 <button class="login1" onclick="gamepage();">게임 스타트</button>
                 <button class="login1" onclick="logoutpage();">로그아웃</button>
             <!-- 로그인 상태 아닐 때 -->
@@ -29,10 +29,15 @@
             </div>
         </div>
         <div class="container5" style="display: flex;">
-            <ul id="logo">
-                <a href="/"><img src="/img/img11.png"  class="nav_logo"></a>
-            </ul>
+            
             <ul class="nav_ul">
+                <a id="logo" href="/">
+                    <img src="/img/img11.png"  class="nav_logo">
+                </a>
+            </ul>    
+            
+            <ul class="nav_ul">
+                
                 <a href="#">
                     <li class="main">뉴스</li>
                 </a>
@@ -81,21 +86,23 @@
             </ul>   
         </div>
 
-        <div class="nav_button_wrap">
+        <div class="login_from">
 
-            <div class="Maingamestart">
+            <div class="gamestart_wrap">
                 <% if (isLogin) {%>
                     <a href="#" onclick="gamepage();">
-                        <img src="/img/startbutton.png" width="300px" style="position: absolute;">
+                        <img src="/img/startbutton.png" width="300px">
                         <span>GAMESTART</span>
                     </a>
                 <% } else { %>
                     <a href="#" onclick="alertlogin();">
-                        <img src="/img/startbutton.png" width="300px" style="position: absolute;">
+                        <img src="/img/startbutton.png" width="300px">
                         <span>GAMESTART</span>
                     </a>
                 <% } %>
             </div>
+
+            
         
             <div>
                 <% if (isLogin) {%>
@@ -104,8 +111,22 @@
                 <button class="login1" onclick="logoutpage();">로그아웃</button>
             <!-- 로그인 상태 아닐 때 -->
             <% } else { %>
-                <button class="signup1" onclick="location.href='/user';">회원가입</button>
-                <button class="login1"  onclick="loginpage();">로그인</button>
+                <div class="login_wrap">               
+                    <div class="login_btn">
+                        <div  style='width:100%;height:107px;'>
+                            <span style="color: white;">로그인 후 게임을 시작해주세요.</span>
+                            <div class="user_btn" onclick="location.href='/user/login'" style="color: white;"><span>로그인</span></div>
+                            <div class="user_btn" onclick="location.href='/user'" style="background-color: white;"><span>회원가입</span></div>
+                        </div>
+                    </div>
+                    <div class="findlogin">
+                        <ul style="display: flex; list-style-type: none;">
+                            <li><a href="/user/find_id">아이디 찾기</a></li>
+                            <li style="margin-left: 10px; margin-right: 10px; color: white;">|</li>
+                            <li><a href="/user/find_pw">비밀번호 찾기</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <% } %>
             </div>
         </div>
