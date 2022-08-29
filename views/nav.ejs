@@ -13,11 +13,12 @@
                 <button class="login1"  onclick="loginpage();">로그인</button>
                 <% } %>
             </div>
-            <a href="/"><h6>응답하라 1995</h6></a>
+            <a href="/"><h6><img src="/img/1995.png" width="200px"></h6></a>
             <div>
                 <% if (isLogin) {%>
                     <%=user%>
-                <button class="signup1" onclick="location.href='/user/profile';">프로필</button>
+                <button class="signup1" onclick="location.href='/user/profile';"><img src="/img/mypage.png" width="120px"></button>
+                <a href="#" id="gamestartBT" data-text="게임 스타트" onclick="gamepage();">게임 스타트</a>
                 <button class="login1" onclick="gamepage();">게임 스타트</button>
                 <button class="login1" onclick="logoutpage();">로그아웃</button>
             <!-- 로그인 상태 아닐 때 -->
@@ -36,7 +37,7 @@
                     <li class="main">뉴스</li>
                 </a>
                 <div class="hidden">
-                    <a href="">
+                    <a href="/community/notice">
                         <li class="sub">공지사항</li>
                     </a>
                     <li class="bt">이벤트</li>
