@@ -3,9 +3,7 @@
 <head>
     <%-include('head.ejs')%>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sunflower&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/guide.css">
     <link rel="stylesheet" href="/css/css.css">
 
@@ -27,8 +25,13 @@
                 </tr>
                 <tr>
                     <td colspan="6">
-                        <p> <button class="login1" >로그인</button>
-                        후 이용 가능합니다.</p>
+                        <% if (isLogin) {%>
+                            <%=user%>님 환영합니다. <br>
+                            <p><button class="login1" onclick="gamepage();">게임 스타트</button> 클릭 후 게임 시작</p>
+                        <% } else { %>
+                            <p><button class="login1"  onclick="loginpage();">로그인</button>후 이용 가능합니다.</p>
+                        <% } %>
+
                     </td>
                 </tr>
                 <tr>
@@ -124,7 +127,7 @@
                     </td>
                 </tr>
             </table>
-            <table>
+            <table class="cast_table">
                 <tr>
                     <td colspan="5">
                         <h1>MEET THE CAST</h1>
@@ -167,7 +170,7 @@
                 <tr>
                     <td colspan="5" class="line"></td>
                 </tr>
-                <tr class="cast_behavior">
+                <tr class="cast_feature">
                     <td>
                         BEHAVIOR
                     </td>
@@ -184,22 +187,105 @@
                         BEHAVIOR
                     </td>
                 </tr>
-                <tr class="cast_behavior">
+                <tr class="cast_answer">
                     <td>
-                        BEHAVIOR
+                        아무렇지 않게 <br>
+                        앞으로 전진
                     </td>
                     <td>
-                        BEHAVIOR
+                        앞 뒤로 영원히 ...
                     </td>
                     <td>
-                        BEHAVIOR
+                        밑바닥을 가로질러 <br>
+                        살금살금 기어가죠
                     </td>
                     <td>
-                        BEHAVIOR
+                        어디든 빠르게 이동
                     </td>
                     <td>
-                        BEHAVIOR
+                        둥글게 둥글게~
                     </td>
+                </tr>
+                <tr class="cast_feature">
+                    <td>
+                        LIKES
+                    </td>
+                    <td>
+                        LIKES
+                    </td>
+                    <td>
+                        LIKES
+                    </td>
+                    <td>
+                        LIKES
+                    </td>
+                    <td>
+                        LIKES
+                    </td>
+                </tr>
+                <tr class="cast_answer">
+                    <td>
+                        피자먹은 개구리 <br>
+                        공분동근
+                    </td>
+                    <td>
+                        비내리는 날 마시는 <br>
+                        막걸리
+                    </td>
+                    <td>
+                        빨간색 롤러코스터 <br>
+                        안구정화
+                    </td>
+                    <td>
+                        시험공부 벼락치기 <br>
+                        민트초코
+                    </td>
+                    <td>
+                        침대 다이빙 <br>
+                        내문서
+                    </td>
+                </tr>
+                <tr class="cast_feature">
+                    <td>
+                        DISLIKES
+                    </td>
+                    <td>
+                        DISLIKES
+                    </td>
+                    <td>
+                        DISLIKES
+                    </td>
+                    <td>
+                        DISLIKES
+                    </td>
+                    <td>
+                        DISLIKES
+                    </td>
+                </tr>
+                <tr class="cast_answer">
+                    <td>
+                        거창한 말 <br>
+                        어려운 대화
+                    </td>
+                    <td>
+                        똑바로 못가는 서클리 <br>
+                        음주운전
+                    </td>
+                    <td>
+                        땅따먹기 <br>
+                        파인애플 올라간 피자
+                    </td>
+                    <td>
+                        기어다니는 벌레 <br>
+                        생강
+                    </td>
+                    <td>
+                        카톡 읽씹 <br>
+                        내공 냠냠
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="line"></td>
                 </tr>
             </table>
         </div>
