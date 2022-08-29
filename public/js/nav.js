@@ -29,14 +29,12 @@ var target;
 //->>
 $(".nav_ul").on("mouseover", function(obj){
     target = obj.currentTarget;
-    console.log(target);
 
     $('nav ul div').removeClass("hidden");
 });
 
 $(".nav_ul").on("mouseleave", function(obj){
     target = obj.currentTarget;
-    console.log(target);
 
     $('nav ul div').addClass("hidden");
 });
