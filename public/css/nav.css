@@ -14,16 +14,28 @@
             margin: auto;
         }
 
+
+
+
+/* 메인 스폐셜버튼        */
+
 .nav_button_wrap{
-    position: relative;
-    background-color: #1eff01;
+    position: absolute;
+    border: 4px solid white;
     width: 300px;
     height: 300px;
+    top: 20%;
+    right: 20%;
+    background-color: rgba(0, 0, 0, 0.497);
+
+    
 }
 .Maingamestart{
+    position: relative;
     width: 300px;
-    height: 300px;
-    border-radius: 150px;
+    height: 140px;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .Maingamestart span{
     position: absolute;
@@ -32,8 +44,14 @@
     color: white;
     font-weight: bold;
     left: 50%;
+    top: 35px;
     transform: translate(-50%, 0);
 }
+
+/* 메인 스폐셜버튼 end */
+
+
+
 .hidden {
     display: none;
 }
