@@ -1,7 +1,4 @@
-body {
-    font-family: 'Sunflower', sans-serif;    
-}
-.content {
+.guide_warp {
     padding-top: 30px;
     position: relative;
     max-width: 900px;
