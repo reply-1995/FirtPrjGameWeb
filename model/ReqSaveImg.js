@@ -8,10 +8,7 @@ const ReqSaveImg = (Sequelize, DataTypes ) =>{
                 primaryKey: true,
                 autoIncrement: true,
             },
-            boardidx:{
-                type: DataTypes.INTEGER,
-                allowNull: true,
-            },
+            
             category:{
                 type: DataTypes.STRING(10),
                 allowNull: false,
