@@ -79,5 +79,28 @@
                     <% } %>
                 </div>
             </ul>   
-
 </nav>
+
+<div class="nav_button_wrap">
+
+    <div class="Maingamestart">
+        
+        <img src="/img/gamestartBG.gif" width="300px" style="border-radius: 50px; position: absolute;">
+        <span>GAMESTART</span>
+        
+        
+    </div>
+
+    <div>
+        <% if (isLogin) {%>
+            <%=user%>
+        <button class="login1" onclick="gamepage();">게임 스타트</button>
+        <button class="login1" onclick="logoutpage();">로그아웃</button>
+    <!-- 로그인 상태 아닐 때 -->
+    <% } else { %>
+        <button class="signup1" onclick="location.href='/user';">회원가입</button>
+        <button class="login1"  onclick="loginpage();">로그인</button>
+        <% } %>
+    </div>
+</div>
+
