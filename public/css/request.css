@@ -26,9 +26,9 @@
     font-weight: bolder;
 }
 
-/* .hide {
+.hide {
     display: none; 
-} */
+}
 
 .content{
     border: 1px solid rgb(187, 187, 187);
