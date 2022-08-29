@@ -63,9 +63,13 @@
                         </div>
                         
                         <div class="board_btn_wrap">
-                            <% if(isLogin){ %>
+                            
+                            
+                            <% if (isLogin) { %>
                                 <a href="/community/screen/write">글쓰기</a>
-                            <%}%>
+                                <% } else { %>
+                                <a href="#" onclick="alertlogin();">글쓰기</a>
+                                <% } %>
                             
                         </div>
                         
