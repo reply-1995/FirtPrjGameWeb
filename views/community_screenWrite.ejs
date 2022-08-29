@@ -21,11 +21,14 @@
         
         <script>
             async function saveImg(input){
-               
+
                 var form = document.getElementById("myform");
-                
-                
-                await axios({
+
+                console.log(input.files[0].size);
+
+                if(input.files[0].size <= 5*1024*1024){
+
+                    await axios({
                     method: 'post',
                     url: 'http://localhost:8080/community/screen/saveimg/id',
                     data: {
@@ -53,7 +56,7 @@
                                 var filepath = "/img/server_img_upload/" + res.data;
                                 var sHTML = "<img src=" + filepath + " style='max-width:800px;'>";
                                 oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-                                
+                                form.files.value = '';
 
                             })
                             .catch((err) => {
@@ -61,8 +64,17 @@
                             });
                     }
                     exec();
-                    
-                })
+                });
+                }else{
+                    alert("파일크기가 5mb 이상입니다.");
+                    form.files.value = '';
+
+                }
+
+                
+                
+                
+                
                 
                 
                 }
