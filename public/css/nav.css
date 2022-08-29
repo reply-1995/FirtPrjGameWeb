@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-@font-face {
-    font-family: 'DOSMyungjo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .bg {
             background-image: url("/img/nav.jpg");
@@ -156,8 +150,6 @@ h6 {
     z-index: 1000;
 
 }
-
-.con
 
 
 .nav_logo {
