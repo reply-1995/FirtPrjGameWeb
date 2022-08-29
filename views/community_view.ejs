@@ -108,9 +108,14 @@
                     etTime = elapsedTime(data.create_date);
                     
                     let html = 
-                            "<tr id='tr_" + data.idx + "'><td>"+data.id+"</td><td>"+ data.content+ 
-                                "</td><td>"+etTime+"</td><td><button type='button' onclick='deleteComment(" + data.idx  + ");'>삭제</button></td></tr>";        
-
+                    `<tr id="tr_${data.idx}">
+                        <td>${data.id}</td>
+                        <td>${data.content}</td>
+                        <td>${etTime}</td>
+                        <td>
+                            <button type="button" onclick="deleteComment('${data.idx}');">삭제</button>
+                        </td>
+                    </tr>`;
                     $( "tbody" ).append(html);
                     $('#text_comment').val('');
                 });
@@ -122,8 +127,10 @@
                             data: { idx: idx }
                         }).then((rep) => { 
                             alert( rep.data ); 
-                            var tr = document.getElementById("tr_"+idx);
-                            $(tr).remove();
+                            $( `tr#tr_${idx}` ).remove(); 
+                            //var tr = document.getElementById("tr_"+idx);
+                            //console.log( tr );
+                            //$( tr ).remove();
                         });
                 //바로 쓴 댓글은 삭제해도 html에서 제거가 안됨;;
             }
@@ -337,7 +344,7 @@
                                     <td><%=elap(com[i].create_date);%></td>
                                     <td>
                                     <%if(user==com[i].id){%>
-                                        <button type="button" onclick="deleteComment('<%=com[i].idx%>') ;">삭제</button>
+                                        <button type="button" onclick="deleteComment('<%=com[i].idx%>');">삭제</button>
                                     <%}%>
                                     </td>
                                 </tr>
