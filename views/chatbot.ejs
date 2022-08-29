@@ -3,11 +3,6 @@
 <head>
     <link rel="stylesheet" href="/css/request.css">
     <%-include('head.ejs') %>
-    <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <link rel="stylesheet" href="/css/request.css">
-    <%-include('head.ejs') %>
 
     <title>reply 1995</title>
 
@@ -32,9 +27,11 @@
 
 </head>
 <body>
-    <div class="bg">
+    <div class="body">
+        <!-- header  -->
         <%-include('nav.ejs') %>
-    </div>
+        <!-- header end -->
+
         <!-- contents -->
         <div id="contents">
             <div class="board_wrap">
@@ -87,29 +84,14 @@
                 
                     </div>
                 
-             
+                </body>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                 <script src="../public/mscbot-main/mscbot/static/scripts/chat.js"></script>
                 <script src="../public/mscbot-main/mscbot/static/scripts/responses.js"></script>
 
-    <!-- footer -->
-    
-            <%-include('footer.ejs')%>
-    
-    <!-- footer end -->
-    </div>
+      </div>
 
     <script>
-        $(".nav_menu ul").mouseover(function(){
-            if($(".nav_menu > ul > li").css("display") == "none"){
-                $(".nav_menu > ul > li").css("display","block");
-            }
-        })
-        $(".nav_menu").mouseleave(function(){
-            $(".nav_menu > ul > li").css("display","none");
-        })
-
-
         // bot js
         // Collapsible
         var coll = document.getElementsByClassName("collapsible");
@@ -237,6 +219,7 @@
             }
         }
     </script>
+        <%-include('footer.ejs')%>
        <script src="/js/nav.js"></script>
 </body>
 </html>
