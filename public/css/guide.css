@@ -1,8 +1,7 @@
-/* body {
-    background-color: gray;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@300&display=swap');
+
 .guide_warp {
-    /* font-family: 'Sunflower', sans-serif; */
+    font-family: 'Gaegu', cursive;
     background-color: #212529;;
     padding-top: 30px;
     position: relative;
@@ -10,6 +9,9 @@
     margin-left: auto;
     margin-right: auto;
     color: white;
+}
+td {
+    font-family: 'Sunflower', sans-serif;
 }
 table {
 	table-layout: fixed;
@@ -28,7 +30,7 @@ td > img.key_1 {
     width: 100px;
 }
 td > img.item_space {
-    width: 130px;
+    width: 140px;
     height: 60px;
 }
 td > img.item_shift {
@@ -45,10 +47,15 @@ td > h1 {
 td.line {
     padding-top: 20px;
 }
+table.cast_table
+tr.cast_answer > td {
+    font-family: 'Gaegu', cursive;
+    font-size: 19px;
+}
 .cast_name {
     color: red;
     font-size: 22px;
 }
-.cast_behavior {
+.cast_feature > td {
     color: blue;
 }
