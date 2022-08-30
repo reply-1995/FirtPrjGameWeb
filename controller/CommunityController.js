@@ -12,12 +12,15 @@ exports.Free_page = (req, res) => {
     models.Community.findAll({
         where: {isdeleted: 'N', category: 'free',}
     }) 
-    .then((result) => {
+    .then((data) => {
         //console.log(result);
         if (user != undefined) {
-            res.render("community_freeList", {isLogin: true, user: user, data: result});
+            models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("community_freeList", {isLogin: true, user: user, userdata: result, data: data});
+            })
         } else {
-            res.render("community_freeList", {isLogin: false, data: result});
+            res.render("community_freeList", {isLogin: false, data: data});
         }
         
     });
@@ -51,7 +54,10 @@ exports.Free_write = (req, res) => {
 exports.Free_writeview = (req, res) => {
     const user = req.session.user;
     if (user != undefined) {
-        res.render("community_freeWrite", {isLogin: true, user: user});
+        models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("community_freeWrite", {isLogin: true, user: user, userdata: result});
+            })
     } else {
         res.redirect('/user/login');
     }
@@ -86,7 +92,10 @@ exports.community_read = (req, res) => {
 
 
             if (user != undefined) {
-                res.render("community_view", {isLogin: true, result : result, user: user, com: com, elap: func.elapsedTime,});
+                models.User.findOne({where: {id: user}})
+                .then((userdata) => {
+                    res.render("community_view", {isLogin: true, user: user, userdata: userdata, result: result, com: com, elap: func.elapsedTime,});
+                })
             } else {
                 res.render("community_view", {isLogin: false, result : result, user: user, com: com, elap: func.elapsedTime,});
             }
@@ -201,12 +210,15 @@ exports.Screen_page = (req, res) => {
     models.Community.findAll({
         where: {isdeleted: 'N', category: 'screenshot'}
     }) 
-    .then((result) => {
+    .then((data) => {
         //console.log(result);
         if (user != undefined) {
-            res.render("community_screenList", {isLogin: true, user: user, data: result});
+            models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("community_screenList", {isLogin: true, user: user, userdata: result, data: data});
+            })
         } else {
-            res.render("community_screenList", {isLogin: false, data: result});
+            res.render("community_screenList", {isLogin: false, data: data});
         }
     });
 }
@@ -215,7 +227,10 @@ exports.Screen_writeview = (req, res) => {
     const user = req.session.user;
     let category = 'screenshot';
     if (user != undefined) {
-        res.render('community_screenWrite', {isLogin: true, user: user, category: category,});
+        models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("community_screenWrite", {isLogin: true, user: user, userdata: result, category: category,});
+            })
     } else {
         res.redirect('/user/login');
     }
@@ -283,12 +298,15 @@ exports.Notice_page = (req, res) => {
     models.Community.findAll({
         where: {isdeleted: 'N', category: 'notice',}
     }) 
-    .then((result) => {
+    .then((data) => {
         //console.log(result);
         if (user != undefined) {
-            res.render("Notice_List", {isLogin: true, user: user, data: result});
+            models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("Notice_List", {isLogin: true, user: user, userdata: result, data: data});
+            })
         } else {
-            res.render("Notice_List", {isLogin: false, user: user, data: result});
+            res.render("Notice_List", {isLogin: false, user: user, data: data});
         }
         
     });
@@ -297,9 +315,10 @@ exports.Notice_page = (req, res) => {
 exports.Notice_writeview = (req, res) => {
     const user = req.session.user;
     let category = 'notice';
-    
-    res.render('community_screenWrite', {isLogin: true, user: user, category: category,});
-    
+    models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("community_screenWrite", {isLogin: true, user: user, userdata: result, category: category,});
+            })
 }
 exports.Notice_write = (req, res) => {
     const user = req.session.user;
