@@ -13,6 +13,7 @@ exports.index = (req,res) => {
         ],
     }) 
     .then((data) => {
+        console.log(data);
 
 
         if (user != undefined) {

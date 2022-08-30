@@ -43,8 +43,21 @@
 	position: absolute;
     left: 15%;
     top: 25%;
+    transition: 0.3s;
     
 }
+
+
+.gamestart_wrap a:hover span{
+    transform: scale(1.2);
+}
+
+
+
+
+/* .login_wrap{
+    
+} */
 
 .user_btn {
     width: 240px;
