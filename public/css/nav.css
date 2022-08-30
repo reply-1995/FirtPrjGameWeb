@@ -24,18 +24,43 @@
     float: right;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
     text-align: center;
 }
+
+
+@keyframes vibration {
+    from {
+      transform: rotate(1deg);
+    }
+    to {
+      transform: rotate(-1deg);
+      
+    }
+}
+
+
 .gamestart_wrap{
     position: relative;
     width:'100%'; 
-    
+    transition: 1s;
 }
+.gamestart_wrap:hover {
+    animation: vibration 0.1s infinite;
+    /* background-image: url("/img/nightsky.gif"); */
+}
+
+
+
+
 .gamestart_wrap img{
     width: 100%;
 	vertical-align: middle;
+    transition: 0.3s;
 }
+
+
+
 .gamestart_wrap span{
     color: whitesmoke;
     font-size: 40px;
@@ -48,9 +73,14 @@
 }
 
 
+.gamestart_wrap a:hover img{
+    transform: scale(1.1);
+}
 .gamestart_wrap a:hover span{
     transform: scale(1.2);
+    color: gold;
 }
+
 
 
 
