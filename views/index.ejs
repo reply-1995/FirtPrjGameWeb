@@ -80,37 +80,34 @@
                 <a href="/community/notice"><img src="https://imgcdn.topgame.kr/tqgame/mh/main/plus.png" style="position:absolute;left:150px;top:8px"></a><!-- 더보기 -->
                 <div class="main_hot_data" style="position:absolute;top:46px;margin-top:-6px;width:500px;">
                 <table width="89%" style="margin-left:29px;">
-                  <tbody><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="#" style="color:#1a1a1a;">
-                    <span class="txt"><b>[이벤트] 여름휴가계획 이벤트 당첨안내</b></span></a></div></td>
-                <td width="30px">22.08.29</td>
-              </tr><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="#" style="color:#1a1a1a;">
-                    <span class="txt"><b>[신규] 8월27일(토) 신규서버 [풍운] 오픈안내</b></span></a></div></td>
-                <td width="30px">22.08.26</td>
-              </tr><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="/gamenews/notice.html?_Mode=read&amp;idx=3081" style="color:#1a1a1a;">
-                    <span class="txt"><b>[점검] 8월25일(목) 백월광 서버점검안내(완료)</b></span></a></div></td>
-                <td width="30px">22.08.24</td>
-              </tr><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="/gamenews/notice.html?_Mode=read&amp;idx=3066" style="color:#1a1a1a;">
-                    <span class="txt"><b>[신규] 8월20일(토) 신규서버 [일격] 오픈안내</b></span></a></div></td>
-                <td width="30px">22.08.19</td>
-              </tr><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="/gamenews/notice.html?_Mode=read&amp;idx=3057" style="color:#1a1a1a;">
-                    <span class="txt"><b>[점검] 8월18일(목) 백월광 서버점검안내(완료)</b></span></a></div></td>
-                <td width="30px">22.08.17</td>
-              </tr><tr class="txt_tr" style="height:48px;">
-                <td width="345px" class="mttitle">
-                    <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><a href="/gamenews/notice.html?_Mode=read&amp;idx=3053" style="color:#1a1a1a;">
-                    <span class="txt"><b>[이벤트] 광복절편지 이벤트 당첨안내</b></span></a></div></td>
-                <td width="30px">22.08.16</td>
-              </tr>			</tbody></table>
+                  <tbody>
+
+                            <%
+                            for ( let i = 0; i < data.length ; i++ ){
+                            %>
+                                
+                                <tr class="txt_tr" style="height:48px;">
+                                    <td width="345px" class="mttitle">
+                                        <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                                            <a href="/community/read?idx=<%=data[i].idx%>&category=<%=data[i].category%>" style="color:#1a1a1a;">
+                                            <span class="txt"><b><%=data[i].title%></b></span></a>
+                                        </div>
+                                    </td>
+                                    <td width="50px"><%=moment(data[i].create_date).format('YY.MM.DD')%></td>
+                                </tr>	
+                                
+                            <%
+                                }
+                            %>
+
+                    
+                    
+                    
+
+
+
+                  </tbody>
+                </table>
               </div>	
             </div><!-- 공지사항 -->
     
