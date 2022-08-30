@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 /* 게시판 */
 .board_wrap {
     width: 1000px;
@@ -17,7 +18,7 @@
     margin-top: 20px;
 }
 .board_btn_wrap a{
-    
+    font-family: Galmuri14;
     text-decoration: none;
     font-size: 15px;
     min-width: 80px;
@@ -180,4 +181,30 @@
     margin-top: 30px;
     border-top: 1px solid rgb(138, 138, 138);
     padding-top: 10px;
+}
+
+/*  댓글 창 버튼 */
+.comment_wrap button {
+    font-family: Galmuri14;
+    border-radius: 20px;
+    background-color: white;
+    display: inline-block;
+    /* min-width: 60px; */
+    /* padding: 10px; */
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.comment_wrap button:hover {
+    background: black;
+    color: white;
+}
+.comment_wrap textarea {
+    position: relative;
+    left: 70px;
+    top: 20px;
+}
+.comment_wrap .btn_enter {
+    position: relative;
+    left: 100px;
 }
