@@ -194,7 +194,11 @@ exports.faq = (req, res) => {
     const user = req.session.user;
 
     if (user != undefined) {
-        res.render("faq", {isLogin: true, user: user});
+
+        models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("faq", {isLogin: true, user: user, userdata: result});
+            })
     } else {
         res.render("faq", {isLogin: false})
     }
@@ -204,7 +208,10 @@ exports.request = (req, res) => {
     const user = req.session.user;
 
     if (user != undefined) {
-        res.render("request", {isLogin: true, user: user});
+        models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("request", {isLogin: true, user: user, userdata: result});
+            })
     } else {
         res.render("request", {isLogin: false})
     }

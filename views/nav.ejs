@@ -1,22 +1,10 @@
 <nav>
    
         <div class="top">
-            <div style="visibility: hidden">
+            
+            <a class="mainlogo" href="/"><img src="/img/1995.png" width="200px"></a>
+            <div class="topbuttons">
                 <% if (isLogin) {%>
-                    <%=user%>
-                <button class="signup1" onclick="location.href='/user/profile';">프로필</button>
-                <button class="login1" onclick="gamepage();">게임 스타트</button>
-                <button class="login1" onclick="logoutpage();">로그아웃</button>
-            <!-- 로그인 상태 아닐 때 -->
-            <% } else { %>
-                <button class="signup1" onclick="location.href='/user';">회원가입</button>
-                <button class="login1"  onclick="loginpage();">로그인</button>
-                <% } %>
-            </div>
-            <a href="/"><h6><img src="/img/1995.png" width="200px"></h6></a>
-            <div>
-                <% if (isLogin) {%>
-                    <%=user%>
                 <button class="signup1" onclick="location.href='/user/profile';"><img src="/img/mypage.png" width="120px"></button>
                 
                 <button class="login1" onclick="gamepage();">게임 스타트</button>
@@ -38,14 +26,13 @@
             
             <ul class="nav_ul">
                 
-                <a href="#">
+                <a href="/community/notice">
                     <li class="main">뉴스</li>
                 </a>
                 <div class="hidden">
                     <a href="/community/notice">
-                        <li class="sub">공지사항</li>
+                        <li class="sub">공지사항/이벤트</li>
                     </a>
-                    <li class="bt">이벤트</li>
                 </div>
             </ul>
             <ul class="nav_ul">
@@ -106,9 +93,12 @@
         
             <div>
                 <% if (isLogin) {%>
-                    <%=user%>
-                <button class="login1" onclick="gamepage();">게임 스타트</button>
-                <button class="login1" onclick="logoutpage();">로그아웃</button>
+                    <div class="logined_form">
+                        <img src="/img/<%=userdata.profile%>.png" width="85px" style="float: left; margin-left: 20px;">
+                        <div><span><%=user%> 님 </span></div>
+                        <div><span>방문을 환영합니다.</span></div>
+                        <div><span>BEST RECORD : <%=userdata.score%> 점</span></div>
+                    </div>
             <!-- 로그인 상태 아닐 때 -->
             <% } else { %>
                 <div class="login_wrap">               

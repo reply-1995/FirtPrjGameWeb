@@ -37,12 +37,15 @@ exports.ranking = (req, res) => {
             score: { [Op.gt]: 0},
           },
     }) 
-    .then((result) => {
-        console.log(result);
+    .then((data) => {
+        console.log(data);
         if (user != undefined) {
-            res.render("ranking", {isLogin: true, user: user, data: result});
+            models.User.findOne({where: {id: user}})
+            .then((result) => {
+                res.render("ranking", {isLogin: true, user: user, userdata: result, data: data});
+            })
         } else {
-            res.render("ranking", {isLogin: false, data: result});
+            res.render("ranking", {isLogin: false, data: data});
         }
         
     });
@@ -53,8 +56,14 @@ exports.ranking = (req, res) => {
 exports.guide = (req, res) => {
     const user = req.session.user;
 
+
     if (user != undefined) {
-        res.render("game_guide", {isLogin: true, user: user});
+
+        models.User.findOne({where: {id: user}})
+        .then((result) => {
+            res.render("game_guide", {isLogin: true, user: user, userdata: result});
+        })
+
     } else {
         res.render("game_guide", {isLogin: false})
     }
