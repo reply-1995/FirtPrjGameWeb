@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 .bg {
-            background-image: url("/img/nav.jpg");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            width: 80%; height: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            font-family: Galmuri14;
-        }
+        background-image: url("/img/nav.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 80%; height: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        font-family: Galmuri14;
+}
 
 
 
@@ -26,8 +26,6 @@
     right: 20px;
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
-
-    
 }
 .gamestart_wrap{
     position: relative;
@@ -49,6 +47,7 @@
     
 }
 
+
 .gamestart_wrap a:hover span{
     transform: scale(1.2);
 }
@@ -59,6 +58,7 @@
 /* .login_wrap{
     
 } */
+
 .user_btn {
     width: 240px;
     height: 35px;
