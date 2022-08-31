@@ -26,7 +26,7 @@
                 // }
                 axios({
                     method: "post",
-                    url: "http://localhost:8080/user/overlap",
+                    url: "/user/overlap",
                     data: {
                         id: obj.value,
                     }
@@ -56,7 +56,7 @@
 
                 axios({
                     method: 'post',
-                    url: 'http://localhost:8080/user/register',
+                    url: '/user/register',
                     data:{
                         id: form.Id.value,
                         password: form.Password.value,
