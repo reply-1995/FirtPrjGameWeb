@@ -3,6 +3,7 @@ body {
     background-image: url("/img/bg1.jpg");
     background-repeat: no-repeat;
     background-size: 100% 80%;
+    background-color: rgb(127, 178, 235);
 }
 
 h1{
