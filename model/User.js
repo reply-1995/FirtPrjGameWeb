@@ -32,7 +32,7 @@ const User = (Sequelize, DataTypes ) =>{
                 defaultValue: "img0"
             },
             email:{
-                type: DataTypes.STRING(20),
+                type: DataTypes.STRING(100),
                 allowNull: false
             },
             score:{
