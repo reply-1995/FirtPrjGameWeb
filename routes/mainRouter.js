@@ -3,6 +3,8 @@ const front = require("../controller/FrontController");
 const user = require("../controller/UserController");
 const router = express.Router();
 
+
+
 router.get("/", front.index);
 
 router.get("/logout", (req,res) => {
