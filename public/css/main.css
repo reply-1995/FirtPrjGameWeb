@@ -176,7 +176,13 @@ footer{
     padding: 0 7px 0 10px;
     white-space: nowrap; /* 가로로 긴 줄에서도 줄 바꿈 하지 않고 표시 */
 }
-.footer a{
+.footer p{
+    display: inline-block;
     text-decoration: none;
     color: #ffffff;
+}
+
+.footer a{
+    color: #ffffff;
+    text-decoration: none;
 }
