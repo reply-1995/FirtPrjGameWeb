@@ -6,7 +6,7 @@ create table user(
     password varchar(20) not null,
     name varchar(20) not null,
     profile varchar(10) not null default "img0",
-    email varchar(20) not null,
+    email varchar(100) not null,
     score int not null default "0"
 );
 

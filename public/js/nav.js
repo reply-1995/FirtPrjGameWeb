@@ -27,17 +27,17 @@ var target;
 
 
 //->>
-$(".container5").on("mouseover", function(obj){
-    target = obj.currentTarget;
+// $(".container5").on("mouseover", function(obj){
+//     target = obj.currentTarget;
 
-    $('nav ul div').removeClass("hidden");
-});
+//     $('nav ul div').removeClass("hidden");
+// });
 
-$(".container5").on("mouseleave", function(obj){
-    target = obj.currentTarget;
+// $(".container5").on("mouseleave", function(obj){
+//     target = obj.currentTarget;
 
-    $('nav ul div').addClass("hidden");
-});
+//     $('nav ul div').addClass("hidden");
+// });
 
 
 

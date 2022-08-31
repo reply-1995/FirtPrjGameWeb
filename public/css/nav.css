@@ -130,11 +130,7 @@ ul > li > a {
 
 
 
-.hidden {
-    /* display: none; */
-    opacity: 0;
-    transition: all 1s;
-}
+
 
 h6 {
     position: relative;
@@ -215,6 +211,17 @@ h6 {
     transition: 1s;
 
 }
+.hidden {
+    /* display: none; */
+    opacity: 0;
+    transition: all 1s;
+}
+
+
+.container5:hover .hidden{
+    opacity: 1;
+    transition: all 1s;
+}
 
 
 
@@ -269,6 +276,7 @@ h6 {
 .nav_ul a {
     text-decoration: none;
     color: antiquewhite;
+    transition: 1s;
 }
 
 .container5 img {
