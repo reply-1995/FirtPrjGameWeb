@@ -1,6 +1,5 @@
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 
-
 body{
     font-family: Galmuri14;
     margin: 0;
@@ -146,11 +145,13 @@ button:hover {
 
 /* footer */
 footer{
+    /* font-family: Galmuri14; */
     height: (50px);
     position : relative;
     transform : translateY(-100%);
 }
 .footer{
+    font-family: Galmuri14;
     width: 100%;
     color: white;
     background-color: rgb(46, 48, 52);
