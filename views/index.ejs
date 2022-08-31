@@ -92,11 +92,11 @@
                                 <tr class="txt_tr" style="height:48px;">
                                     <td width="345px" class="mttitle">
                                         <div style="width: 350px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                                            <a href="/community/read?idx=<%=data[i].idx%>&category=<%=data[i].category%>" style="color:#1a1a1a;">
+                                            <a href="/community/read?idx=<%=data[i].idx%>&category=<%=data[i].category%>" style="color:#1a1a1a;text-decoration: none;">
                                             <span class="txt"><b><%=data[i].title%></b></span></a>
                                         </div>
                                     </td>
-                                    <td width="50px"><%=moment(data[i].create_date).format('YY.MM.DD')%></td>
+                                    <td class="txt_date" width="50px"><%=moment(data[i].create_date).format('YY.MM.DD')%></td>
                                 </tr>	
                                 
                             <%

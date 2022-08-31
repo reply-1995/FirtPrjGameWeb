@@ -149,6 +149,18 @@ button:hover {
     padding-bottom: (50px);
 }
 
+
+
+.txt_tr {
+    border-bottom: rgba(99, 99, 99, 0.555) 2px dotted;
+    border-collapse: collapse;
+}
+.txt_date {
+    border-bottom: rgba(99, 99, 99, 0.555) 2px dotted;
+    border-collapse: collapse;
+}
+
+
 /* footer */
 footer{
     /* font-family: Galmuri14; */
