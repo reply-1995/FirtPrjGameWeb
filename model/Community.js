@@ -1,6 +1,6 @@
 const Community = (Sequelize, DataTypes ) =>{
     const model = Sequelize.define(
-        'communityfree',
+        'community',
         {
             idx:{
                 type: DataTypes.INTEGER,
@@ -47,7 +47,7 @@ const Community = (Sequelize, DataTypes ) =>{
         },
         {
             timestamps: false,
-            tableName: 'communityfree',
+            tableName: 'community',
             freezeTableName: true,
         },
     );

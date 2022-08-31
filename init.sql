@@ -20,7 +20,7 @@ SELECT * FROM user;
 
 
 
-create table communityFree(
+create table community(
 	idx int not null primary key auto_increment,
     id varchar(20) not null,
     category varchar(10) not null default 'free',
@@ -32,11 +32,11 @@ create table communityFree(
     RPimgsrc varchar(100) null
 );
 
-drop table communityfree;
+drop table community;
 
-insert into communityFree(id,title,content,create_date) values('test11', 'asdf1', 't12esttesttest', '2022-08-19');
+insert into community(id,title,content,create_date) values('test11', 'asdf1', 't12esttesttest', '2022-08-19');
 
-select * from communityfree;
+select * from community;
 
 
 
