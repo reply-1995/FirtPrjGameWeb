@@ -10,9 +10,9 @@ exports.index = (req,res) => {
     models.Community.findAll({
         where: {isdeleted: 'N', category: 'notice',},
         limit: 6,
-        // order:[
-        //     ['create_date', 'DESC'],
-        // ],
+        order:[
+            ['idx', 'DESC'],
+        ],
     }) 
     .then((data) => {
         console.log(data);
