@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 .bg {
-        background-image: url("/img/nav/Galaxy.gif");
+        background-image: url("/img/nav/station.gif");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: 80%; height: 700px;
