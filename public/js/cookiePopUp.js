@@ -20,7 +20,7 @@
     }
 
     var popupClose = function(){
-        if($("chkday").checked == true){
+        if($('input:checkbox[id="chkday"]').is(":checked") == true){
             setCookie("close","Y",1);   //기간( ex. 1은 하루, 7은 일주일)
         }
         $("#pop").hide();
@@ -28,7 +28,7 @@
     
     $(document).ready(function(){
         cookiedata = document.cookie;
-        //console.log(cookiedata);
+        // console.log(cookiedata);
         if(cookiedata.indexOf("close=Y")<0){
             $("#pop").show();
         }else{
