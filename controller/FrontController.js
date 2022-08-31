@@ -1,6 +1,8 @@
 const models = require("../model"); // -> 시퀄라이즈에 사용
 const moment = require("moment");
 
+
+
 //메인 페이지를 세션이 있는경우와 없는경우 상황을 나눠준거임. 보내주는게 다름.
 exports.index = (req,res) => {
     const user = req.session.user;
@@ -14,7 +16,7 @@ exports.index = (req,res) => {
     }) 
     .then((data) => {
         console.log(data);
-
+        
 
         if (user != undefined) {
             models.User.findOne({where: {id: user}})

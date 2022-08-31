@@ -128,5 +128,21 @@
     <%-include('footer.ejs')%>
 
     <script src="/js/nav.js"></script>
+
+    <script src="/js/cookiePopUp.js"></script>
+
+    <div id="pop">
+        <div class="cont">
+            <img class="thumb" src="/img/popup_top.PNG" width= "500px" usemap="#pop"/><br>
+            <img class="thumb" src="/img/popup.jpg" width= "500px" usemap="#pop"/>
+        </div>
+        <div class="close">
+            <form method="post" action="" name="pop_form">
+                <span id="check"><input type="checkbox" value="checkbox" name="chkbox" id="chkday"/><label for="chkday">12시간 동안 보지 않기</label></span>
+                <span id="close">Close</span>
+            </form>
+        </div>
+    </div> 
+
 </body>
 </html>

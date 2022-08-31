@@ -34,7 +34,43 @@ button:hover {
     min-height: 100%;
     padding-bottom: 60px;
 } */
+#pop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: rgba(14, 1, 79, 0.616) 2px solid;
+}
+.close {
+    width: 500px;
+    height: 40px;
+    background-color: rgb(68, 68, 68);
+    font-family: Galmuri14;
+    color: white;
+    margin-top: -4px;
+    
+}
 
+#chkday{
+    cursor: pointer;
+}
+.close #check{
+    float: left;
+    margin-left: 20px;
+    vertical-align: middle;
+    line-height: 40px;
+    
+}
+.close #close{
+    
+    float: right;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+    line-height: 40px;
+
+    
+}
 .nav_background {
     /* float:left;  */
     /* position: relative; */
