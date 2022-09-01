@@ -50,7 +50,7 @@
                var form = document.getElementById("myform");
                await axios({
                    method: 'post',
-                   url: 'http://localhost:8080/community/screen/saveimg/id',
+                   url: '/community/screen/saveimg/id',
                    data: {
                        id : form.id.value,
                        category : form.BoardName.value,
@@ -66,7 +66,7 @@
                    console.log(input.files[0]);
                    async function exec(){
                        await axios
-                           .post("http://localhost:8080/community/screen/saveimg/file", formData, {
+                           .post("/community/screen/saveimg/file", formData, {
                                headers: {
                                    "Content-Type": "multipart/form-data",
                                },
@@ -93,7 +93,7 @@
                 var form = document.getElementById('form_comment');
                 await axios({
                     method: "post",
-                    url: "http://localhost:8080/community/createcomment",
+                    url: "/community/createcomment",
                     data: {
                         parentidx : form.parentidx.value,
                         category : form.category.value,
@@ -123,7 +123,7 @@
             async function deleteComment(idx){
                 await axios({
                             method: 'delete',
-                            url: 'http://localhost:8080/community/deletecomment',
+                            url: '/community/deletecomment',
                             data: { idx: idx }
                         }).then((rep) => { 
                             alert( rep.data ); 

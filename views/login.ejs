@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>로그인</title>
+        <title>reply 1995</title>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>      
         <link rel="stylesheet" href="/css/login.css">
@@ -11,13 +11,13 @@
             //실행되는 함수는 헤드에 넣어도된다.
 
             //db에서 정보를 검색해 로그인 가능하게 하기
-            function login(){
+            async function login(){
                 var form = document.getElementById("login_form");
                 //-> 로그인 폼이라는 id를 가진 요소를 가져온다-밑에있음-
 
-                axios({
+                await axios({
                     method: "post",
-                    url: "http://localhost:8080/user/login",
+                    url: "/user/login",
                     data: {
                         id: form.Id.value,
                         password: form.Password.value,

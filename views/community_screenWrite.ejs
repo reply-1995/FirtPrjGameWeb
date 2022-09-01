@@ -16,7 +16,6 @@
        
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <title>스크린샷 게시판</title>
 
         
         <script>
@@ -30,7 +29,7 @@
 
                     await axios({
                     method: 'post',
-                    url: 'http://localhost:8080/community/screen/saveimg/id',
+                    url: '/community/screen/saveimg/id',
                     data: {
                         id : form.id.value,
                         category : form.BoardName.value,
@@ -46,7 +45,7 @@
                     console.log(input.files[0]);
                     async function exec(){
                         await axios
-                            .post("http://localhost:8080/community/screen/saveimg/file", formData, {
+                            .post("/community/screen/saveimg/file", formData, {
                                 headers: {
                                     "Content-Type": "multipart/form-data",
                                 },

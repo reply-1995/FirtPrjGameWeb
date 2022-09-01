@@ -863,7 +863,7 @@ updateCanvas = () => {
 			async function exec(){
 				await axios({
 					method: "post",
-					url: "http://localhost:8080/game/scoresave",
+					url: "/game/scoresave",
 					data: {
 						score: ship.score,
 					}
