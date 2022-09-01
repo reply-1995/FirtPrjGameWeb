@@ -192,12 +192,12 @@ exports.Screen_saveReqID = (req, res) => {
 }
 exports.Screen_saveReqFile = (req,  res) => {
     models.ReqSaveImg.findOne({
-        where: { idx: req.body.idx, id:req.body.id, category: req.body.category,}
+        where: { idx: req.body.idx, id:req.body.id, category: req.body.category, create_date: req.body.ctime,}
     }).then((result) => {
         let newObj = {
             filename : req.file.filename,
         }    
-        models.ReqSaveImg.update(newObj, { where: { idx: req.body.idx, id:req.body.id, category: req.body.category,} })
+        models.ReqSaveImg.update(newObj, { where: { idx: req.body.idx, id:req.body.id, category: req.body.category, create_date: req.body.ctime,} })
         .then((result) => {
             res.send(req.file.filename);
         })

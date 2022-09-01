@@ -23,7 +23,7 @@ const ReqSaveImg = (Sequelize, DataTypes ) =>{
                 allowNull: false
             },
             filename:{
-                type: DataTypes.STRING(50),
+                type: DataTypes.STRING(100),
                 allowNull: true,
             }
          

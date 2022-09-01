@@ -12,8 +12,8 @@ const upload = multer({
         filename(req, file, done){
             console.log(req.body);
             const ext = path.extname(file.originalname);
-            done(null, req.body.idx + "_" +req.body.id + "_" + req.body.category + ext);
-            filename = req.body.idx + "_" +req.body.id + "_" + req.body.category + ext;
+            done(null, req.body.idx + "_" +req.body.id + "_" + req.body.category +  "_" + req.body.ctime + ext);
+            filename = req.body.idx + "_" +req.body.id + "_" + req.body.category +  "_" + req.body.ctime + ext;
         },
     }),
     limits: { fileSize: 5*1024*1024}, //5mb
