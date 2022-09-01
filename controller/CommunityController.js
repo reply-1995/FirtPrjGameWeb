@@ -183,22 +183,25 @@ exports.Screen_saveReqID = (req, res) => {
         id: req.body.id,
         create_date: new Date(),
     }
-    console.log(object);
+    //console.log(object);
     models.ReqSaveImg.create( object )
     .then((result) => {
         //result == dataValues:{idx: , parentidx: ........}
+        console.log("11111111111111111111111111111");
         res.send(result);
     });
 }
 exports.Screen_saveReqFile = (req,  res) => {
     models.ReqSaveImg.findOne({
-        where: { idx: req.body.idx, id:req.body.id, category: req.body.category, create_date: req.body.ctime,}
+        where: { idx: req.body.idx, id:req.body.id, create_date: req.body.ctime,}
     }).then((result) => {
+        console.log("22222222222222222222222222222222");
         let newObj = {
             filename : req.file.filename,
-        }    
+        }
         models.ReqSaveImg.update(newObj, { where: { idx: req.body.idx, id:req.body.id, category: req.body.category, create_date: req.body.ctime,} })
         .then((result) => {
+            console.log("33333333333333333333333333333");
             res.send(req.file.filename);
         })
     })

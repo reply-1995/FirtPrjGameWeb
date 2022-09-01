@@ -10,10 +10,10 @@ const upload = multer({
             done(null, 'public/img/server_img_upload/');
         },
         filename(req, file, done){
-            console.log(req.body);
+            console.log(rep.file);
             const ext = path.extname(file.originalname);
-            done(null, req.body.idx + "_" +req.body.id + "_" + req.body.category +  "_" + req.body.ctime + ext);
-            filename = req.body.idx + "_" +req.body.id + "_" + req.body.category +  "_" + req.body.ctime + ext;
+            done(null, req.body.idx + "_" +req.body.id + "_" + req.body.category + ext);
+            filename = req.body.idx + "_" +req.body.id + "_" + req.body.category + ext;
         },
     }),
     limits: { fileSize: 5*1024*1024}, //5mb
@@ -34,7 +34,7 @@ router.delete("/deletecomment", community.deleteComment);
 router.get("/screen", community.Screen_page);
 router.get("/screen/write", community.Screen_writeview);
 router.post("/screen/saveImg/id", community.Screen_saveReqID);
-router.post("/screen/saveImg/file", upload.single('fileimg'),community.Screen_saveReqFile);
+router.post("/screen/saveImg/file", upload.single('fileimg'), community.Screen_saveReqFile);
 router.post("/screenshot", community.Screen_write)// 글쓰기 페이지에서 글작성 눌렀을 때
 router.post("/screenshot/modify", community.Screen_modify);
 

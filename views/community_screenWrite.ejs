@@ -29,14 +29,14 @@
 
                     await axios({
                     method: 'post',
-                    url: '/community/screen/saveimg/id',
+                    url: '/community/screen/saveImg/id',
                     data: {
                         id : form.id.value,
                         category : form.BoardName.value,
                     }
-                }).then((rep) => {return rep.data; })
+                }).then((rep) => {return rep.data; })//create된 db정보
                 .then((data) => {
-                    //data.idx, data.id, data.category
+                    //data.idx, data.id, data.category, data.create_date
                     var formData = new FormData();
                     formData.append("idx", data.idx);
                     formData.append("category", data.category);
@@ -46,7 +46,7 @@
                     console.log(input.files[0]);
                     async function exec(){
                         await axios
-                            .post("/community/screen/saveimg/file", formData, {
+                            .post("/community/screen/saveImg/file", formData, {
                                 headers: {
                                     "Content-Type": "multipart/form-data",
                                 },

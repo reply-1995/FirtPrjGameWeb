@@ -1,7 +1,7 @@
 {
     "development" :{
         "host": "localhost",
-        "database": "reply",
+        "database": "reply1995",
         "username": "user",
         "password": "1234",
         "dialect": "mysql"

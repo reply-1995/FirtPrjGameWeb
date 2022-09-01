@@ -116,7 +116,7 @@
                             <button type="button" onclick="deleteComment('${data.idx}');">삭제</button>
                         </td>
                     </tr>`;
-                    $( "tbody" ).append(html);
+                    $( "#cw" ).append(html);
                     $('#text_comment').val('');
                 });
             }
@@ -334,7 +334,7 @@
                             <col width="200px">
                             <col width="100px">
                         </colgroup>
-                        <tbody>
+                        <tbody id="cw">
                             <%
                                 for ( let i = 0; i < com.length; i++ ){
                             %>
