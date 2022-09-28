@@ -11,6 +11,16 @@ exports.openGame = (req, res) => {
     })
 }
 
+exports.openStar = (req, res) => {
+
+    const user = req.session.user;
+
+    models.User.findOne({where: {id: user}})
+    .then((result) => {
+        res.render("gameStar", {data: result})
+    })
+}
+
 exports.scoreSave = (req, res) => {
     const user = req.session.user;
 
