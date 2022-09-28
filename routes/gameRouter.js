@@ -4,6 +4,8 @@ const router = express.Router();
 
 
 router.get("/", game.openGame);
+
+router.get("/star", game.openStar);
 router.post("/scoresave", game.scoreSave);
 
 router.get("/ranking", game.ranking);
